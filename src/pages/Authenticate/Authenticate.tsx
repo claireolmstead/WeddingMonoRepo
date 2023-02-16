@@ -1,25 +1,30 @@
-import React from 'react';
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const CORRECT_PASSWORD = 'password';
+import { CORRECT_PASSWORD } from '../../vars';
 
-const Authenticate = () => {
-    const navigate = useNavigate();
-
-    const [password, setPassword] = useState<string>('');
-
-    const onSubmit = () => {
-        if (password == CORRECT_PASSWORD) {
-            navigate('/home');
-        }
-    }
-
-    return <div>
-        <form onSubmit={onSubmit}>
-            <input value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+interface AuthenticateProps {
+  setAuthenticated: () => void;
 }
+
+const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
+  const navigate = useNavigate();
+  const [password, setPassword] = useState<string>('');
+
+  const onSubmit = () => {
+    if (password == CORRECT_PASSWORD) {
+      setAuthenticated();
+      navigate('/home');
+    }
+  };
+
+  return (
+    <div>
+      <form onSubmit={onSubmit}>
+        <input value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
 export default Authenticate;
