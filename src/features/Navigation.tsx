@@ -19,6 +19,7 @@ const Navigation = () => {
       <NavLink to="/schedule">Schedule</NavLink>
       <NavLink to="/accommodations">Accommodations</NavLink>
       <NavLink to="/rsvp">RSVP</NavLink>
+      <NavLink to="/us">US</NavLink>
     </NavBlock>
   );
 };
