@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
-import Navigation from './features/Navigation';
+import Header from './features/Header';
 import Accommodations from './pages/Accommodations/Accommodations';
 import Authenticate from './pages/Authenticate/Authenticate';
 import Home from './pages/Home/Home';
@@ -14,24 +14,13 @@ const AppBody = styled.div`
   background-color: ${(props) => props.theme.colors.black};
   color: ${(props) => props.theme.colors.white};
   min-height: 100vh;
-  padding: 30px;
-
-  a,
-  a:visited {
-    color: ${(props) => props.theme.colors.white};
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 `;
 
 const Switcher = () => {
   const navigate = useNavigate();
   const auth = window.localStorage.getItem('isAuthenticated');
-  const isAuth = auth && JSON.parse(auth);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(isAuth);
+  const isAuth: boolean = auth && JSON.parse(auth);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(isAuth ?? false);
 
   useEffect(() => {
     if (window.location.pathname !== '/' && !isAuthenticated) {
@@ -48,7 +37,7 @@ const Switcher = () => {
 
   return (
     <AppBody>
-      {isAuthenticated && <Navigation />}
+      {isAuthenticated && <Header />}
       <Routes>
         <Route
           path="/"

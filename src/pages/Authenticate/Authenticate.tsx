@@ -1,11 +1,44 @@
+import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Logo from '../../images/Logo.svg';
+import PrimaryInput from '../../uiComponents/primaryInput';
 import { CORRECT_PASSWORD } from '../../vars';
+import AuthenticateImage from './AuthenticateImage';
 
 interface AuthenticateProps {
   setAuthenticated: () => void;
 }
+
+const AuthenticateBlock = styled.div`
+  align-items: center;
+  display: flex;
+`;
+
+const AuthenticateForm = styled.form`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+`;
+
+const AuthenticateFormImg = styled.img`
+  padding-bottom: 30px;
+`;
+
+const AuthenticateSubmit = styled.button`
+  background: none;
+  border: none;
+  color: ${(props) => props.theme.colors.white};
+  cursor: pointer;
+  margin-top: 16px;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.tan};
+  }
+`;
 
 const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
   const navigate = useNavigate();
@@ -19,12 +52,18 @@ const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <AuthenticateBlock>
+      <AuthenticateImage isLight={password == CORRECT_PASSWORD} />
+      <AuthenticateForm onSubmit={onSubmit}>
+        <AuthenticateFormImg src={Logo} alt={''} />
+        <PrimaryInput
+          value={password}
+          placeholder={'PASSWORD'}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <AuthenticateSubmit type="submit">ENTER</AuthenticateSubmit>
+      </AuthenticateForm>
+    </AuthenticateBlock>
   );
 };
 export default Authenticate;
