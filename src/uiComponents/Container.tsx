@@ -1,0 +1,17 @@
+import styled from '@emotion/styled';
+import React from 'react';
+
+interface ContainerProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const StyleContainer = styled.div`
+  padding: 30px;
+`;
+
+const Container = ({ children, className }: ContainerProps) => {
+  return <StyleContainer className={className}>{children}</StyleContainer>;
+};
+
+export default Container;
