@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   font-family: 'Futura', sans-serif;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .App-logo {

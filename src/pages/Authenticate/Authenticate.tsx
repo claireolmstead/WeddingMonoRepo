@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { CORRECT_PASSWORD } from '../../consts/vars';
 import Logo from '../../images/Logo.svg';
 import PrimaryInput from '../../uiComponents/primaryInput';
-import { CORRECT_PASSWORD } from '../../vars';
 import AuthenticateImage from './AuthenticateImage';
 
 interface AuthenticateProps {

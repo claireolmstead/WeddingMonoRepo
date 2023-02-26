@@ -10,18 +10,18 @@ const HomeBlock = styled.div`
 `;
 
 const HomeImg = styled.div`
-  @keyframes slideUp {
-    from {
-      height: 0;
-    }
-    to {
-      height: 100vh;
-    }
-  }
-
-  animation-duration: 1s;
-  animation-name: slideUp;
-  animation-timing-function: ease-out;
+  //@keyframes slideUp {
+  //  from {
+  //    height: 0;
+  //  }
+  //  to {
+  //    height: 100vh;
+  //  }
+  //}
+  //
+  //animation-duration: 1s;
+  //animation-name: slideUp;
+  //animation-timing-function: ease-out;
   background: url(${HomeImage}) rgba(0, 0, 0, 0.6) center center;
   background-blend-mode: multiply;
   background-size: cover;
@@ -61,9 +61,12 @@ const HomeTo = styled.div`
   font-size: 38px;
 `;
 
-const HomeNames = styled.div`
+const HomeNames = styled.h2`
   ${(props) => props.theme.typography.main_title};
   color: ${(props) => props.theme.colors.red};
+  font-weight: normal;
+  line-height: 1;
+  margin: 50px;
 `;
 
 const Home = () => {
@@ -71,13 +74,15 @@ const Home = () => {
     <HomeBlock>
       <HomeImg />
       <HomeContent>
-        <HomeContentInner>
-          <HomeDate>OCTOBER 27, 2023 • PIONEERTOWN, CA</HomeDate>
-          <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
-          <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
-          <HomeTo>TO</HomeTo>
-          <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
-        </HomeContentInner>
+        {document.fonts && (
+          <HomeContentInner>
+            <HomeDate>OCTOBER 27, 2023 • PIONEERTOWN, CA</HomeDate>
+            <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
+            <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
+            <HomeTo>TO</HomeTo>
+            <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
+          </HomeContentInner>
+        )}
       </HomeContent>
     </HomeBlock>
   );

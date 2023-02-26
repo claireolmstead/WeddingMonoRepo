@@ -1,3 +1,5 @@
+import { ReactElement } from 'react';
+
 export type Event = {
   time?: string;
   name: string;
@@ -6,8 +8,16 @@ export type Event = {
 
 export type DaySchedule = {
   title: string;
-  date: string;
+  description: string;
   events: Event[];
 };
 
 export type Schedule = DaySchedule[];
+
+export type AccommodationItem = {
+  title: string;
+  description: string;
+  infoItems: (string | ReactElement)[];
+};
+
+export type AccommodationItems = AccommodationItem[];
