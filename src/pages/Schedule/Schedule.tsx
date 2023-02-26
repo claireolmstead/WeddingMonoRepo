@@ -21,7 +21,8 @@ const ScheduleImg = styled.div`
   background: url(${ScheduleBackground}) rgba(0, 0, 0, 0.6) center center;
   background-blend-mode: multiply;
   background-size: cover;
-  height: calc(100vw * 1.54);
+  height: calc(180vh);
+  min-height: 1500px;
   position: absolute;
   width: 100vw;
 `;
