@@ -2,9 +2,10 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { AccommodationItem, AccommodationItems, DaySchedule, Schedule } from '../types';
+import Container from './Container';
 import ListItem from './ListItem';
 
-const ScheduleContent = styled.div`
+const ListItemContent = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -20,8 +21,8 @@ interface ListItemBlockProps {
 
 const ListItemBlock = ({ list }: ListItemBlockProps) => {
   return (
-    <div>
-      <ScheduleContent>
+    <Container>
+      <ListItemContent>
         {list.map((listItem) => (
           <ListItem
             key={listItem.title}
@@ -31,8 +32,8 @@ const ListItemBlock = ({ list }: ListItemBlockProps) => {
             accommodationInfoItems={(listItem as AccommodationItem)?.infoItems}
           />
         ))}
-      </ScheduleContent>
-    </div>
+      </ListItemContent>
+    </Container>
   );
 };
 

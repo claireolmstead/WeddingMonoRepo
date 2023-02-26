@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import HomeImage from '../../images/Home.png';
+import Container from '../../uiComponents/Container';
 
 const HomeBlock = styled.div`
   height: 100vh;
@@ -30,7 +31,8 @@ const HomeImg = styled.div`
   width: 100vw;
 `;
 
-const HomeContent = styled.div`
+const HomeContent = styled(Container)`
+  box-sizing: border-box;
   position: relative;
   text-align: center;
   top: 50px;

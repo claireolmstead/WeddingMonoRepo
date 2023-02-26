@@ -7,7 +7,7 @@ interface ContainerProps {
 }
 
 const StyleContainer = styled.div`
-  padding: 30px;
+  padding: 0 30px;
 `;
 
 const Container = ({ children, className }: ContainerProps) => {

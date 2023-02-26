@@ -1,9 +1,15 @@
 import { css } from '@emotion/react';
 
+import { ScreenSizes } from '../consts/vars';
+
 export const typography = {
   main_title: css`
     font-family: 'kiln-sans', sans-serif;
-    font-size: 90px;
+    font-size: 60px;
+
+    @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
+      font-size: 90px;
+    }
   `,
   main_body: css`
     font-family: 'futura', sans-serif;

@@ -59,6 +59,7 @@ const DrawerNavLink = styled(NavLink)`
   &:hover,
   &:active {
     background-color: ${(props) => props.theme.colors.tan};
+    text-decoration: none;
   }
 
   &:visited {
