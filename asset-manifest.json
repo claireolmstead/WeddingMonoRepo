@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/SterlingAndNick/static/css/main.3fe35596.css",
-    "main.js": "/SterlingAndNick/static/js/main.ce8c5c12.js",
+    "main.css": "/SterlingAndNick/static/css/main.b95049f0.css",
+    "main.js": "/SterlingAndNick/static/js/main.43efe56c.js",
     "static/js/787.a3fcc3dd.chunk.js": "/SterlingAndNick/static/js/787.a3fcc3dd.chunk.js",
     "static/media/Home.png": "/SterlingAndNick/static/media/Home.0bfba8645c24c454f022.png",
+    "static/media/Accommodations.png": "/SterlingAndNick/static/media/Accommodations.bf5eca0021a3fdcdb5bd.png",
     "static/media/Schedule.png": "/SterlingAndNick/static/media/Schedule.4cbf418fdc8218e518ed.png",
     "static/media/Landing.jpeg": "/SterlingAndNick/static/media/Landing.353df069537c4ce6906a.jpeg",
     "index.html": "/SterlingAndNick/index.html",
     "static/media/Logo.svg": "/SterlingAndNick/static/media/Logo.5f340d5c611945b3aada5e8fd096c1d5.svg",
-    "main.3fe35596.css.map": "/SterlingAndNick/static/css/main.3fe35596.css.map",
-    "main.ce8c5c12.js.map": "/SterlingAndNick/static/js/main.ce8c5c12.js.map",
+    "main.b95049f0.css.map": "/SterlingAndNick/static/css/main.b95049f0.css.map",
+    "main.43efe56c.js.map": "/SterlingAndNick/static/js/main.43efe56c.js.map",
     "787.a3fcc3dd.chunk.js.map": "/SterlingAndNick/static/js/787.a3fcc3dd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fe35596.css",
-    "static/js/main.ce8c5c12.js"
+    "static/css/main.b95049f0.css",
+    "static/js/main.43efe56c.js"
   ]
 }
