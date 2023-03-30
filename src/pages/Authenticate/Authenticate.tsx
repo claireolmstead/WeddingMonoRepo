@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { CORRECT_PASSWORD } from '../../consts/vars';
 import Logo from '../../images/Logo.svg';
-import PrimaryInput from '../../uiComponents/primaryInput';
+import PrimaryInput from '../../uiComponents/PrimaryInput';
 import AuthenticateImage from './AuthenticateImage';
 
 interface AuthenticateProps {

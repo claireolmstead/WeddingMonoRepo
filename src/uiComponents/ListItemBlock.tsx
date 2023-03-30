@@ -12,7 +12,7 @@ const ListItemContent = styled.div`
   gap: 50px;
   justify-content: center;
   position: relative;
-  top: 50px;
+  top: 140px;
 `;
 
 interface ListItemBlockProps {

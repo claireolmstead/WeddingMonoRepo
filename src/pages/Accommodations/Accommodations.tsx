@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { Parallax } from 'react-scroll-parallax';
 
 import { accommodations } from '../../consts/accommodations';
 import { ScreenSizes } from '../../consts/vars';
@@ -30,12 +31,16 @@ const AccommodationsMoreInfo = styled(Container)`
 const Accommodations = () => {
   return (
     <div>
-      <AccommodationsBackground />
-      <ListItemBlock list={accommodations} />
-      <AccommodationsMoreInfo>
-        PLEASE BOOK ACCOMMODATION AS SOON AS POSSIBLE AS THERE IS{' '}
-        <b>NO GUARANTEE OF AVAILABILITY</b>.
-      </AccommodationsMoreInfo>
+      <Parallax speed={0}>
+        <AccommodationsBackground />
+      </Parallax>
+      <Parallax speed={-30}>
+        <ListItemBlock list={accommodations} />
+        <AccommodationsMoreInfo>
+          PLEASE BOOK ACCOMMODATION AS SOON AS POSSIBLE AS THERE IS{' '}
+          <b>NO GUARANTEE OF AVAILABILITY</b>.
+        </AccommodationsMoreInfo>
+      </Parallax>
     </div>
   );
 };

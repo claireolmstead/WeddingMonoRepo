@@ -4,6 +4,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import Header from './features/Header';
 import Accommodations from './pages/Accommodations/Accommodations';
+import Admin from './pages/Admin/Admin';
 import Authenticate from './pages/Authenticate/Authenticate';
 import Home from './pages/Home/Home';
 import RSVP from './pages/RSVP/RSVP';
@@ -48,6 +49,7 @@ const Switcher = () => {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/accommodations" element={<Accommodations />} />
         <Route path="/us" element={<Us />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </AppBody>
   );

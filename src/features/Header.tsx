@@ -10,14 +10,20 @@ import MobileNavigation from './MobileNavigation';
 import Navigation from './Navigation';
 
 const HeaderBlock = styled.header`
+  background-color: ${(props) => props.theme.colors.black};
+  position: relative;
+  z-index: 200;
+`;
+
+const HeaderContainer = styled(Container)`
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px 0;
+  padding: 20px 0;
 
   @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
-    padding: 30px 0;
+    padding: 40px 0;
   }
 `;
 
@@ -34,14 +40,14 @@ const Header = () => {
   const { isMobile } = useContext(ScreenContext);
 
   return (
-    <Container>
-      <HeaderBlock>
+    <HeaderBlock>
+      <HeaderContainer>
         <Link to={'/home'}>
           <HeaderImg src={Logo} alt={'N+S'} />
         </Link>
         {isMobile ? <MobileNavigation /> : <Navigation />}
-      </HeaderBlock>
-    </Container>
+      </HeaderContainer>
+    </HeaderBlock>
   );
 };
 

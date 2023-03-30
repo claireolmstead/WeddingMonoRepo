@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { Parallax } from 'react-scroll-parallax';
 
 import HomeImage from '../../images/Home.png';
 import Container from '../../uiComponents/Container';
@@ -11,23 +12,12 @@ const HomeBlock = styled.div`
 `;
 
 const HomeImg = styled.div`
-  //@keyframes slideUp {
-  //  from {
-  //    height: 0;
-  //  }
-  //  to {
-  //    height: 100vh;
-  //  }
-  //}
-  //
-  //animation-duration: 1s;
-  //animation-name: slideUp;
-  //animation-timing-function: ease-out;
   background: url(${HomeImage}) rgba(0, 0, 0, 0.6) center center;
   background-blend-mode: multiply;
   background-size: cover;
   height: 100vh;
   position: absolute;
+  top: 120px;
   width: 100vw;
 `;
 
@@ -74,18 +64,22 @@ const HomeNames = styled.h2`
 const Home = () => {
   return (
     <HomeBlock>
-      <HomeImg />
-      <HomeContent>
-        {document.fonts && (
-          <HomeContentInner>
-            <HomeDate>OCTOBER 27, 2023 • PIONEERTOWN, CA</HomeDate>
-            <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
-            <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
-            <HomeTo>TO</HomeTo>
-            <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
-          </HomeContentInner>
-        )}
-      </HomeContent>
+      <Parallax speed={20}>
+        <HomeImg />
+      </Parallax>
+      <Parallax speed={-20}>
+        <HomeContent>
+          {document.fonts && (
+            <HomeContentInner>
+              <HomeDate>OCTOBER 27, 2023 • PIONEERTOWN, CA</HomeDate>
+              <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
+              <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
+              <HomeTo>TO</HomeTo>
+              <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
+            </HomeContentInner>
+          )}
+        </HomeContent>
+      </Parallax>
     </HomeBlock>
   );
 };
