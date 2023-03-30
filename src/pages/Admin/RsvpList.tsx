@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import React, { useEffect, useState } from 'react';
 
 import { db } from '../../App';
+import { Person } from '../../types';
 
 const RsvpListBlock = styled.div`
   background-color: white;
@@ -11,16 +12,16 @@ const RsvpListBlock = styled.div`
 `;
 
 const RsvpList = () => {
-  const [rsvpList, setRsvpList] = useState<any[]>([]);
+  const [rsvpList, setRsvpList] = useState<Person[]>([]);
 
   useEffect(() => {
     const getPeople = async () => {
       const q = query(collection(db, 'person'), orderBy('partyId'));
       const querySnapshot = await getDocs(q);
-      let people: any[] = [];
+      let people: Person[] = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        people = [...people, data];
+        people = [...people, data as Person];
       });
       setRsvpList(people);
     };

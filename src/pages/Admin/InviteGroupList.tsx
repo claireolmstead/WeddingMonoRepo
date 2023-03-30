@@ -2,18 +2,25 @@ import { collection, getDocs, query, where } from '@firebase/firestore';
 import React, { useEffect, useState } from 'react';
 
 import { db } from '../../App';
+import { Person } from '../../types';
 
-const InviteGroupList = ({ partyId, people }: { partyId?: number; people: any[] }) => {
-  const [partyMembers, setPartyMembers] = useState<any[]>([]);
+const InviteGroupList = ({
+  partyId,
+  people,
+}: {
+  partyId?: Person['partyId'];
+  people: Person[];
+}) => {
+  const [partyMembers, setPartyMembers] = useState<Person[]>([]);
 
   useEffect(() => {
     const getInvite = async () => {
       const q = query(collection(db, 'person'), where('partyId', '==', partyId));
       const querySnapshot = await getDocs(q);
-      let members: any[] = [];
+      let members: Person[] = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        members = [...members, data];
+        members = [...members, data as Person];
       });
       setPartyMembers(members);
     };

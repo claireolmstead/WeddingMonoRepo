@@ -2,21 +2,22 @@ import { collection, getDocs, query, where } from '@firebase/firestore';
 import React, { useState } from 'react';
 
 import { db } from '../../App';
+import { Person } from '../../types';
 import Container from '../../uiComponents/Container';
 import FindRSVP from './FindRSVP';
 import RSVPForm from './RSVPForm';
 
 const RSVP = () => {
-  const [invites, setInvites] = useState<any[]>([]);
+  const [invites, setInvites] = useState<Person[]>([]);
   const [isNotFound, setIsNotFound] = useState<boolean>(false);
 
   const getInitialInvite = async (searchValue: string) => {
     const q = query(collection(db, 'person'), where('first', '==', searchValue));
     const querySnapshot = await getDocs(q);
-    let personList: any[] = [];
+    let personList: Person[] = [];
     querySnapshot.forEach((doc) => {
       const data = doc.data();
-      personList = [...personList, data];
+      personList = [...personList, data as Person];
     });
     return personList[0];
   };
@@ -30,10 +31,10 @@ const RSVP = () => {
 
     const q = query(collection(db, 'person'), where('partyId', '==', initialInvite.partyId));
     const querySnapshot = await getDocs(q);
-    let personList: any[] = [];
+    let personList: Person[] = [];
     querySnapshot.forEach((doc) => {
       const data = doc.data();
-      personList = [...personList, data];
+      personList = [...personList, data as Person];
     });
     setInvites(personList);
   };

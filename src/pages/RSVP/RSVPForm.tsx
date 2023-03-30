@@ -2,13 +2,14 @@ import { doc, setDoc } from '@firebase/firestore';
 import React from 'react';
 
 import { db } from '../../App';
+import { Person } from '../../types';
 
 interface RSVPFormProps {
-  invites: any[];
+  invites: Person[];
 }
 
 const RSVPForm = ({ invites }: RSVPFormProps) => {
-  const rsvp = (isAttending: boolean, person: { first: any; last: any; partyId: any }) => {
+  const rsvp = (isAttending: boolean, person: Person) => {
     const personId = (person.first + person.last).toLowerCase();
     const docRef = doc(db, 'person', `${personId}`);
     const data = { ...person, isAttending: isAttending };

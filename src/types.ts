@@ -21,3 +21,11 @@ export type AccommodationItem = {
 };
 
 export type AccommodationItems = AccommodationItem[];
+
+export type Person = {
+  id: string;
+  first: string;
+  last: string;
+  partyId: number;
+  isAttending: boolean;
+};
