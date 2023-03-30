@@ -1,16 +1,17 @@
 import { collection, getDocs, query, where } from '@firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { db } from '../../App';
 import Container from '../../uiComponents/Container';
-import PrimaryInput from '../../uiComponents/PrimaryInput';
+import FindRSVP from './FindRSVP';
+import RSVPForm from './RSVPForm';
 
 const RSVP = () => {
-  const [inputValue, setInputValue] = useState<string>('');
   const [invites, setInvites] = useState<any[]>([]);
+  const [isNotFound, setIsNotFound] = useState<boolean>(false);
 
-  const getInitialInvite = async () => {
-    const q = query(collection(db, 'person'), where('first', '==', inputValue));
+  const getInitialInvite = async (searchValue: string) => {
+    const q = query(collection(db, 'person'), where('first', '==', searchValue));
     const querySnapshot = await getDocs(q);
     let personList: any[] = [];
     querySnapshot.forEach((doc) => {
@@ -20,9 +21,12 @@ const RSVP = () => {
     return personList[0];
   };
 
-  const getInvites = async () => {
-    setInputValue('');
-    const initialInvite = await getInitialInvite();
+  const getInvites = async (searchValue: string) => {
+    const initialInvite = await getInitialInvite(searchValue);
+    if (!initialInvite) {
+      setIsNotFound(true);
+      return;
+    }
 
     const q = query(collection(db, 'person'), where('partyId', '==', initialInvite.partyId));
     const querySnapshot = await getDocs(q);
@@ -37,15 +41,9 @@ const RSVP = () => {
   return (
     <Container>
       <h1>RSVP</h1>
-      <PrimaryInput
-        value={inputValue}
-        placeholder={'Jane Doe'}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <button onClick={getInvites}>Search</button>
-      {invites.map((person) => (
-        <div key={person.id}>{person.first}</div>
-      ))}
+      <FindRSVP getInvites={getInvites} resetIsNotFound={() => setIsNotFound(false)} />
+      <RSVPForm invites={invites} />
+      {isNotFound && <div>Not found.</div>}
     </Container>
   );
 };

@@ -4,7 +4,7 @@ import { ThemeProvider } from '@emotion/react';
 import { getAnalytics } from '@firebase/analytics';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from '@firebase/app';
-import { collection, doc, getDocs, getFirestore, query, setDoc } from '@firebase/firestore';
+import { getFirestore } from '@firebase/firestore';
 import { getStorage } from '@firebase/storage';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';

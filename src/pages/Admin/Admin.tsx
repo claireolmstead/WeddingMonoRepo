@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { db } from '../../App';
 import PrimaryInput from '../../uiComponents/PrimaryInput';
 import InviteGroupList from './InviteGroupList';
+import RsvpList from './RsvpList';
 
 const Admin = () => {
   const [isNewParty, setIsNewParty] = useState(false);
@@ -63,6 +64,8 @@ const Admin = () => {
           <InviteGroupList partyId={partyId} people={people} />
         </>
       )}
+
+      <RsvpList />
     </div>
   );
 };

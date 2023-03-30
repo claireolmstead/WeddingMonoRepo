@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 
 import { ScreenSizes } from '../consts/vars';
 
-export const typography = {
+export const type = {
   main_title: css`
     font-family: 'kiln-sans', sans-serif;
     font-size: 60px;

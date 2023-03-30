@@ -49,12 +49,12 @@ const HomeJoinUs = styled.div`
 `;
 
 const HomeTo = styled.div`
-  ${(props) => props.theme.typography.main_title};
+  ${(props) => props.theme.type.main_title};
   font-size: 38px;
 `;
 
 const HomeNames = styled.h2`
-  ${(props) => props.theme.typography.main_title};
+  ${(props) => props.theme.type.main_title};
   color: ${(props) => props.theme.colors.red};
   font-weight: normal;
   line-height: 1;

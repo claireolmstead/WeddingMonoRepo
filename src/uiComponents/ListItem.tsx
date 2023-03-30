@@ -37,7 +37,7 @@ const ListItemInfo = styled.div`
 `;
 
 const ListItemTitle = styled.div`
-  ${(props) => props.theme.typography.main_title};
+  ${(props) => props.theme.type.main_title};
   color: ${(props) => props.theme.colors.tan};
 
   @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {

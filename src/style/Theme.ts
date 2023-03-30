@@ -3,12 +3,12 @@ import { createTheme } from '@mui/material';
 
 import { colors } from './Colors';
 import { mixins } from './Mixins';
-import { typography } from './Typography';
+import { type } from './Type';
 
 const customTheme = {
   colors,
   mixins,
-  typography,
+  type,
 };
 
 const muiTheme = createTheme();
@@ -16,4 +16,3 @@ export const theme: Theme = { ...muiTheme, ...customTheme };
 export type CustomTheme = typeof customTheme;
 
 export type ThemeColor = typeof customTheme.colors;
-export type ThemeTypography = typeof customTheme.typography;
