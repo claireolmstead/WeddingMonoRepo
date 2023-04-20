@@ -22,10 +22,29 @@ export type AccommodationItem = {
 
 export type AccommodationItems = AccommodationItem[];
 
+export enum Pickleball {
+  ATTENDING = 'ATTENDING',
+  PLAYING = 'PLAYING',
+  NOT_ATTENDING = 'NOT_ATTENDING',
+}
+
+export enum Ceremony {
+  DRIVING = 'DRIVING',
+  SHUTTLING = 'SHUTTLING',
+  NOT_ATTENDING = 'NOT_ATTENDING',
+}
+
+export enum Welcome {
+  ATTENDING = 'ATTENDING',
+  NOT_ATTENDING = 'NOT_ATTENDING',
+}
+
 export type Person = {
   id: string;
   first: string;
   last: string;
   partyId: number;
-  isAttending: boolean;
+  welcome: Welcome;
+  ceremony: Ceremony;
+  pickleball: Pickleball;
 };

@@ -6,7 +6,17 @@ export const accommodations: AccommodationItems = [
   {
     title: 'WHERE',
     description: 'PIONEERTOWN, CA',
-    infoItems: [<a key={'airbnb'}>Recommended Air BNBs</a>, <a key={'motel'}>Pioneertown Motel</a>],
+    infoItems: [
+      <a key={'airbnb'}>Recommended Air BNBs</a>,
+      <a
+        key={'motel'}
+        href={'https://www.pioneertown-motel.com/'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        Pioneertown Motel
+      </a>,
+    ],
   },
   {
     title: 'WHEN',

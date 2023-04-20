@@ -5,14 +5,14 @@ import { db } from '../../App';
 import { Person } from '../../types';
 import Container from '../../uiComponents/Container';
 import FindRSVP from './FindRSVP';
-import RSVPForm from './RSVPForm';
+import RSVPFormList from './RSVPFormList';
 
 const RSVP = () => {
   const [invites, setInvites] = useState<Person[]>([]);
   const [isNotFound, setIsNotFound] = useState<boolean>(false);
 
   const getInitialInvite = async (searchValue: string) => {
-    const q = query(collection(db, 'person'), where('first', '==', searchValue));
+    const q = query(collection(db, 'person'), where('id', '==', searchValue));
     const querySnapshot = await getDocs(q);
     let personList: Person[] = [];
     querySnapshot.forEach((doc) => {
@@ -43,7 +43,7 @@ const RSVP = () => {
     <Container>
       <h1>RSVP</h1>
       <FindRSVP getInvites={getInvites} resetIsNotFound={() => setIsNotFound(false)} />
-      <RSVPForm invites={invites} />
+      <RSVPFormList invites={invites} />
       {isNotFound && <div>Not found.</div>}
     </Container>
   );

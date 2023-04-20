@@ -38,7 +38,9 @@ const RsvpList = () => {
               <TableCell>First</TableCell>
               <TableCell>Last</TableCell>
               <TableCell>Party ID</TableCell>
-              <TableCell>Attending?</TableCell>
+              <TableCell>Welcome</TableCell>
+              <TableCell>Ceremony</TableCell>
+              <TableCell>Pickleball</TableCell>
             </TableRow>
           </TableHead>
 
@@ -48,7 +50,9 @@ const RsvpList = () => {
                 <TableCell>{rsvp.first}</TableCell>
                 <TableCell>{rsvp.last}</TableCell>
                 <TableCell>{rsvp.partyId}</TableCell>
-                <TableCell>{rsvp.isAttending ? 'Yes' : 'No'}</TableCell>
+                <TableCell>{rsvp.welcome}</TableCell>
+                <TableCell>{rsvp.ceremony}</TableCell>
+                <TableCell>{rsvp.pickleball}</TableCell>
               </TableRow>
             ))}
           </TableBody>

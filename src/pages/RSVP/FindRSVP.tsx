@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import PrimaryInput from '../../uiComponents/PrimaryInput';
 
@@ -8,22 +8,21 @@ interface FindRSVPProps {
 }
 
 const FindRSVP = ({ getInvites, resetIsNotFound }: FindRSVPProps) => {
-  const [searchValue, setSearchValue] = useState<string>('');
+  const [name, setName] = useState<string>('');
+
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.currentTarget.value);
+    resetIsNotFound();
+  };
 
   const onSearch = () => {
-    setSearchValue('');
-    getInvites(searchValue);
+    const personId = name.toLowerCase().replace(/ /g, '');
+    setName('');
+    getInvites(personId);
   };
   return (
     <>
-      <PrimaryInput
-        value={searchValue}
-        placeholder={'First Last'}
-        onChange={(e) => {
-          setSearchValue(e.target.value);
-          resetIsNotFound();
-        }}
-      />
+      <PrimaryInput value={name} placeholder={'First Last'} onChange={handleOnChange} />
       <button onClick={onSearch}>Search</button>
     </>
   );
