@@ -1,6 +1,14 @@
+import styled from '@emotion/styled';
 import React, { ChangeEvent, useState } from 'react';
 
+import PrimaryButton from '../../uiComponents/PrimaryButton';
 import PrimaryInput from '../../uiComponents/PrimaryInput';
+
+const FindRSVPBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
 
 interface FindRSVPProps {
   getInvites: (searchValue: string) => void;
@@ -21,10 +29,12 @@ const FindRSVP = ({ getInvites, resetIsNotFound }: FindRSVPProps) => {
     getInvites(personId);
   };
   return (
-    <>
+    <FindRSVPBlock>
       <PrimaryInput value={name} placeholder={'First Last'} onChange={handleOnChange} />
-      <button onClick={onSearch}>Search</button>
-    </>
+      <PrimaryButton onClick={onSearch} disabled={name.length < 1}>
+        Search
+      </PrimaryButton>
+    </FindRSVPBlock>
   );
 };
 

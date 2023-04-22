@@ -5,13 +5,14 @@ import RSVPForm from './RSVPForm';
 
 interface RSVPFormListProps {
   invites: Person[];
+  onSuccess: () => Promise<void>;
 }
 
-const RSVPFormList = ({ invites }: RSVPFormListProps) => {
+const RSVPFormList = ({ invites, onSuccess }: RSVPFormListProps) => {
   return (
     <>
       {invites?.map((person) => (
-        <RSVPForm person={person} key={person.id} />
+        <RSVPForm person={person} key={person.id} onSuccess={onSuccess} />
       ))}
     </>
   );
