@@ -6,5 +6,5 @@ export const ScreenSizes = {
   TABLET: 767,
   DESKTOP: 991,
   WIDESCREEN: 1280,
-  MAX_SCREEN: 1920,
+  MAX_SCREEN: 1280,
 };

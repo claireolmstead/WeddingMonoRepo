@@ -212,6 +212,16 @@ const RSVPForm = ({ person, onSuccess }: RSVPFormProps) => {
                 <PrimaryButton type="submit" disabled={submitting}>
                   Submit
                 </PrimaryButton>
+                {person.welcome && person.ceremony && person.pickleball && (
+                  <PrimaryButton
+                    type="button"
+                    disabled={submitting}
+                    onClick={() => setSuccess(true)}
+                    colorWay={'secondary'}
+                  >
+                    Cancel
+                  </PrimaryButton>
+                )}
               </RSVPFormButtons>
             </form>
           )}

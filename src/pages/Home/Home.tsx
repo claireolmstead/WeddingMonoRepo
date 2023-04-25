@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
+import { ScreenSizes } from '../../consts/vars';
 import HomeImage from '../../images/Home.png';
 import Container from '../../uiComponents/Container';
 
@@ -25,7 +26,7 @@ const HomeContent = styled(Container)`
   box-sizing: border-box;
   position: relative;
   text-align: center;
-  top: 50px;
+  top: 40px;
   width: 100%;
 `;
 
@@ -38,19 +39,45 @@ const HomeContentInner = styled.div`
 
 const HomeDate = styled.div`
   color: ${(props) => props.theme.colors.tan};
-  font-size: 20px;
-  margin-bottom: 80px;
+  font-size: 14px;
+  margin-bottom: 50px;
   text-align: center;
+
+  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+    font-size: 16px;
+    margin-bottom: 60px;
+  }
+
+  @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
+    font-size: 20px;
+    margin-bottom: 70px;
+  }
 `;
 
 const HomeJoinUs = styled.div`
   font-size: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
+
+  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+    margin-bottom: 8px;
+  }
+
+  @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
+    margin-bottom: 16px;
+  }
 `;
 
 const HomeTo = styled.div`
   ${(props) => props.theme.type.main_title};
-  font-size: 38px;
+  font-size: 20px;
+
+  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+    font-size: 28px;
+  }
+
+  @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
+    font-size: 38px;
+  }
 `;
 
 const HomeNames = styled.h2`
@@ -58,15 +85,17 @@ const HomeNames = styled.h2`
   color: ${(props) => props.theme.colors.red};
   font-weight: normal;
   line-height: 1;
-  margin: 50px;
+  margin: 30px;
+
+ç
 `;
 
 const Home = () => {
   return (
     <HomeBlock>
-      <Parallax speed={20}>
-        <HomeImg />
-      </Parallax>
+      {/*<Parallax speed={20}>*/}
+      {/*  <HomeImg />*/}
+      {/*</Parallax>*/}
       <Parallax speed={-20}>
         <HomeContent>
           {document.fonts && (

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../../App';
 import { Person } from '../../types';
 import Container from '../../uiComponents/Container';
+import PrimaryButton from '../../uiComponents/PrimaryButton';
 import FindRSVP from './FindRSVP';
 import RSVPFormList from './RSVPFormList';
 
@@ -28,6 +29,12 @@ const RSVP = () => {
       setInvites(JSON.parse(curInvites));
     }
   }, []);
+
+  const handleNotMe = () => {
+    window.localStorage.removeItem('curInvites');
+    setInvites([]);
+    setIsNotFound(false);
+  };
 
   const getInitialInvite = async (searchValue: string) => {
     const q = query(collection(db, 'person'), where('id', '==', searchValue));
@@ -65,8 +72,15 @@ const RSVP = () => {
       {invites.length === 0 && (
         <FindRSVP getInvites={getInvites} resetIsNotFound={() => setIsNotFound(false)} />
       )}
+      {invites.length > 0 && (
+        <PrimaryButton colorWay={'primary'} onClick={handleNotMe}>
+          Oops! Not Me
+        </PrimaryButton>
+      )}
       <RSVPFormList invites={invites} onSuccess={getInvites} />
-      {isNotFound && <RSVPNotFound>Not found.</RSVPNotFound>}
+      {isNotFound && (
+        <RSVPNotFound>Not found. Make sure name is as appears on the invite.</RSVPNotFound>
+      )}
     </RSVPContainer>
   );
 };

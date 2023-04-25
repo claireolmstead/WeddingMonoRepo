@@ -48,3 +48,10 @@ export type Person = {
   ceremony: Ceremony;
   pickleball: Pickleball;
 };
+
+export type NewPerson = {
+  id: string;
+  first: string;
+  last: string;
+  partyId: number;
+};

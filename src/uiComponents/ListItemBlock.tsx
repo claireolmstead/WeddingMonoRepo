@@ -11,6 +11,8 @@ const ListItemContent = styled.div`
   flex-direction: column;
   gap: 50px;
   justify-content: center;
+  margin-bottom: 140px;
+  padding-bottom: 70px;
   position: relative;
   top: 140px;
 `;

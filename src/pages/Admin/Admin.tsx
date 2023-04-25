@@ -2,7 +2,7 @@ import { doc, setDoc } from '@firebase/firestore';
 import React, { useState } from 'react';
 
 import { db } from '../../App';
-import { Ceremony, Person, Pickleball, Welcome } from '../../types';
+import { Ceremony, NewPerson, Person, Pickleball, Welcome } from '../../types';
 import PrimaryInput from '../../uiComponents/PrimaryInput';
 import InviteGroupList from './InviteGroupList';
 import RsvpList from './RsvpList';
@@ -10,17 +10,14 @@ import RsvpList from './RsvpList';
 const Admin = () => {
   const [isNewParty, setIsNewParty] = useState(false);
   const [partyId, setPartyId] = useState(0);
-  const initialPerson: Person = {
+  const initialPerson: NewPerson = {
     first: '',
     last: '',
     id: '',
     partyId: 0,
-    welcome: Welcome.NOT_ATTENDING,
-    ceremony: Ceremony.NOT_ATTENDING,
-    pickleball: Pickleball.NOT_ATTENDING,
   };
-  const [person, setPerson] = useState<Person>(initialPerson);
-  const [people, setPeople] = useState<Person[]>([]);
+  const [person, setPerson] = useState<NewPerson>(initialPerson);
+  const [people, setPeople] = useState<NewPerson[]>([]);
 
   const setInvite = async () => {
     const personName = (person.first + person.last).toLowerCase();

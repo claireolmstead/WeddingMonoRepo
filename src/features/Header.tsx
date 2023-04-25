@@ -23,7 +23,7 @@ const HeaderContainer = styled(Container)`
   padding: 20px 0;
 
   @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
-    padding: 40px 0;
+    padding: 30px 0;
   }
 `;
 
@@ -31,7 +31,12 @@ const HeaderImg = styled.img`
   height: 50px;
 
   @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
-    padding-bottom: 30px;
+    padding-bottom: 10px;
+    height: 60px;
+  }
+
+  @media only screen and (min-width: ${ScreenSizes.DESKTOP}px) {
+    padding-bottom: 10px;
     height: 75px;
   }
 `;

@@ -2,14 +2,14 @@ import { collection, getDocs, query, where } from '@firebase/firestore';
 import React, { useEffect, useState } from 'react';
 
 import { db } from '../../App';
-import { Person } from '../../types';
+import { NewPerson, Person } from '../../types';
 
 const InviteGroupList = ({
   partyId,
   people,
 }: {
   partyId?: Person['partyId'];
-  people: Person[];
+  people: NewPerson[] | Person[];
 }) => {
   const [partyMembers, setPartyMembers] = useState<Person[]>([]);
 
