@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material';
 
 import { colors } from './Colors';
 import { mixins } from './Mixins';
+import { MuiOverrides } from './MuiOverrides';
 import { type } from './Type';
 
 const customTheme = {
@@ -11,7 +12,7 @@ const customTheme = {
   type,
 };
 
-const muiTheme = createTheme();
+const muiTheme = createTheme(MuiOverrides);
 export const theme: Theme = { ...muiTheme, ...customTheme };
 export type CustomTheme = typeof customTheme;
 

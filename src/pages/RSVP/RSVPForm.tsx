@@ -10,19 +10,12 @@ import PrimaryButton from '../../uiComponents/PrimaryButton';
 
 const RSVPFormContainer = styled.div`
   align-items: center;
-  border-bottom: 1px solid ${(props) => props.theme.colors.tan};
   display: flex;
   flex-direction: column;
   gap: 30px;
   justify-content: center;
   padding: 30px 0;
   width: 100%;
-`;
-
-const Name = styled.div`
-  color: ${(props) => props.theme.colors.red};
-  font-size: 24px;
-  font-weight: bold;
 `;
 
 const Date = styled.div`
@@ -67,23 +60,45 @@ const RSVPFormButtons = styled.div`
   margin-top: 30px;
 `;
 
+const RSVPFormLabel = styled.label`
+  align-items: center;
+  display: flex;
+  gap: 5px;
+`;
+
+const RSVPFormField = styled(Field)`
+  align-items: center;
+  appearance: none;
+  background-color: ${(props) => props.theme.colors.clear};
+  border: 2px solid ${(props) => props.theme.colors.red};
+  border-radius: 50%;
+  color: ${(props) => props.theme.colors.red};
+  cursor: pointer;
+  font: inherit;
+  height: 1.15em;
+  margin: 0;
+  transition: background-color 0.25s ease-in;
+  width: 1.15em;
+
+  &:checked {
+    background-color: ${(props) => props.theme.colors.red};
+  }
+`;
+
 interface RSVPFormProps {
   person: Person;
   onSuccess: () => Promise<void>;
+  isFinalPerson: boolean;
+  goToNext: () => void;
 }
 
-const RSVPForm = ({ person, onSuccess }: RSVPFormProps) => {
-  const [success, setSuccess] = useState<boolean>(
-    !!person.welcome && !!person.ceremony && !!person.pickleball
-  );
-
+const RSVPForm = ({ person, onSuccess, isFinalPerson, goToNext }: RSVPFormProps) => {
   const onSubmit = (values: Person) => {
-    setSuccess(true);
     const personId = (person.first + person.last).toLowerCase();
     const docRef = doc(db, 'person', `${personId}`);
     setDoc(docRef, values)
       .then(() => {
-        onSuccess();
+        isFinalPerson ? onSuccess() : goToNext();
         console.log('Document has been updated successfully');
       })
       .catch((error) => {
@@ -93,140 +108,119 @@ const RSVPForm = ({ person, onSuccess }: RSVPFormProps) => {
 
   return (
     <RSVPFormContainer>
-      <Name>
-        {person.first} {person.last}
-      </Name>
-      {success ? (
-        <>
-          <div>Successful RSVP!</div>
-          <PrimaryButton colorWay={'secondary'} onClick={() => setSuccess(false)}>
-            Edit RSVP
-          </PrimaryButton>
-        </>
-      ) : (
-        <Form key={person.id} initialValues={person} onSubmit={onSubmit}>
-          {({ handleSubmit, form, submitting }) => (
-            <form onSubmit={handleSubmit}>
-              <RSVPFormSectionBlock>
-                <RSVPFormSection>
-                  <Date>Thursday, October 26, 2023</Date>
-                  <Description>
-                    Adios Olmstead! Meet us for cocktails at The Red Dog Saloon
-                  </Description>
-                  <RSVPFormOptions>
-                    <label>
-                      <Field
-                        name="welcome"
-                        component="input"
-                        type="radio"
-                        value={Welcome.ATTENDING}
-                      />
-                      Attending
-                    </label>
-                    <label>
-                      <Field
-                        name="welcome"
-                        component="input"
-                        type="radio"
-                        value={Welcome.NOT_ATTENDING}
-                      />
-                      Not Attending
-                    </label>
-                  </RSVPFormOptions>
-                </RSVPFormSection>
+      <Form
+        key={person.id}
+        initialValues={person}
+        onSubmit={(values) => {
+          console.log('here');
+          onSubmit(values as Person);
+        }}
+      >
+        {({ handleSubmit, submitting }) => (
+          <form>
+            <RSVPFormSectionBlock>
+              <RSVPFormSection>
+                <Date>Thursday, October 26, 2023</Date>
+                <Description>Welcome Party</Description>
+                <RSVPFormOptions>
+                  <RSVPFormLabel>
+                    <RSVPFormField
+                      name="welcome"
+                      component="input"
+                      type="radio"
+                      value={Welcome.ATTENDING}
+                    />
+                    Attending
+                  </RSVPFormLabel>
+                  <RSVPFormLabel>
+                    <RSVPFormField
+                      name="welcome"
+                      component="input"
+                      type="radio"
+                      value={Welcome.NOT_ATTENDING}
+                    />
+                    Not Attending
+                  </RSVPFormLabel>
+                </RSVPFormOptions>
+              </RSVPFormSection>
 
-                <RSVPFormSection>
-                  <Date>Friday, October 27, 2023</Date>
-                  <Description>
-                    Parking spaces limited at ceremony. Please check box if planning to drive to
-                    ceremony Shuttles available: please check box if planning to shuttle from
-                    downtown Pioneertown.
-                  </Description>
-                  <RSVPFormOptions>
-                    <label>
-                      <Field
-                        name="ceremony"
-                        component="input"
-                        type="radio"
-                        value={Ceremony.DRIVING}
-                      />
-                      Driving
-                    </label>
-                    <label>
-                      <Field
-                        name="ceremony"
-                        component="input"
-                        type="radio"
-                        value={Ceremony.SHUTTLING}
-                      />
-                      Shuttling
-                    </label>
-                    <label>
-                      <Field
-                        name="ceremony"
-                        component="input"
-                        type="radio"
-                        value={Ceremony.NOT_ATTENDING}
-                      />
-                      Not Attending
-                    </label>
-                  </RSVPFormOptions>
-                </RSVPFormSection>
+              <RSVPFormSection>
+                <Date>Friday, October 27, 2023</Date>
+                <Description>Wedding</Description>
+                <RSVPFormOptions>
+                  <RSVPFormLabel>
+                    <RSVPFormField
+                      name="ceremony"
+                      component="input"
+                      type="radio"
+                      value={Ceremony.SHUTTLING}
+                    />
+                    Shuttling
+                  </RSVPFormLabel>
+                  <RSVPFormLabel>
+                    <RSVPFormField
+                      name="ceremony"
+                      component="input"
+                      type="radio"
+                      value={Ceremony.NOT_ATTENDING}
+                    />
+                    Not Attending
+                  </RSVPFormLabel>
+                </RSVPFormOptions>
+              </RSVPFormSection>
 
-                <RSVPFormSection>
-                  <Date>Saturday, October 28, 2023</Date>
-                  <Description>Reynolds Wrap: Pickle-ball Social</Description>
-                  <RSVPFormOptions>
-                    <label>
-                      <Field
-                        name="pickleball"
-                        component="input"
-                        type="radio"
-                        value={Pickleball.PLAYING}
-                      />
-                      Playing
-                    </label>
-                    <label>
-                      <Field
-                        name="pickleball"
-                        component="input"
-                        type="radio"
-                        value={Pickleball.ATTENDING}
-                      />
-                      Attending
-                    </label>
-                    <label>
-                      <Field
-                        name="pickleball"
-                        component="input"
-                        type="radio"
-                        value={Pickleball.NOT_ATTENDING}
-                      />
-                      Not Attending
-                    </label>
-                  </RSVPFormOptions>
-                </RSVPFormSection>
-              </RSVPFormSectionBlock>
+              <RSVPFormSection>
+                <Date>Saturday, October 28, 2023</Date>
+                <Description>Pickle-ball Social</Description>
+                <RSVPFormOptions>
+                  <RSVPFormLabel>
+                    <RSVPFormField
+                      name="pickleball"
+                      component="input"
+                      type="radio"
+                      value={Pickleball.PLAYING}
+                    />
+                    Playing
+                  </RSVPFormLabel>
+                  <RSVPFormLabel>
+                    <RSVPFormField
+                      name="pickleball"
+                      component="input"
+                      type="radio"
+                      value={Pickleball.ATTENDING}
+                    />
+                    Attending
+                  </RSVPFormLabel>
+                  <RSVPFormLabel>
+                    <RSVPFormField
+                      name="pickleball"
+                      component="input"
+                      type="radio"
+                      value={Pickleball.NOT_ATTENDING}
+                    />
+                    Not Attending
+                  </RSVPFormLabel>
+                </RSVPFormOptions>
+              </RSVPFormSection>
+            </RSVPFormSectionBlock>
 
-              <RSVPFormButtons>
-                <PrimaryButton type="submit" disabled={submitting}>
-                  Submit
-                </PrimaryButton>
-                {person.welcome && person.ceremony && person.pickleball && (
-                  <PrimaryButton
-                    type="button"
-                    disabled={submitting}
-                    onClick={() => setSuccess(true)}
-                    colorWay={'secondary'}
-                  >
-                    Cancel
-                  </PrimaryButton>
-                )}
-              </RSVPFormButtons>
-            </form>
-          )}
-        </Form>
-      )}
+            <RSVPFormButtons>
+              <PrimaryButton disabled={submitting} onClick={handleSubmit}>
+                {isFinalPerson ? 'Submit' : 'Next'}
+              </PrimaryButton>
+              {/*{person.welcome && person.ceremony && person.pickleball && (*/}
+              {/*  <PrimaryButton*/}
+              {/*    disabled={submitting}*/}
+              {/*    onClick={() => setSuccess(true)}*/}
+              {/*    colorWay={'secondary'}*/}
+              {/*  >*/}
+              {/*    Cancel*/}
+              {/*  </PrimaryButton>*/}
+              {/*)}*/}
+            </RSVPFormButtons>
+          </form>
+        )}
+      </Form>
     </RSVPFormContainer>
   );
 };

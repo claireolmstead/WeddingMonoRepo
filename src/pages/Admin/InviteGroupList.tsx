@@ -1,50 +1,32 @@
-import { collection, getDocs, query, where } from '@firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import React from 'react';
 
-import { db } from '../../App';
 import { NewPerson, Person } from '../../types';
 
-const InviteGroupList = ({
-  partyId,
-  people,
-}: {
-  partyId?: Person['partyId'];
-  people: NewPerson[] | Person[];
-}) => {
-  const [partyMembers, setPartyMembers] = useState<Person[]>([]);
+const InviteGroupListBlock = styled.div`
+  align-items: center;
+  border-top: 1px solid ${(props) => props.theme.colors.lightGray};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+`;
 
-  useEffect(() => {
-    const getInvite = async () => {
-      const q = query(collection(db, 'person'), where('partyId', '==', partyId));
-      const querySnapshot = await getDocs(q);
-      let members: Person[] = [];
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        members = [...members, data as Person];
-      });
-      setPartyMembers(members);
-    };
+const InviteGroupListTitle = styled.div`
+  ${(props) => props.theme.type.sub_title};
+  padding: 20px 0;
+`;
 
-    if (partyMembers.length !== people.length) {
-      getInvite();
-    }
-  }, [partyId, partyMembers, people]);
-
+const InviteGroupList = ({ people }: { people: NewPerson[] | Person[] }) => {
   return (
-    <>
-      {!partyId ? (
-        <div>Empty group.</div>
-      ) : (
-        <div>
-          Party:
-          {partyMembers.map((member, i) => (
-            <div key={member.id + i}>
-              {member.first} {member.last}
-            </div>
-          ))}
+    <InviteGroupListBlock>
+      <InviteGroupListTitle>Invite Group</InviteGroupListTitle>
+      {people.map((member, i) => (
+        <div key={member.id + i}>
+          {member.first} {member.last}
         </div>
-      )}
-    </>
+      ))}
+    </InviteGroupListBlock>
   );
 };
 

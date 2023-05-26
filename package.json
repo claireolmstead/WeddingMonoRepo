@@ -10,6 +10,7 @@
     "@mui/material": "^5.10.16",
     "@mui/styles": "^5.10.16",
     "@types/firebase": "^3.2.1",
+    "add-to-calendar-button-react": "^2.2.7",
     "final-form": "^4.20.9",
     "firebase": "^9.18.0",
     "firebase-admin": "^11.5.0",

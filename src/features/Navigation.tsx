@@ -17,9 +17,8 @@ const Navigation = () => {
     <NavBlock>
       <NavLink to="/home">Home</NavLink>
       <NavLink to="/schedule">Schedule</NavLink>
-      <NavLink to="/accommodations">Accommodations</NavLink>
+      <NavLink to="/lodging">Pioneertown, CA</NavLink>
       <NavLink to="/rsvp">RSVP</NavLink>
-      <NavLink to="/us">US</NavLink>
     </NavBlock>
   );
 };

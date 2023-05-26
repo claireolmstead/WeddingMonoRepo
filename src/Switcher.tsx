@@ -3,13 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import Header from './features/Header';
-import Accommodations from './pages/Accommodations/Accommodations';
 import Admin from './pages/Admin/Admin';
 import Authenticate from './pages/Authenticate/Authenticate';
 import Home from './pages/Home/Home';
+import Lodging from './pages/Lodging/Lodging';
 import RSVP from './pages/RSVP/RSVP';
 import Schedule from './pages/Schedule/Schedule';
-import Us from './pages/Us/Us';
 
 const AppBody = styled.div`
   background-color: ${(props) => props.theme.colors.black};
@@ -47,8 +46,7 @@ const Switcher = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/rsvp" element={<RSVP />} />
         <Route path="/schedule" element={<Schedule />} />
-        <Route path="/accommodations" element={<Accommodations />} />
-        <Route path="/us" element={<Us />} />
+        <Route path="/lodging" element={<Lodging />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </AppBody>

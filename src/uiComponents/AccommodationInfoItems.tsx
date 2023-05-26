@@ -4,8 +4,8 @@ import React from 'react';
 import { AccommodationItem } from '../types';
 
 const AccommodationInfoItem = styled.div`
+  color: inherit;
   margin-bottom: 20px;
-  padding-left: 20px;
 `;
 
 interface AccommodationInfoItemsProps {

@@ -8,19 +8,12 @@ import CowboyHat from '../../images/icons/cowboy-hat.png';
 import JoshuaTree from '../../images/icons/joshua-tree.svg';
 import Sun from '../../images/icons/sun.svg';
 import ScheduleBackground from '../../images/Schedule.png';
+import HomeImage from '../../images/wideshot/HomeBackground.jpg';
+import AccommodationInfoItems from '../../uiComponents/AccommodationInfoItems';
+import Container from '../../uiComponents/Container';
+import EventsInfoItems from '../../uiComponents/EventsInfoItems';
 import ListItemBlock from '../../uiComponents/ListItemBlock';
 import { MaxWidthWrapper } from '../../uiComponents/MaxWidthWrapper';
-
-const ScheduleImg = styled.div`
-  background: url(${ScheduleBackground}) rgba(0, 0, 0, 0.6) center center;
-  background-blend-mode: multiply;
-  background-size: cover;
-  height: calc(180vh);
-  min-height: 1500px;
-  position: absolute;
-  top: -120px;
-  width: 100vw;
-`;
 
 const ParallaxCowboyHat = styled(Parallax)`
   position: absolute;
@@ -66,31 +59,72 @@ const ParallaxCactus2 = styled(Parallax)`
   }
 `;
 
+const ListItemWrapper = styled.div`
+  display: block;
+  position: relative;
+  width: 100%;
+`;
+
+const ListItemInfo = styled.div``;
+
+const ListItemTitle = styled.div`
+  ${(props) => props.theme.type.main_body};
+  font-size: 28px;
+  padding-bottom: 20px;
+`;
+
+const ScheduleItemBlock = styled(Parallax)<{ isEven: boolean }>`
+  align-items: center;
+  background-color: ${(props) =>
+    props.isEven ? props.theme.colors.white : props.theme.colors.black};
+  color: ${(props) => (props.isEven ? props.theme.colors.black : props.theme.colors.white)};
+  display: flex;
+  flex-direction: ${(props) => (props.isEven ? 'row' : 'row-reverse')};
+  height: 100vh;
+  opacity: 0.9;
+`;
+
+const ScheduleMaxWidthWrapper = styled(MaxWidthWrapper)<{ isEven: boolean }>`
+  align-items: center;
+  color: ${(props) => (props.isEven ? props.theme.colors.black : props.theme.colors.white)};
+  display: flex;
+  flex-direction: ${(props) => (props.isEven ? 'row' : 'row-reverse')};
+  gap: 50px;
+`;
+
+const ScheduleImg = styled.img`
+  height: 600px;
+  object-fit: cover;
+  width: 400px;
+`;
+
+const HomeImg = styled.div`
+  background: url(${HomeImage}) no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+`;
+
 const Schedule = () => {
   return (
-    <MaxWidthWrapper>
-      {/*<Parallax speed={-10}>*/}
-      {/*  <ScheduleImg />*/}
-      {/*</Parallax>*/}
-      <Parallax speed={-25}>
-        <ListItemBlock list={schedule} />
-      </Parallax>
-      <ParallaxCowboyHat speed={-10}>
-        <img src={CowboyHat} />
-      </ParallaxCowboyHat>
-      <ParallaxSun1 speed={0}>
-        <img src={Sun} />
-      </ParallaxSun1>
-      <ParallaxJoshuaTree speed={-25}>
-        <img src={JoshuaTree} />
-      </ParallaxJoshuaTree>
-      <ParallaxCactus2 speed={-10}>
-        <img src={Cactus2} />
-      </ParallaxCactus2>
-      <ParallaxSun2 speed={8}>
-        <img src={Sun} />
-      </ParallaxSun2>
-    </MaxWidthWrapper>
+    <>
+      <HomeImg />
+      {schedule.map((item, index) => (
+        <ScheduleItemBlock key={index} isEven={index % 2 === 0} speed={index % 2 === 0 ? 20 : -10}>
+          <ScheduleMaxWidthWrapper isEven={index % 2 === 0}>
+            <ScheduleImg src={item.img} />
+            <ListItemWrapper key={item.title}>
+              <ListItemInfo>
+                <ListItemTitle>{item.title}</ListItemTitle>
+                <EventsInfoItems events={item.events} />
+              </ListItemInfo>
+            </ListItemWrapper>
+          </ScheduleMaxWidthWrapper>
+        </ScheduleItemBlock>
+      ))}
+    </>
   );
 };
 

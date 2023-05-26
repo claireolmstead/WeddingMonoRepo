@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AccommodationItem, AccommodationItems, DaySchedule, Schedule } from '../types';
+import { AccommodationItem, DaySchedule, LodgingItems, Schedule } from '../types';
 import Container from './Container';
 import ListItem from './ListItem';
 
@@ -11,20 +11,17 @@ const ListItemContent = styled.div`
   flex-direction: column;
   gap: 50px;
   justify-content: center;
-  margin-bottom: 140px;
-  padding-bottom: 70px;
-  position: relative;
-  top: 140px;
 `;
 
 interface ListItemBlockProps {
-  list: Schedule | AccommodationItems;
+  list: Schedule | LodgingItems;
+  className?: string;
 }
 
-const ListItemBlock = ({ list }: ListItemBlockProps) => {
+const ListItemBlock = ({ list, className }: ListItemBlockProps) => {
   return (
     <Container>
-      <ListItemContent>
+      <ListItemContent className={className}>
         {list.map((listItem) => (
           <ListItem
             key={listItem.title}

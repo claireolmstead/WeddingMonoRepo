@@ -15,6 +15,10 @@ export const type = {
       font-size: 90px;
     }
   `,
+  sub_title: css`
+    font-family: 'kiln-sans', sans-serif;
+    font-size: 28px;
+  `,
   main_body: css`
     font-family: 'futura', sans-serif;
   `,

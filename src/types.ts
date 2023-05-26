@@ -1,14 +1,23 @@
 import { ReactElement } from 'react';
 
 export type Event = {
+  title: string;
+  subtitle?: string;
   time?: string;
-  name: string;
-  comments?: string[];
+  startDate: string;
+  startTime: string;
+  endTime: string;
+  location?: string;
+  description?: string;
+  whatToWear?: string;
+  whatToKnow?: string;
 };
 
 export type DaySchedule = {
   title: string;
-  description: string;
+  description?: string;
+  date: string;
+  img: string;
   events: Event[];
 };
 
@@ -16,11 +25,11 @@ export type Schedule = DaySchedule[];
 
 export type AccommodationItem = {
   title: string;
-  description: string;
+  description?: string;
   infoItems: (string | ReactElement)[];
 };
 
-export type AccommodationItems = AccommodationItem[];
+export type LodgingItems = AccommodationItem[];
 
 export enum Pickleball {
   ATTENDING = 'ATTENDING',

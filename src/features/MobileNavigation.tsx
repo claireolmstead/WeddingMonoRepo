@@ -86,8 +86,8 @@ const MobileNavigation = () => {
             <DrawerNavLink to="/schedule" onClick={() => setIsOpen(false)}>
               Schedule
             </DrawerNavLink>
-            <DrawerNavLink to="/accommodations" onClick={() => setIsOpen(false)}>
-              Accommodations
+            <DrawerNavLink to="/Lodging" onClick={() => setIsOpen(false)}>
+              Pioneertown, CA
             </DrawerNavLink>
             <DrawerNavLink to="/rsvp" onClick={() => setIsOpen(false)}>
               RSVP

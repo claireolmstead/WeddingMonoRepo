@@ -1,32 +1,26 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { Parallax } from 'react-scroll-parallax';
 
 import { ScreenSizes } from '../../consts/vars';
-import HomeImage from '../../images/Home.png';
+import HomeImage from '../../images/wideshot/HomeBackground.jpg';
 import Container from '../../uiComponents/Container';
 
 const HomeBlock = styled.div`
-  height: 100vh;
-  perspective: 1px;
   width: 100%;
 `;
 
 const HomeImg = styled.div`
-  background: url(${HomeImage}) rgba(0, 0, 0, 0.6) center center;
-  background-blend-mode: multiply;
+  background: url(${HomeImage}) no-repeat center center;
   background-size: cover;
   height: 100vh;
-  position: absolute;
-  top: 120px;
+  position: fixed;
+  top: 0;
   width: 100vw;
 `;
 
 const HomeContent = styled(Container)`
   box-sizing: border-box;
-  position: relative;
   text-align: center;
-  top: 40px;
   width: 100%;
 `;
 
@@ -86,29 +80,23 @@ const HomeNames = styled.h2`
   font-weight: normal;
   line-height: 1;
   margin: 30px;
-
-ç
 `;
 
 const Home = () => {
   return (
     <HomeBlock>
-      {/*<Parallax speed={20}>*/}
-      {/*  <HomeImg />*/}
-      {/*</Parallax>*/}
-      <Parallax speed={-20}>
-        <HomeContent>
-          {document.fonts && (
-            <HomeContentInner>
-              <HomeDate>OCTOBER 27, 2023 • PIONEERTOWN, CA</HomeDate>
-              <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
-              <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
-              <HomeTo>TO</HomeTo>
-              <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
-            </HomeContentInner>
-          )}
-        </HomeContent>
-      </Parallax>
+      <HomeImg />
+      <HomeContent>
+        {document.fonts && (
+          <HomeContentInner>
+            <HomeDate>OCTOBER 27, 2023 • RIMROCK RANCH • PIONEERTOWN, CA</HomeDate>
+            <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
+            <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
+            <HomeTo>TO</HomeTo>
+            <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
+          </HomeContentInner>
+        )}
+      </HomeContent>
     </HomeBlock>
   );
 };
