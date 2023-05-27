@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AccommodationItem, Event } from '../types';
+import { LodgingItem } from '../types';
 import AccommodationInfoItems from './AccommodationInfoItems';
-import EventsInfoItems from './EventsInfoItems';
 
 const ListItemWrapper = styled.div`
   display: block;
@@ -29,20 +28,18 @@ const ListItemDescription = styled.div`
 interface ListItemProps {
   title: string;
   description?: string;
-  events?: Event[];
-  accommodationInfoItems?: AccommodationItem['infoItems'];
+  lodgingInfoItems?: LodgingItem['infoItems'];
 }
 
-const ListItem = ({ title, description, events, accommodationInfoItems }: ListItemProps) => {
+const LodgingListItem = ({ title, description, lodgingInfoItems }: ListItemProps) => {
   return (
     <ListItemWrapper key={title}>
       <ListItemInfo>
         <ListItemTitle>{title}</ListItemTitle>
         {description && <ListItemDescription>{description}</ListItemDescription>}
-        {events && <EventsInfoItems events={events} />}
-        {accommodationInfoItems && <AccommodationInfoItems infoItems={accommodationInfoItems} />}
+        {lodgingInfoItems && <AccommodationInfoItems infoItems={lodgingInfoItems} />}
       </ListItemInfo>
     </ListItemWrapper>
   );
 };
-export default ListItem;
+export default LodgingListItem;

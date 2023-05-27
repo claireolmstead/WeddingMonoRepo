@@ -7,7 +7,6 @@ import RSVPForm from './RSVPForm';
 
 interface RSVPFormListProps {
   invites: Person[];
-  onSuccess: () => Promise<void>;
 }
 
 interface TabPanelProps {
@@ -38,7 +37,7 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-const RSVPFormList = ({ invites, onSuccess }: RSVPFormListProps) => {
+const RSVPFormList = ({ invites }: RSVPFormListProps) => {
   const [value, setValue] = useState<number>(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -56,7 +55,6 @@ const RSVPFormList = ({ invites, onSuccess }: RSVPFormListProps) => {
           <RSVPForm
             person={person}
             key={person.id}
-            onSuccess={onSuccess}
             isFinalPerson={index === invites.length - 1}
             goToNext={() => setValue(index + 1)}
           />

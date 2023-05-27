@@ -10,3 +10,6 @@ declare module '@mui/styles/defaultTheme' {
 declare module '@emotion/react' {
   export interface Theme extends CustomTheme {} // eslint-disable-line
 }
+
+declare module '*.pdf';
+declare module '*.png';

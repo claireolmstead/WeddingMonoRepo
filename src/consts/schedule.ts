@@ -5,14 +5,14 @@ import { Schedule } from '../types';
 
 export const schedule: Schedule = [
   {
-    title: 'Welcome',
+    title: 'Welcome Festivities',
     date: 'Thursday, October 26, 2023',
     img: NSImg1,
     events: [
       {
         title: 'Love Birds Rehearsal Dinner',
         subtitle: 'Buckaroos, boots and bubbly.',
-        time: '3:30 pm rehearsal and cocktail hour, followed by dinner',
+        time: '3:30 pm',
         startDate: '2023-10-26',
         startTime: '15:30',
         endTime: '19:30',
@@ -52,16 +52,17 @@ export const schedule: Schedule = [
         startTime: '14:00',
         endTime: '14:15',
         location: 'The Pioneertown Motel',
-        description: `You'll be left in the dust!`,
+        description: `Hitch a ride with us or else you'll be left in the dust!`,
       },
       {
         title: 'Love Birds Roundup at Rimrock Ranch',
-        time: '3 pm - 10 pm: Arrive at Rimrock Ranch for a welcome cocktail. The ceremony begins at 3:45pm with dinner and dancing following.',
+        time: '3 - 10 pm',
         location: 'Rimrock Ranch | 50857 Burns Canyon Rd, Pioneertown, CA 92268',
         startDate: '2023-10-27',
         startTime: '15:00',
         endTime: '22:00',
-        description: 'Please join us to celebrate the wedding of Nick and Sterling!',
+        description:
+          'Please join us to celebrate the wedding of Nick and Sterling! Arrive at Rimrock Ranch for a welcome cocktail. The ceremony begins at 3:45pm with dinner and dancing following.',
         whatToWear:
           'California Cowboy Cocktail: Celebrate Sterling and Nick’s wild romance at this high desert hideaway with your finest formal Western-inspired wear. Cocktail attire, cowboy boots and cowboy hats are encouraged. We will be stomping our boots in the dirt all night! Cowboys, please put your Wranglers away for the night. Break out your bolo tie with your suit and show off your best belt buckle. For the cowgirls, pile on the turquoise jewelry or pair your favorite cowboy hat with your dress, but make it very Sterling-style and add a little sparkle and a lot color.',
         whatToKnow:
@@ -70,13 +71,13 @@ export const schedule: Schedule = [
     ],
   },
   {
-    title: 'Play',
+    title: 'Play - Pickleball Social',
     date: 'Saturday, October 28, 2023',
     img: NSImg3,
     events: [
       {
         title: 'The Reynolds Wrap',
-        time: '11 am - 2 pm',
+        time: '11 - 2 pm',
         startDate: '2023-10-28',
         startTime: '11:00',
         endTime: '14:00',

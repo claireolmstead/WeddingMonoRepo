@@ -92,8 +92,9 @@ const MobileNavigation = () => {
             <DrawerNavLink to="/rsvp" onClick={() => setIsOpen(false)}>
               RSVP
             </DrawerNavLink>
+            <DrawerNavLink to="/registry">Registry</DrawerNavLink>
             <DrawerNavLink to="/us" onClick={() => setIsOpen(false)}>
-              US
+              Us
             </DrawerNavLink>
           </DrawerItems>
         </Drawer>

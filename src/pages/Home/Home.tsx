@@ -1,21 +1,14 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { ScreenSizes } from '../../consts/vars';
 import HomeImage from '../../images/wideshot/HomeBackground.jpg';
 import Container from '../../uiComponents/Container';
+import PrimaryButton from '../../uiComponents/PrimaryButton';
 
 const HomeBlock = styled.div`
   width: 100%;
-`;
-
-const HomeImg = styled.div`
-  background: url(${HomeImage}) no-repeat center center;
-  background-size: cover;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  width: 100vw;
 `;
 
 const HomeContent = styled(Container)`
@@ -34,17 +27,26 @@ const HomeContentInner = styled.div`
 const HomeDate = styled.div`
   color: ${(props) => props.theme.colors.tan};
   font-size: 14px;
-  margin-bottom: 50px;
   text-align: center;
 
   @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
     font-size: 16px;
-    margin-bottom: 60px;
   }
 
   @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
     font-size: 20px;
-    margin-bottom: 70px;
+  }
+`;
+
+const HomeInviteBlock = styled.div`
+  margin: 50px 0;
+
+  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+    margin: 60px 0;
+  }
+
+  @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
+    margin: 70px 0;
   }
 `;
 
@@ -85,15 +87,19 @@ const HomeNames = styled.h2`
 const Home = () => {
   return (
     <HomeBlock>
-      <HomeImg />
       <HomeContent>
         {document.fonts && (
           <HomeContentInner>
             <HomeDate>OCTOBER 27, 2023 • RIMROCK RANCH • PIONEERTOWN, CA</HomeDate>
-            <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
-            <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
-            <HomeTo>TO</HomeTo>
-            <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
+            <HomeInviteBlock>
+              <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
+              <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
+              <HomeTo>TO</HomeTo>
+              <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
+            </HomeInviteBlock>
+            <Link to={'/rsvp'}>
+              <PrimaryButton>RSVP</PrimaryButton>
+            </Link>
           </HomeContentInner>
         )}
       </HomeContent>

@@ -10,7 +10,7 @@ import EventInfoItemsDrawer from './EventInfoItemsModal';
 const EventItem = styled.div`
   display: grid;
   gap: 20px;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 100px 1fr;
   margin-bottom: 50px;
 `;
 
@@ -21,6 +21,9 @@ const EventInfo = styled.div`
 `;
 
 const EventTime = styled.div`
+  border-right: 1px solid ${(props) => props.theme.colors.tan};
+  color: ${(props) => props.theme.colors.red};
+  font-weight: bold;
   text-wrap: none;
 `;
 

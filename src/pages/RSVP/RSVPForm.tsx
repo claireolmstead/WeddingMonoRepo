@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { doc, setDoc } from '@firebase/firestore';
-import React, { useState } from 'react';
+import React from 'react';
 import { Field, Form } from 'react-final-form';
 
 import { db } from '../../App';
@@ -87,18 +87,17 @@ const RSVPFormField = styled(Field)`
 
 interface RSVPFormProps {
   person: Person;
-  onSuccess: () => Promise<void>;
   isFinalPerson: boolean;
   goToNext: () => void;
 }
 
-const RSVPForm = ({ person, onSuccess, isFinalPerson, goToNext }: RSVPFormProps) => {
+const RSVPForm = ({ person, isFinalPerson, goToNext }: RSVPFormProps) => {
   const onSubmit = (values: Person) => {
     const personId = (person.first + person.last).toLowerCase();
     const docRef = doc(db, 'person', `${personId}`);
     setDoc(docRef, values)
       .then(() => {
-        isFinalPerson ? onSuccess() : goToNext();
+        isFinalPerson && goToNext();
         console.log('Document has been updated successfully');
       })
       .catch((error) => {

@@ -5,7 +5,7 @@ interface PrimaryInputProps {
   type?: 'button' | 'submit';
   children: React.ReactNode;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (event?: any) => void;
   colorWay?: 'primary' | 'secondary';
   className?: string;
 }
@@ -15,14 +15,14 @@ const StyledButton = styled.button<{ colorWay: PrimaryInputProps['colorWay'] }>`
     props.colorWay === 'secondary' ? props.theme.colors.darkTan : props.theme.colors.red};
   border: none;
   border-radius: 3px;
-  color: ${(props) => props.theme.colors.tan};
+  color: ${(props) => props.theme.colors.white};
   cursor: pointer;
   height: 40px;
-  max-width: 350px;
+  max-width: 300px;
   outline: none;
   text-align: center;
   transition: background-color 0.2s ease;
-  width: 100%;
+  width: 300px;
 
   &:hover {
     background-color: ${(props) =>

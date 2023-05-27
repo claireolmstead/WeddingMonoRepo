@@ -1,34 +1,39 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AccommodationItem, DaySchedule, LodgingItems, Schedule } from '../types';
+import { LodgingItems } from '../types';
 import Container from './Container';
-import ListItem from './ListItem';
+import LodgingListItem from './LodgingListItem';
 
 const ListItemContent = styled.div`
   align-items: center;
+  color: ${(props) => props.theme.colors.black};
   display: flex;
   flex-direction: column;
   gap: 50px;
   justify-content: center;
+  max-width: 500px;
+
+  a {
+    color: ${(props) => props.theme.colors.black};
+  }
 `;
 
 interface ListItemBlockProps {
-  list: Schedule | LodgingItems;
+  list: LodgingItems;
   className?: string;
 }
 
-const ListItemBlock = ({ list, className }: ListItemBlockProps) => {
+const LodgingListItemBlock = ({ list, className }: ListItemBlockProps) => {
   return (
     <Container>
       <ListItemContent className={className}>
         {list.map((listItem) => (
-          <ListItem
+          <LodgingListItem
             key={listItem.title}
             title={listItem.title}
             description={listItem.description}
-            events={(listItem as DaySchedule)?.events}
-            accommodationInfoItems={(listItem as AccommodationItem)?.infoItems}
+            lodgingInfoItems={listItem?.infoItems}
           />
         ))}
       </ListItemContent>
@@ -36,4 +41,4 @@ const ListItemBlock = ({ list, className }: ListItemBlockProps) => {
   );
 };
 
-export default ListItemBlock;
+export default LodgingListItemBlock;

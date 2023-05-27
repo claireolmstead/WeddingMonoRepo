@@ -8,7 +8,7 @@ import Landscape2 from '../../images/Pioneertown/Landscape2.jpg';
 import Landscape3 from '../../images/Pioneertown/Landscape3.jpg';
 import HomeImage from '../../images/wideshot/HomeBackground.jpg';
 import Container from '../../uiComponents/Container';
-import ListItemBlock from '../../uiComponents/ListItemBlock';
+import LodgingListItemBlock from '../../uiComponents/LodgingListItemBlock';
 
 const LodgingTitleBlock = styled.div`
   align-items: center;
@@ -18,9 +18,7 @@ const LodgingTitleBlock = styled.div`
 `;
 
 const LodgingTitle = styled.div`
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
+  ${(props) => props.theme.type.page_title};
 `;
 
 const LodgingBlock = styled.div`
@@ -43,38 +41,19 @@ const LodgingLandscape = styled.div<{ url: string }>`
   width: 400px;
 `;
 
-const LodgingListItemBlock = styled(ListItemBlock)`
-  color: ${(props) => props.theme.colors.black};
-  max-width: 500px;
-  a {
-    color: ${(props) => props.theme.colors.black};
-  }
-`;
-
-const HomeImg = styled.div`
-  background: url(${HomeImage}) no-repeat center center;
-  background-size: cover;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-`;
-
 const LodgingItemBlock = styled(Parallax)`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: rgba(255, 255, 255, 0.9);
   color: ${(props) => props.theme.colors.black};
   display: flex;
   height: 100vh;
   justify-content: center;
-  opacity: 0.9;
 `;
 
 const Lodging = () => {
   return (
     <>
-      <HomeImg />
-      <LodgingItemBlock speed={-10}>
+      <LodgingItemBlock speed={20}>
         <Container>
           <LodgingTitleBlock>
             <LodgingTitle>Pioneertown, CA</LodgingTitle>

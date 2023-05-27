@@ -2,7 +2,7 @@ export const colors = {
   disabledRed: '#E4B3AA',
   red: '#E66A64',
   hoverRed: '#C64C4C',
-  tan: '#8f7b72',
+  tan: '#c5b8b1',
   darkTan: '#A68474',
   hoverDarkTan: '#875d4a',
   black: '#000',

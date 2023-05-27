@@ -23,13 +23,13 @@ export type DaySchedule = {
 
 export type Schedule = DaySchedule[];
 
-export type AccommodationItem = {
+export type LodgingItem = {
   title: string;
   description?: string;
   infoItems: (string | ReactElement)[];
 };
 
-export type LodgingItems = AccommodationItem[];
+export type LodgingItems = LodgingItem[];
 
 export enum Pickleball {
   ATTENDING = 'ATTENDING',

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { NewPerson, Person } from '../../types';
 
 const InviteGroupListBlock = styled.div`
@@ -17,15 +18,29 @@ const InviteGroupListTitle = styled.div`
   padding: 20px 0;
 `;
 
+const InviteGroupName = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+const InviteGroupIsNotMe = styled.div`
+  cursor: pointer;
+  padding-top: 20px;
+  text-decoration: underline;
+`;
+
 const InviteGroupList = ({ people }: { people: NewPerson[] | Person[] }) => {
+  const { setIsNotMe } = useContext(CurInvitesContext);
+
   return (
     <InviteGroupListBlock>
       <InviteGroupListTitle>Invite Group</InviteGroupListTitle>
       {people.map((member, i) => (
-        <div key={member.id + i}>
+        <InviteGroupName key={member.id + i}>
           {member.first} {member.last}
-        </div>
+        </InviteGroupName>
       ))}
+      <InviteGroupIsNotMe onClick={() => setIsNotMe(true)}>Not you?</InviteGroupIsNotMe>
     </InviteGroupListBlock>
   );
 };

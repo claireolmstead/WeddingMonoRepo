@@ -49,6 +49,13 @@ export const lodging: LodgingItems = [
     ],
   },
   {
+    title: 'TRAVEL',
+    infoItems: [
+      <div key={'fly'}>Fly into this airport</div>,
+      <div key={'fly'}>Other fun facts</div>,
+    ],
+  },
+  {
     title: 'RESTAURANTS',
     infoItems: [
       <a

@@ -10,6 +10,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
+import CurInvitesContextProvider from './context/CurInvitesContext';
 import ScreenContextProvider from './context/ScreenContext';
 import { theme } from './style/Theme';
 import Switcher from './Switcher';
@@ -37,13 +38,15 @@ export const storage = getStorage(app);
 function App() {
   return (
     <ScreenContextProvider>
-      <ThemeProvider theme={theme}>
-        <ParallaxProvider>
-          <Router>
-            <Switcher />
-          </Router>
-        </ParallaxProvider>
-      </ThemeProvider>
+      <CurInvitesContextProvider>
+        <ThemeProvider theme={theme}>
+          <ParallaxProvider>
+            <Router>
+              <Switcher />
+            </Router>
+          </ParallaxProvider>
+        </ThemeProvider>
+      </CurInvitesContextProvider>
     </ScreenContextProvider>
   );
 }
