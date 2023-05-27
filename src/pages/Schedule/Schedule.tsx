@@ -37,9 +37,11 @@ const ScheduleMaxWidthWrapper = styled(MaxWidthWrapper)<{ isEven: boolean }>`
   gap: 50px;
 `;
 
-const ScheduleImg = styled.img`
-  height: 600px;
-  object-fit: cover;
+const ScheduleImg = styled.img<{ imageUrl: string }>`
+  background-image: url(${(props) => props.imageUrl});
+  background-size: cover;
+  border: none;
+  height: 500px;
   width: 400px;
 `;
 
@@ -49,7 +51,7 @@ const Schedule = () => {
       {schedule.map((item, index) => (
         <ScheduleItemBlock key={index} isEven={index % 2 === 0} speed={index % 2 === 0 ? 20 : -10}>
           <ScheduleMaxWidthWrapper isEven={index % 2 === 0}>
-            <ScheduleImg src={item.img} />
+            <ScheduleImg imageUrl={item.img} />
             <ListItemWrapper key={item.title}>
               <ListItemInfo>
                 <ListItemTitle>{item.title}</ListItemTitle>
