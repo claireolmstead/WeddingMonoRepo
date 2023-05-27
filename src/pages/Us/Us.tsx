@@ -13,7 +13,6 @@ import img8 from '../../images/Us/img8.jpg';
 import img9 from '../../images/Us/img9.jpg';
 import img10 from '../../images/Us/img10.jpg';
 import img11 from '../../images/Us/img11.jpg';
-import HomeImage from '../../images/wideshot/HomeBackground.jpg';
 
 const UsImageList = styled(ImageList)`
   background-color: rgba(255, 255, 255, 0.8);

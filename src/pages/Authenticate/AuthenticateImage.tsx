@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import SAndNImage from '../../images/Landing.jpeg';
-
 const SNImageBlock = styled.div<{ isLight: boolean }>`
   //@keyframes slideIn {
   //  from {

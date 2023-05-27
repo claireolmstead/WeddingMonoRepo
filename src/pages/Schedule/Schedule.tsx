@@ -3,7 +3,6 @@ import React from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
 import { schedule } from '../../consts/schedule';
-import HomeImage from '../../images/wideshot/HomeBackground.jpg';
 import EventsInfoItems from '../../uiComponents/EventsInfoItems';
 import { MaxWidthWrapper } from '../../uiComponents/MaxWidthWrapper';
 

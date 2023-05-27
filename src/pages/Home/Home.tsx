@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { ScreenSizes } from '../../consts/vars';
-import HomeImage from '../../images/wideshot/HomeBackground.jpg';
 import Container from '../../uiComponents/Container';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 

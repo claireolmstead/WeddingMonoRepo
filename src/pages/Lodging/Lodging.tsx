@@ -3,10 +3,8 @@ import React from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
 import { lodging } from '../../consts/accommodations';
-import Landscape1 from '../../images/Pioneertown/Landscape1.jpg';
 import Landscape2 from '../../images/Pioneertown/Landscape2.jpg';
 import Landscape3 from '../../images/Pioneertown/Landscape3.jpg';
-import HomeImage from '../../images/wideshot/HomeBackground.jpg';
 import Container from '../../uiComponents/Container';
 import LodgingListItemBlock from '../../uiComponents/LodgingListItemBlock';
 
