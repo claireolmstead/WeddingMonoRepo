@@ -4,6 +4,7 @@ import React from 'react';
 import Container from '../../uiComponents/Container';
 import { MaxWidthWrapper } from '../../uiComponents/MaxWidthWrapper';
 import CreateInviteGroup from './CreateInviteGroup';
+import FileUpload from './FileUpload';
 import RsvpList from './RsvpList';
 
 const AdminContainer = styled(Container)`
@@ -18,6 +19,7 @@ const Admin = () => {
   return (
     <MaxWidthWrapper>
       <AdminContainer>
+        <FileUpload />
         <CreateInviteGroup />
         <RsvpList />
       </AdminContainer>

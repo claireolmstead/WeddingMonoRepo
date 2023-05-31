@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
-import { doc, getDoc, setDoc } from '@firebase/firestore';
+import { doc, setDoc } from '@firebase/firestore';
 import { Modal } from '@mui/material';
 import React, { useState } from 'react';
 
 import { db } from '../../App';
 import { ScreenSizes } from '../../consts/vars';
+import { doesPersonExist } from '../../hooks/doesPersonExist';
+import { getPersonId } from '../../hooks/getPersonId';
 import { NewPerson } from '../../types';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 import PrimaryInput from '../../uiComponents/PrimaryInput';
@@ -55,19 +57,10 @@ const CreateInviteGroup = () => {
   const [people, setPeople] = useState<NewPerson[]>([]);
   const [error, setError] = useState<string>();
 
-  const checkDoesExist = async (docRef: any) => {
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      setError('Person already exists.');
-      return;
-    }
-  };
-
   const createInvite = async () => {
-    const personName = (person.first + person.last).toLowerCase();
-    const personId = personName.replace(/ /g, '');
+    const personId = getPersonId(person.first, person.last);
     const docRef = doc(db, 'person', `${personId}`);
-    await checkDoesExist(docRef);
+    await doesPersonExist(docRef);
 
     let curPartyId;
     if (people.length === 0) {
