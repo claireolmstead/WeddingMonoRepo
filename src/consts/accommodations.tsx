@@ -46,6 +46,30 @@ export const lodging: LodgingItems = [
       >
         Autocamp Joshua Tree
       </a>,
+      <a
+        key={'stayfieldtrip'}
+        href={'https://www.stayfieldtrip.com/joshua-tree/?sort_by=rotation&location_area_id=13513'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        Fieldtrip
+      </a>,
+      <a
+        key={'stayfieldtrip'}
+        href={'https://www.stayfieldtrip.com/joshua-tree/?sort_by=rotation&location_area_id=13513'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        Fieldtrip
+      </a>,
+      <a
+        key={'homesteadmodern'}
+        href={'https://book.homesteadmodern.com/properties'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        Homestead Modern
+      </a>,
     ],
   },
   {

@@ -5,11 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { CORRECT_PASSWORD } from '../../consts/vars';
 import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { getInvites } from '../../hooks/getInvitesFromId';
-import Logo from '../../images/Logo.svg';
+import Container from '../../uiComponents/Container';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 import PrimaryInput from '../../uiComponents/PrimaryInput';
 import InviteGroupList from '../Admin/InviteGroupList';
-import AuthenticateImage from './AuthenticateImage';
 
 interface AuthenticateProps {
   setAuthenticated: () => void;
@@ -18,6 +17,10 @@ interface AuthenticateProps {
 const AuthenticateBlock = styled.div`
   align-items: center;
   display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  padding-top: 40px;
   position: relative;
 `;
 
@@ -25,14 +28,30 @@ const AuthenticateForm = styled.form`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   justify-content: center;
   margin: 0 auto;
+  text-align: center;
 `;
 
-const AuthenticateFormImg = styled.img`
-  padding-bottom: 30px;
-  width: 100px;
+const AuthenticateFormTitle = styled.div`
+  color: ${(props) => props.theme.colors.orange};
+  ${(props) => props.theme.type.main_title};
+  text-align: center;
+`;
+
+const AuthenticateInputs = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-around;
+`;
+
+const AuthenticateInputBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
@@ -92,32 +111,46 @@ const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
   };
 
   return (
-    <AuthenticateBlock>
-      <AuthenticateImage isLight={password == CORRECT_PASSWORD} />
-      <AuthenticateForm>
-        <AuthenticateFormImg src={Logo} alt={''} />
-        {invites &&
-          (invites.length === 0 || isNotMe || isNotFound ? (
-            <PrimaryInput value={name} placeholder={'First Last'} onChange={handleOnNameChange} />
+    <Container>
+      <AuthenticateBlock>
+        <AuthenticateFormTitle>Sterling & Nick</AuthenticateFormTitle>
+        <AuthenticateForm>
+          <AuthenticateInputs>
+            <AuthenticateInputBlock>
+              {!isConfirmed && (
+                <PrimaryInput
+                  value={name}
+                  placeholder={'First Last'}
+                  onChange={handleOnNameChange}
+                />
+              )}
+              {invites && invites.length > 0 && (
+                <InviteGroupList people={invites} hasTitle={false} hasNotMe={false} />
+              )}
+              {isNotFound && <div>Not found. Make sure name is as appears on the invite.</div>}
+            </AuthenticateInputBlock>
+            <AuthenticateInputBlock>
+              {(!(isConfirmed && !hasPasswordError) || hasPasswordError) && (
+                <PrimaryInput
+                  value={password}
+                  placeholder={'Password'}
+                  onChange={handleOnPasswordChange}
+                />
+              )}
+              {hasPasswordError && <div>Incorrect Password.</div>}
+            </AuthenticateInputBlock>
+          </AuthenticateInputs>
+          {isConfirmed ? (
+            <>
+              <PrimaryButton onClick={onConfirm}>Confirm</PrimaryButton>
+              <div onClick={() => setIsConfirmed(false)}>Back</div>
+            </>
           ) : (
-            <InviteGroupList people={invites} />
-          ))}
-        {isNotFound && <div>Not found. Make sure name is as appears on the invite.</div>}
-        {(!(isConfirmed && !hasPasswordError) || hasPasswordError) && (
-          <PrimaryInput
-            value={password}
-            placeholder={'PASSWORD'}
-            onChange={handleOnPasswordChange}
-          />
-        )}
-        {hasPasswordError && <div>Incorrect Password.</div>}
-        {isConfirmed ? (
-          <PrimaryButton onClick={onConfirm}>Confirm</PrimaryButton>
-        ) : (
-          <PrimaryButton onClick={onSubmit}>Submit</PrimaryButton>
-        )}
-      </AuthenticateForm>
-    </AuthenticateBlock>
+            <PrimaryButton onClick={onSubmit}>Submit</PrimaryButton>
+          )}
+        </AuthenticateForm>
+      </AuthenticateBlock>
+    </Container>
   );
 };
 export default Authenticate;

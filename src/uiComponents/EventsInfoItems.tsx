@@ -5,37 +5,32 @@ import { AddToCalendarButton } from 'add-to-calendar-button-react';
 import React, { useState } from 'react';
 
 import { Event } from '../types';
-import EventInfoItemsDrawer from './EventInfoItemsModal';
-
-const EventItem = styled.div`
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 100px 1fr;
-  margin-bottom: 50px;
-`;
+import EventInfoItemsDrawer from './EventInfoItemsDrawer';
+import Row from './Row';
 
 const EventInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-bottom: 30px;
+  margin-left: 30px;
 `;
 
 const EventTime = styled.div`
-  border-right: 1px solid ${(props) => props.theme.colors.tan};
-  color: ${(props) => props.theme.colors.red};
+  color: ${(props) => props.theme.colors.orange};
   font-weight: bold;
-  text-wrap: none;
+  text-transform: uppercase;
+  white-space: nowrap;
 `;
 
 const EventTitle = styled.div`
-  font-size: 20px;
-  font-weight: bold;
+  ${(props) => props.theme.type.sub_page_title};
+  color: ${(props) => props.theme.colors.pink};
 `;
-
-const EventSubTitle = styled.div``;
 
 const EventLocation = styled.div`
   align-items: center;
+  color: ${(props) => props.theme.colors.green};
   cursor: pointer;
   display: flex;
   gap: 8px;
@@ -47,10 +42,11 @@ const EventLocation = styled.div`
 
 const EventWhatTo = styled.div`
   align-items: center;
-  color: ${(props) => props.theme.colors.red};
+  color: ${(props) => props.theme.colors.blue};
   cursor: pointer;
   display: flex;
   gap: 8px;
+  text-transform: uppercase;
 
   &:hover {
     text-decoration: underline;
@@ -71,38 +67,42 @@ const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
   return (
     <>
       {events.map((event) => (
-        <EventItem key={event.title}>
-          <EventTime>{event?.time}</EventTime>
-          <EventInfo>
+        <EventInfo key={event.title}>
+          <Row>
+            <EventTime>{event?.time}</EventTime>
             <EventTitle>{event.title}</EventTitle>
-            <EventLocation>
-              <LocationOnIcon />
-              {event.location}
-            </EventLocation>
-            <EventWhatTo onClick={handleToggleDrawer}>
-              <StarIcon /> What To Wear & What To Know
-            </EventWhatTo>
+          </Row>
 
-            {event.subtitle && <EventSubTitle>{event.subtitle}</EventSubTitle>}
-            <div>{event.description}</div>
+          <EventLocation>
+            <LocationOnIcon />
+            {event.location}
+          </EventLocation>
 
-            <EventInfoItemsDrawer
-              isOpen={isOpen}
-              handleToggleDrawer={handleToggleDrawer}
-              event={event}
-            />
-            <AddToCalendarButton
-              name={event.title}
-              startDate={event.startDate}
-              startTime={event.startTime}
-              endTime={event.endTime}
-              options={['iCal', 'Apple', 'Google', 'Yahoo']}
-              timeZone="America/Los_Angeles"
-              hideCheckmark={true}
-              buttonStyle="round"
-            />
-          </EventInfo>
-        </EventItem>
+          <EventWhatTo onClick={handleToggleDrawer}>
+            <StarIcon />
+            <i>What To Wear + What To Know</i>
+          </EventWhatTo>
+
+          <AddToCalendarButton
+            name={event.title}
+            startDate={event.startDate}
+            startTime={event.startTime}
+            endTime={event.endTime}
+            options={['iCal', 'Apple', 'Google', 'Yahoo']}
+            timeZone="America/Los_Angeles"
+            hideCheckmark={true}
+            styleLight="--btn-background: rgba(0, 0, 0, 0); --btn-background-hover: none; --btn-text: #fff; --btn-shadow: none; --btn-shadow-hover:none; --btn-shadow-active: none; --btn-border: none; --btn-text-hover: #f16522; margin: -1em; --font: Futura;"
+            lightMode="bodyScheme"
+            trigger={'click'}
+          />
+
+          <div>{event.description}</div>
+          <EventInfoItemsDrawer
+            isOpen={isOpen}
+            handleToggleDrawer={handleToggleDrawer}
+            event={event}
+          />
+        </EventInfo>
       ))}
     </>
   );

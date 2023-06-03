@@ -12,15 +12,17 @@ interface PrimaryInputProps {
 
 const StyledButton = styled.button<{ colorWay: PrimaryInputProps['colorWay'] }>`
   background-color: ${(props) =>
-    props.colorWay === 'secondary' ? props.theme.colors.darkTan : props.theme.colors.red};
+    props.colorWay === 'secondary' ? props.theme.colors.orange : props.theme.colors.pink};
   border: none;
-  border-radius: 3px;
+  border-radius: 8px;
   color: ${(props) => props.theme.colors.white};
   cursor: pointer;
+  font-weight: bold;
   height: 40px;
   max-width: 300px;
   outline: none;
   text-align: center;
+  text-transform: uppercase;
   transition: background-color 0.2s ease;
   width: 300px;
 

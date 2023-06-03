@@ -6,7 +6,6 @@ import { NewPerson, Person } from '../../types';
 
 const InviteGroupListBlock = styled.div`
   align-items: center;
-  border-top: 1px solid ${(props) => props.theme.colors.lightGray};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,8 +13,8 @@ const InviteGroupListBlock = styled.div`
 `;
 
 const InviteGroupListTitle = styled.div`
-  ${(props) => props.theme.type.sub_title};
-  padding: 20px 0;
+  ${(props) => props.theme.type.sub_page_title};
+  padding-bottom: 20px;
 `;
 
 const InviteGroupName = styled.div`
@@ -29,18 +28,26 @@ const InviteGroupIsNotMe = styled.div`
   text-decoration: underline;
 `;
 
-const InviteGroupList = ({ people }: { people: NewPerson[] | Person[] }) => {
+const InviteGroupList = ({
+  people,
+  hasTitle = true,
+  hasNotMe = true,
+}: {
+  people: NewPerson[] | Person[];
+  hasTitle?: boolean;
+  hasNotMe?: boolean;
+}) => {
   const { setIsNotMe } = useContext(CurInvitesContext);
 
   return (
     <InviteGroupListBlock>
-      <InviteGroupListTitle>Invite Group</InviteGroupListTitle>
+      {hasTitle && <InviteGroupListTitle>Invite Group</InviteGroupListTitle>}
       {people.map((member, i) => (
         <InviteGroupName key={member.id + i}>
           {member.first} {member.last}
         </InviteGroupName>
       ))}
-      <InviteGroupIsNotMe onClick={() => setIsNotMe(true)}>Not you?</InviteGroupIsNotMe>
+      {hasNotMe && <InviteGroupIsNotMe onClick={() => setIsNotMe(true)}>Back</InviteGroupIsNotMe>}
     </InviteGroupListBlock>
   );
 };

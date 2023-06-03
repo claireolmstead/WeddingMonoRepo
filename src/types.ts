@@ -8,9 +8,10 @@ export type Event = {
   startTime: string;
   endTime: string;
   location?: string;
-  description?: string;
-  whatToWear?: string;
-  whatToKnow?: string;
+  description?: string | ReactElement;
+  whatToWear?: ReactElement;
+  whatToKnow?: ReactElement;
+  images?: string[];
 };
 
 export type DaySchedule = {

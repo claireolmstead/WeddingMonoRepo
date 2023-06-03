@@ -1,8 +1,14 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
+import RegistryBackgroundImg from '../images/wideshot/RegistryBackground.jpg';
 import Container from '../uiComponents/Container';
 import PrimaryButton from '../uiComponents/PrimaryButton';
+
+const RegistryBackground = styled.img`
+  ${(props) => props.theme.mixins.backgroundImage};
+  background-image: url(${RegistryBackgroundImg});
+`;
 
 const RegistryContainer = styled(Container)`
   align-items: center;
@@ -19,11 +25,8 @@ const RegistryContainer = styled(Container)`
 const Registry = () => {
   return (
     <>
+      <RegistryBackground />
       <RegistryContainer>
-        <h2>
-          Your presence means the world to us and is all we ask for. If you&apos;d still like to
-          contribute to our registry, please use the links below.
-        </h2>
         <a
           href={
             'https://www.bloomingdales.com/registry/wedding/guest/STERLING-OLMSTEAD-NICK-REYNOLDS/?registryId=7437693'

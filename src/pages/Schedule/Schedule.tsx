@@ -3,64 +3,69 @@ import React from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
 import { schedule } from '../../consts/schedule';
+import ScheduleBackgroundImage from '../../images/ScheduleBackground.jpg';
 import EventsInfoItems from '../../uiComponents/EventsInfoItems';
 import { MaxWidthWrapper } from '../../uiComponents/MaxWidthWrapper';
 
-const ListItemWrapper = styled.div`
-  display: block;
-  position: relative;
-  width: 100%;
+const ScheduleBackground = styled.div`
+  ${(props) => props.theme.mixins.backgroundImage};
+  background-color: ${(props) => props.theme.colors.lightBlue};
 `;
 
-const ListItemInfo = styled.div``;
+const ScheduleBackgroundImg = styled.div`
+  ${(props) => props.theme.mixins.backgroundImage};
+  background-image: url(${ScheduleBackgroundImage});
+  max-width: 30%;
+`;
+
+const ScheduleGrid = styled.div`
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+`;
 
 const ListItemTitle = styled.div`
-  ${(props) => props.theme.type.page_title};
+  ${(props) => props.theme.type.sub_title};
+  align-self: flex-start;
   padding-bottom: 20px;
+  text-align: left;
 `;
 
-const ScheduleItemBlock = styled(Parallax)<{ isEven: boolean }>`
+const ScheduleItemBlock = styled(Parallax)`
   align-items: center;
-  background-color: ${(props) =>
-    props.isEven ? `rgba(255, 255, 255, 0.9)` : `rgba(0, 0, 0, 0.9)`};
-  color: ${(props) => (props.isEven ? props.theme.colors.black : props.theme.colors.white)};
+  background-color: rgba(255, 255, 255, 0.2);
   display: flex;
-  flex-direction: ${(props) => (props.isEven ? 'row' : 'row-reverse')};
-  height: 100vh;
+  justify-content: flex-end;
+  min-height: 100vh;
+  width: 70%;
 `;
 
-const ScheduleMaxWidthWrapper = styled(MaxWidthWrapper)<{ isEven: boolean }>`
+const ScheduleMaxWidthWrapper = styled(MaxWidthWrapper)`
   align-items: center;
-  color: ${(props) => (props.isEven ? props.theme.colors.black : props.theme.colors.white)};
+  color: ${(props) => props.theme.colors.white};
   display: flex;
-  flex-direction: ${(props) => (props.isEven ? 'row' : 'row-reverse')};
-  gap: 50px;
-`;
-
-const ScheduleImg = styled.img<{ imageUrl: string }>`
-  background-image: url(${(props) => props.imageUrl});
-  background-size: cover;
-  border: none;
-  height: 500px;
-  width: 400px;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  max-width: 800px;
+  padding: 30px;
 `;
 
 const Schedule = () => {
   return (
     <>
-      {schedule.map((item, index) => (
-        <ScheduleItemBlock key={index} isEven={index % 2 === 0} speed={index % 2 === 0 ? 20 : -10}>
-          <ScheduleMaxWidthWrapper isEven={index % 2 === 0}>
-            <ScheduleImg imageUrl={item.img} />
-            <ListItemWrapper key={item.title}>
-              <ListItemInfo>
-                <ListItemTitle>{item.title}</ListItemTitle>
-                <EventsInfoItems events={item.events} />
-              </ListItemInfo>
-            </ListItemWrapper>
-          </ScheduleMaxWidthWrapper>
-        </ScheduleItemBlock>
-      ))}
+      <ScheduleBackground />
+      <ScheduleBackgroundImg />
+      <ScheduleGrid>
+        {schedule.map((item, index) => (
+          <ScheduleItemBlock key={index} speed={index % 2 === 0 ? 20 : -10}>
+            <ScheduleMaxWidthWrapper>
+              <ListItemTitle>{item.date}</ListItemTitle>
+              <EventsInfoItems events={item.events} />
+            </ScheduleMaxWidthWrapper>
+          </ScheduleItemBlock>
+        ))}
+      </ScheduleGrid>
     </>
   );
 };

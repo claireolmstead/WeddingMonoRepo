@@ -26,6 +26,7 @@
     "react-scripts": "5.0.1",
     "react-scroll-parallax": "^3.3.2",
     "rellax": "^1.12.1",
+    "swiper": "^9.3.2",
     "web-vitals": "^2.1.4",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   },

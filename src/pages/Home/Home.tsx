@@ -3,33 +3,35 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { ScreenSizes } from '../../consts/vars';
+import HomeBackgroundImg from '../../images/wideshot/HomeBackground.jpg';
 import Container from '../../uiComponents/Container';
-import PrimaryButton from '../../uiComponents/PrimaryButton';
 
-const HomeBlock = styled.div`
-  width: 100%;
+const HomeBackground = styled.img`
+  ${(props) => props.theme.mixins.backgroundImage};
+  background-image: url(${HomeBackgroundImg});
+  background-position: top;
+
+  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+    background-position: center;
+  }
 `;
 
 const HomeContent = styled(Container)`
   box-sizing: border-box;
-  text-align: center;
-  width: 100%;
-`;
-
-const HomeContentInner = styled.div`
   position: relative;
   text-align: center;
-  transform: translateZ(-999px);
   width: 100%;
 `;
 
 const HomeDate = styled.div`
-  color: ${(props) => props.theme.colors.tan};
+  color: ${(props) => props.theme.colors.orange};
   font-size: 14px;
-  text-align: center;
+  font-weight: bold;
 
   @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
     font-size: 16px;
+    color: ${(props) => props.theme.colors.white};
+    font-weight: bold;
   }
 
   @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
@@ -38,71 +40,53 @@ const HomeDate = styled.div`
 `;
 
 const HomeInviteBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   margin: 50px 0;
 
   @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
-    margin: 60px 0;
+    margin: 40px 0;
   }
 
   @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
-    margin: 70px 0;
+    margin: 40px 0;
   }
 `;
 
-const HomeJoinUs = styled.div`
-  font-size: 20px;
-  margin-bottom: 0;
-
-  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
-    margin-bottom: 8px;
-  }
-
-  @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
-    margin-bottom: 16px;
-  }
-`;
-
-const HomeTo = styled.div`
+const HomeNames = styled.div`
   ${(props) => props.theme.type.main_title};
-  font-size: 20px;
-
-  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
-    font-size: 28px;
-  }
-
-  @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
-    font-size: 38px;
-  }
-`;
-
-const HomeNames = styled.h2`
-  ${(props) => props.theme.type.main_title};
-  color: ${(props) => props.theme.colors.red};
-  font-weight: normal;
+  color: ${(props) => props.theme.colors.orange};
   line-height: 1;
-  margin: 30px;
+`;
+
+const HomeRSVP = styled(Link)`
+  align-items: center;
+  background-color: ${(props) => props.theme.colors.pink};
+  border-radius: 50px 0 0 50px;
+  display: flex;
+  filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.2));
+  font-weight: bold;
+  height: 60px;
+  justify-content: center;
+  position: fixed;
+  right: 0;
+  top: 400px;
+  width: 150px;
 `;
 
 const Home = () => {
   return (
-    <HomeBlock>
+    <>
+      <HomeBackground />
       <HomeContent>
-        {document.fonts && (
-          <HomeContentInner>
-            <HomeDate>OCTOBER 27, 2023 • RIMROCK RANCH • PIONEERTOWN, CA</HomeDate>
-            <HomeInviteBlock>
-              <HomeJoinUs>please join us for the wedding of</HomeJoinUs>
-              <HomeNames>STERLING CLAIRE OLMSTEAD</HomeNames>
-              <HomeTo>TO</HomeTo>
-              <HomeNames>NICHOLAS MAX REYNOLDS</HomeNames>
-            </HomeInviteBlock>
-            <Link to={'/rsvp'}>
-              <PrimaryButton>RSVP</PrimaryButton>
-            </Link>
-          </HomeContentInner>
-        )}
+        <HomeInviteBlock>
+          <HomeNames>STERLING & NICK</HomeNames>
+          <HomeDate>OCTOBER 27, 2023 | PIONEERTOWN, CA</HomeDate>
+        </HomeInviteBlock>
+        <HomeRSVP to={'/rsvp'}>RSVP</HomeRSVP>
       </HomeContent>
-    </HomeBlock>
+    </>
   );
 };
 

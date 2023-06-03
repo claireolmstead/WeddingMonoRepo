@@ -9,17 +9,17 @@ interface PrimaryInputProps {
 }
 
 const StyledInput = styled.input`
-  background-color: ${(props) => props.theme.colors.tan};
+  background-color: ${(props) => props.theme.colors.orange};
   border: none;
-  border-radius: 3px;
-  color: ${(props) => props.theme.colors.red};
+  border-radius: 8px;
+  color: ${(props) => props.theme.colors.white};
   height: 40px;
   outline: none;
   text-align: center;
   width: 350px;
 
   &::placeholder {
-    color: ${(props) => props.theme.colors.red};
+    color: ${(props) => props.theme.colors.white};
     opacity: 0.55;
   }
 `;

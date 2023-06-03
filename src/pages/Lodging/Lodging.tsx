@@ -3,10 +3,9 @@ import React from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
 import { lodging } from '../../consts/accommodations';
-import Landscape2 from '../../images/Pioneertown/Landscape2.jpg';
-import Landscape3 from '../../images/Pioneertown/Landscape3.jpg';
 import Container from '../../uiComponents/Container';
 import LodgingListItemBlock from '../../uiComponents/LodgingListItemBlock';
+import LodgingImages from './LodgingImages';
 
 const LodgingTitleBlock = styled.div`
   align-items: center;
@@ -20,58 +19,32 @@ const LodgingTitle = styled.div`
 `;
 
 const LodgingBlock = styled.div`
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px 0;
+  position: relative;
+`;
+
+const LodgingBlockContainer = styled(Container)`
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr 1fr;
 `;
 
-const LodgingParallaxImages = styled.div`
-  align-items: end;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-`;
-
-const LodgingLandscape = styled.div<{ url: string }>`
-  background-image: url(${(props) => props.url});
-  background-size: cover;
-  height: 250px;
-  width: 400px;
-`;
-
-const LodgingItemBlock = styled(Parallax)`
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: ${(props) => props.theme.colors.black};
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-`;
-
 const Lodging = () => {
   return (
     <>
-      <LodgingItemBlock speed={20}>
-        <Container>
-          <LodgingTitleBlock>
-            <LodgingTitle>Pioneertown, CA</LodgingTitle>
-            <div>Stay + Play</div>
-          </LodgingTitleBlock>
-          <LodgingBlock>
-            <LodgingParallaxImages>
-              <Parallax>
-                <LodgingLandscape url={Landscape2} />
-              </Parallax>
-              <Parallax>
-                <LodgingLandscape url={Landscape3} />
-              </Parallax>
-            </LodgingParallaxImages>
-            <Parallax speed={0}>
-              <LodgingListItemBlock list={lodging} />
-            </Parallax>
-          </LodgingBlock>
-        </Container>
-      </LodgingItemBlock>
+      <Container>
+        <LodgingTitleBlock>
+          <LodgingTitle>Pioneertown, CA</LodgingTitle>
+          <div>Stay + Play</div>
+        </LodgingTitleBlock>
+      </Container>
+      <LodgingBlock>
+        <LodgingBlockContainer>
+          <LodgingImages />
+          <LodgingListItemBlock list={lodging} />
+        </LodgingBlockContainer>
+      </LodgingBlock>
     </>
   );
 };
