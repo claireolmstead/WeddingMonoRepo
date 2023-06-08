@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { CORRECT_PASSWORD } from '../../consts/vars';
 import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { getInvites } from '../../hooks/getInvitesFromId';
+import LoginBackgroundImg from '../../images/wideshot/LoginBackground.jpg';
 import Container from '../../uiComponents/Container';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 import PrimaryInput from '../../uiComponents/PrimaryInput';
@@ -13,6 +14,12 @@ import InviteGroupList from '../Admin/InviteGroupList';
 interface AuthenticateProps {
   setAuthenticated: () => void;
 }
+
+const AuthenticateBackground = styled.img`
+  ${(props) => props.theme.mixins.backgroundImage};
+  background-image: url(${LoginBackgroundImg});
+  background-position: top;
+`;
 
 const AuthenticateBlock = styled.div`
   align-items: center;
@@ -111,46 +118,49 @@ const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
   };
 
   return (
-    <Container>
-      <AuthenticateBlock>
-        <AuthenticateFormTitle>Sterling & Nick</AuthenticateFormTitle>
-        <AuthenticateForm>
-          <AuthenticateInputs>
-            <AuthenticateInputBlock>
-              {!isConfirmed && (
-                <PrimaryInput
-                  value={name}
-                  placeholder={'First Last'}
-                  onChange={handleOnNameChange}
-                />
-              )}
-              {invites && invites.length > 0 && (
-                <InviteGroupList people={invites} hasTitle={false} hasNotMe={false} />
-              )}
-              {isNotFound && <div>Not found. Make sure name is as appears on the invite.</div>}
-            </AuthenticateInputBlock>
-            <AuthenticateInputBlock>
-              {(!(isConfirmed && !hasPasswordError) || hasPasswordError) && (
-                <PrimaryInput
-                  value={password}
-                  placeholder={'Password'}
-                  onChange={handleOnPasswordChange}
-                />
-              )}
-              {hasPasswordError && <div>Incorrect Password.</div>}
-            </AuthenticateInputBlock>
-          </AuthenticateInputs>
-          {isConfirmed ? (
-            <>
-              <PrimaryButton onClick={onConfirm}>Confirm</PrimaryButton>
-              <div onClick={() => setIsConfirmed(false)}>Back</div>
-            </>
-          ) : (
-            <PrimaryButton onClick={onSubmit}>Submit</PrimaryButton>
-          )}
-        </AuthenticateForm>
-      </AuthenticateBlock>
-    </Container>
+    <>
+      <AuthenticateBackground />
+      <Container>
+        <AuthenticateBlock>
+          <AuthenticateFormTitle>Sterling & Nick</AuthenticateFormTitle>
+          <AuthenticateForm>
+            <AuthenticateInputs>
+              <AuthenticateInputBlock>
+                {!isConfirmed && (
+                  <PrimaryInput
+                    value={name}
+                    placeholder={'First Last'}
+                    onChange={handleOnNameChange}
+                  />
+                )}
+                {invites && invites.length > 0 && (
+                  <InviteGroupList people={invites} hasTitle={false} hasNotMe={false} />
+                )}
+                {isNotFound && <div>Not found. Make sure name is as appears on the invite.</div>}
+              </AuthenticateInputBlock>
+              <AuthenticateInputBlock>
+                {(!(isConfirmed && !hasPasswordError) || hasPasswordError) && (
+                  <PrimaryInput
+                    value={password}
+                    placeholder={'Password'}
+                    onChange={handleOnPasswordChange}
+                  />
+                )}
+                {hasPasswordError && <div>Incorrect Password.</div>}
+              </AuthenticateInputBlock>
+            </AuthenticateInputs>
+            {isConfirmed ? (
+              <>
+                <PrimaryButton onClick={onConfirm}>Confirm</PrimaryButton>
+                <div onClick={() => setIsConfirmed(false)}>Back</div>
+              </>
+            ) : (
+              <PrimaryButton onClick={onSubmit}>Submit</PrimaryButton>
+            )}
+          </AuthenticateForm>
+        </AuthenticateBlock>
+      </Container>
+    </>
   );
 };
 export default Authenticate;

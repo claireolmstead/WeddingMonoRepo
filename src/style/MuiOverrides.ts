@@ -3,7 +3,7 @@ import { colors } from './Colors';
 export const MuiOverrides = {
   palette: {
     primary: {
-      main: colors.red,
+      main: colors.white,
     },
   },
   components: {
@@ -18,7 +18,7 @@ export const MuiOverrides = {
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          color: colors.red,
+          color: colors.orange,
           padding: '0 10px 0 0',
           fontSize: '30px',
         },
@@ -34,14 +34,13 @@ export const MuiOverrides = {
     MuiTab: {
       root: {
         '&:hover': {
-          backgroundColor: colors.hoverRed,
-          color: colors.red,
+          color: colors.orange,
         },
       },
       selected: {
-        color: colors.red,
+        color: colors.orange,
         '&:hover': {
-          color: colors.hoverRed,
+          color: colors.orange,
         },
       },
     },

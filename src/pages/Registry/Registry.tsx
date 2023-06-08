@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import RegistryBackgroundImg from '../images/wideshot/RegistryBackground.jpg';
-import Container from '../uiComponents/Container';
-import PrimaryButton from '../uiComponents/PrimaryButton';
+import RegistryBackgroundImg from '../../images/wideshot/RegistryBackground.jpg';
+import Container from '../../uiComponents/Container';
+import PrimaryButton from '../../uiComponents/PrimaryButton';
 
 const RegistryBackground = styled.img`
   ${(props) => props.theme.mixins.backgroundImage};

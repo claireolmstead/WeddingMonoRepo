@@ -1,9 +1,6 @@
 import StarIcon from '@mui/icons-material/Star';
 import React from 'react';
 
-import NSImg1 from '../images/NSImg1.jpg';
-import NSImg2 from '../images/NSImg2.jpg';
-import NSImg3 from '../images/NSImg3.jpg';
 import Pickleballimg_0 from '../images/Pickleball/img.png';
 import Pickleballimg_1 from '../images/Pickleball/img_1.png';
 import Pickleballimg_2 from '../images/Pickleball/img_2.png';
@@ -42,7 +39,6 @@ export const schedule: Schedule = [
   {
     title: 'Welcome Festivities',
     date: 'Thursday | 10.26.23',
-    img: NSImg1,
     events: [
       {
         title: 'Love Birds Rehearsal Dinner',
@@ -54,7 +50,7 @@ export const schedule: Schedule = [
         description:
           'After rehearsing for the big day, celebrate Sterling and Nick with a special dinner and toasts to the love birds.',
         whatToWear: (
-          <div>
+          <div className={'column'}>
             <div className={'title'}>Romantic Country</div>
             <Row isTopAligned={true}>
               <StarIcon />
@@ -69,14 +65,13 @@ export const schedule: Schedule = [
           </div>
         ),
         whatToKnow: (
-          <div>
+          <div className={'column'}>
             <Row isTopAligned={true}>
               <StarIcon />
               After dinner, we will be going to the Red Dog Saloon to say, &quot;Adios
               Olmstead&quot; before the love birds become Mr. and Mrs. Nick Reynolds. Plan to leave
               Rimrock Ranch at 7:30pm.
             </Row>
-            <br />
             <Row isTopAligned={true}>
               <StarIcon />
               Ubers/Lyfts are limited in the area, so please arrange for a designated driver ahead
@@ -143,7 +138,6 @@ export const schedule: Schedule = [
   {
     title: 'Wedding Ceremony + Reception',
     date: 'Friday | 10.27.23',
-    img: NSImg2,
     events: [
       {
         title: 'Pioneertown Shuttle to Rimrock Ranch',
@@ -164,10 +158,11 @@ export const schedule: Schedule = [
         description:
           'Please join us to celebrate the wedding of Nick and Sterling! Arrive at Rimrock Ranch for a welcome cocktail. The ceremony begins at 3:45pm with dinner and dancing following.',
         whatToWear: (
-          <div>
+          <div className={'column'}>
             <div className={'title'}>California Cowboy Cocktail</div>
-            Celebrate Sterling and Nick’s wild romance with your finest formal Western wear.
-            <br />
+            <div className={'subtitle'}>
+              Celebrate Sterling and Nick’s wild romance with your finest formal Western wear.
+            </div>
             <Row isTopAligned={true}>
               <StarIcon />
               <b>Cowgirls:</b> Pile on turquoise jewelry and pair your favorite cowboy hat with your
@@ -181,14 +176,13 @@ export const schedule: Schedule = [
           </div>
         ),
         whatToKnow: (
-          <div>
+          <div className={'column'}>
             <Row isTopAligned={true}>
               <StarIcon />
               <b>Attire:</b> The wedding venue is entirely outdoors, and the desert nights can get
               chilly. Please bring an extra layer and opt for cowboy boots since we will be kicking
               up dust!
             </Row>
-            <br />
             <Row isTopAligned={true}>
               <StarIcon />
               <b>Transportation:</b> Rimrock Ranch has limited parking so please plan on taking
@@ -215,11 +209,10 @@ export const schedule: Schedule = [
   {
     title: 'Play - Pickleball Social',
     date: 'Saturday | 10.28.23',
-    img: NSImg3,
     events: [
       {
-        title: 'The Reynolds Wrap',
-        time: '11 - 2 pm',
+        title: 'Pickleball Social',
+        time: '1:45 pm',
         startDate: '2023-10-28',
         startTime: '11:00',
         endTime: '14:00',
@@ -231,11 +224,13 @@ export const schedule: Schedule = [
           </a>
         ),
         whatToWear: (
-          <Row isTopAligned={true}>
-            <StarIcon />
+          <div className={'column'}>
             <div className={'title'}>“Country” Club</div>
-            If you opt-in for pickleball tennis attire is a must. Think vintage country club chic.
-          </Row>
+            <Row isTopAligned={true}>
+              <StarIcon />
+              If you opt-in for pickleball tennis attire is a must. Think vintage country club chic.
+            </Row>
+          </div>
         ),
         whatToKnow: (
           <Row isTopAligned={true}>

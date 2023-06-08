@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 import { doc, setDoc } from '@firebase/firestore';
 import React from 'react';
 import { Field, Form } from 'react-final-form';
+import { Parallax } from 'react-scroll-parallax';
 
 import { db } from '../../App';
 import { ScreenSizes } from '../../consts/vars';
+import StarBorder from '../../images/StarBorder.png';
 import { Ceremony, Person, Pickleball, Welcome } from '../../types';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 
@@ -14,43 +16,72 @@ const RSVPFormContainer = styled.div`
   flex-direction: column;
   gap: 30px;
   justify-content: center;
-  padding: 30px 0;
-  width: 100%;
+  margin: 30px;
 `;
 
 const Date = styled.div`
-  color: ${(props) => props.theme.colors.red};
-  font-size: 14px;
+  //font-size: 14px;
+  color: ${(props) => props.theme.colors.orange};
   font-weight: bold;
+  margin-bottom: 10px;
 `;
 
 const Description = styled.div`
   font-size: 20px;
   margin-bottom: 30px;
+  ${(props) => props.theme.type.sub_title};
 `;
 
 const RSVPFormSectionBlock = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 30px;
-  grid-template-columns: 1fr;
   max-width: 600px;
+  width: 98vw;
+
+  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+    width: 80vw;
+  }
 
   @media only screen and (min-width: ${ScreenSizes.DESKTOP}px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    max-width: none;
+    width: 600px;
   }
 `;
 
 const RSVPFormSection = styled.div`
-  background-color: ${(props) => props.theme.colors.tan};
+  align-items: center;
+  background-image: url(${StarBorder});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: calc(100% - 20px) calc(100% - 20px);
   border-radius: 8px;
-  color: ${(props) => props.theme.colors.black};
-  padding: 30px;
+  box-shadow: -5px 8px 10px rgba(0, 0, 0, 0.2);
+  color: ${(props) => props.theme.colors.white};
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  justify-content: center;
+  padding: 50px;
+  text-align: center;
+`;
+
+const RSVPFormSection1 = styled(RSVPFormSection)`
+  background-color: ${(props) => props.theme.colors.pink};
+`;
+
+const RSVPFormSection2 = styled(RSVPFormSection)`
+  background-color: ${(props) => props.theme.colors.lightBlue};
+`;
+
+const RSVPFormSection3 = styled(RSVPFormSection)`
+  background-color: ${(props) => props.theme.colors.blue};
 `;
 
 const RSVPFormOptions = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 `;
 
 const RSVPFormButtons = styled.div`
@@ -70,9 +101,9 @@ const RSVPFormField = styled(Field)`
   align-items: center;
   appearance: none;
   background-color: ${(props) => props.theme.colors.clear};
-  border: 2px solid ${(props) => props.theme.colors.red};
+  border: 2px solid ${(props) => props.theme.colors.orange};
   border-radius: 50%;
-  color: ${(props) => props.theme.colors.red};
+  color: ${(props) => props.theme.colors.orange};
   cursor: pointer;
   font: inherit;
   height: 1.15em;
@@ -81,7 +112,7 @@ const RSVPFormField = styled(Field)`
   width: 1.15em;
 
   &:checked {
-    background-color: ${(props) => props.theme.colors.red};
+    background-color: ${(props) => props.theme.colors.orange};
   }
 `;
 
@@ -89,15 +120,16 @@ interface RSVPFormProps {
   person: Person;
   isFinalPerson: boolean;
   goToNext: () => void;
+  setIsFinished: () => void;
 }
 
-const RSVPForm = ({ person, isFinalPerson, goToNext }: RSVPFormProps) => {
+const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormProps) => {
   const onSubmit = (values: Person) => {
     const personId = (person.first + person.last).toLowerCase();
     const docRef = doc(db, 'person', `${personId}`);
     setDoc(docRef, values)
       .then(() => {
-        isFinalPerson && goToNext();
+        !isFinalPerson ? goToNext() : setIsFinished();
         console.log('Document has been updated successfully');
       })
       .catch((error) => {
@@ -111,111 +143,107 @@ const RSVPForm = ({ person, isFinalPerson, goToNext }: RSVPFormProps) => {
         key={person.id}
         initialValues={person}
         onSubmit={(values) => {
-          console.log('here');
           onSubmit(values as Person);
         }}
       >
         {({ handleSubmit, submitting }) => (
-          <form>
+          <form style={{ width: '100%' }}>
             <RSVPFormSectionBlock>
-              <RSVPFormSection>
-                <Date>Thursday, October 26, 2023</Date>
-                <Description>Welcome Party</Description>
-                <RSVPFormOptions>
-                  <RSVPFormLabel>
-                    <RSVPFormField
-                      name="welcome"
-                      component="input"
-                      type="radio"
-                      value={Welcome.ATTENDING}
-                    />
-                    Attending
-                  </RSVPFormLabel>
-                  <RSVPFormLabel>
-                    <RSVPFormField
-                      name="welcome"
-                      component="input"
-                      type="radio"
-                      value={Welcome.NOT_ATTENDING}
-                    />
-                    Not Attending
-                  </RSVPFormLabel>
-                </RSVPFormOptions>
-              </RSVPFormSection>
+              <Parallax rotateY={[-60, 60]}>
+                <RSVPFormSection1>
+                  <Date>Thursday, October 26, 2023</Date>
+                  <Description>Welcome Party</Description>
+                  <RSVPFormOptions>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        name="welcome"
+                        component="input"
+                        type="radio"
+                        value={Welcome.ATTENDING}
+                      />
+                      Attending
+                    </RSVPFormLabel>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        name="welcome"
+                        component="input"
+                        type="radio"
+                        value={Welcome.NOT_ATTENDING}
+                      />
+                      Not Attending
+                    </RSVPFormLabel>
+                  </RSVPFormOptions>
+                </RSVPFormSection1>
+              </Parallax>
 
-              <RSVPFormSection>
-                <Date>Friday, October 27, 2023</Date>
-                <Description>Wedding</Description>
-                <RSVPFormOptions>
-                  <RSVPFormLabel>
-                    <RSVPFormField
-                      name="ceremony"
-                      component="input"
-                      type="radio"
-                      value={Ceremony.SHUTTLING}
-                    />
-                    Shuttling
-                  </RSVPFormLabel>
-                  <RSVPFormLabel>
-                    <RSVPFormField
-                      name="ceremony"
-                      component="input"
-                      type="radio"
-                      value={Ceremony.NOT_ATTENDING}
-                    />
-                    Not Attending
-                  </RSVPFormLabel>
-                </RSVPFormOptions>
-              </RSVPFormSection>
+              <Parallax rotateY={[-60, 60]}>
+                <RSVPFormSection2>
+                  <Date>Friday, October 27, 2023</Date>
+                  <Description>Wedding</Description>
+                  <RSVPFormOptions>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        name="ceremony"
+                        component="input"
+                        type="radio"
+                        value={Ceremony.SHUTTLING}
+                      />
+                      Shuttling
+                    </RSVPFormLabel>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        name="ceremony"
+                        component="input"
+                        type="radio"
+                        value={Ceremony.NOT_ATTENDING}
+                      />
+                      Not Attending
+                    </RSVPFormLabel>
+                  </RSVPFormOptions>
+                </RSVPFormSection2>
+              </Parallax>
 
-              <RSVPFormSection>
-                <Date>Saturday, October 28, 2023</Date>
-                <Description>Pickle-ball Social</Description>
-                <RSVPFormOptions>
-                  <RSVPFormLabel>
-                    <RSVPFormField
-                      name="pickleball"
-                      component="input"
-                      type="radio"
-                      value={Pickleball.PLAYING}
-                    />
-                    Playing
-                  </RSVPFormLabel>
-                  <RSVPFormLabel>
-                    <RSVPFormField
-                      name="pickleball"
-                      component="input"
-                      type="radio"
-                      value={Pickleball.ATTENDING}
-                    />
-                    Attending
-                  </RSVPFormLabel>
-                  <RSVPFormLabel>
-                    <RSVPFormField
-                      name="pickleball"
-                      component="input"
-                      type="radio"
-                      value={Pickleball.NOT_ATTENDING}
-                    />
-                    Not Attending
-                  </RSVPFormLabel>
-                </RSVPFormOptions>
-              </RSVPFormSection>
+              <Parallax rotateY={[-60, 60]}>
+                <RSVPFormSection3>
+                  <Date>Saturday, October 28, 2023</Date>
+                  <Description>Pickleball Social</Description>
+                  <RSVPFormOptions>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        name="pickleball"
+                        component="input"
+                        type="radio"
+                        value={Pickleball.PLAYING}
+                      />
+                      Playing
+                    </RSVPFormLabel>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        name="pickleball"
+                        component="input"
+                        type="radio"
+                        value={Pickleball.ATTENDING}
+                      />
+                      Attending
+                    </RSVPFormLabel>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        name="pickleball"
+                        component="input"
+                        type="radio"
+                        value={Pickleball.NOT_ATTENDING}
+                      />
+                      Not Attending
+                    </RSVPFormLabel>
+                  </RSVPFormOptions>
+                </RSVPFormSection3>
+              </Parallax>
             </RSVPFormSectionBlock>
 
             <RSVPFormButtons>
               <PrimaryButton disabled={submitting} onClick={handleSubmit}>
                 {isFinalPerson ? 'Submit' : 'Next'}
               </PrimaryButton>
-              {/*{person.welcome && person.ceremony && person.pickleball && (*/}
-              {/*  <PrimaryButton*/}
-              {/*    disabled={submitting}*/}
-              {/*    onClick={() => setSuccess(true)}*/}
-              {/*    colorWay={'secondary'}*/}
-              {/*  >*/}
-              {/*    Cancel*/}
-              {/*  </PrimaryButton>*/}
-              {/*)}*/}
             </RSVPFormButtons>
           </form>
         )}

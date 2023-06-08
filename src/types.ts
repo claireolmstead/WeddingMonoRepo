@@ -18,7 +18,6 @@ export type DaySchedule = {
   title: string;
   description?: string;
   date: string;
-  img: string;
   events: Event[];
 };
 

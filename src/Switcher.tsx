@@ -15,10 +15,9 @@ import Admin from './pages/Admin/Admin';
 import Authenticate from './pages/Authenticate/Authenticate';
 import Home from './pages/Home/Home';
 import Lodging from './pages/Lodging/Lodging';
+import Registry from './pages/Registry/Registry';
 import RSVP from './pages/RSVP/RSVP';
 import Schedule from './pages/Schedule/Schedule';
-import Us from './pages/Us/Us';
-import Registry from './Registry/Registry';
 
 const AppBody = styled.div`
   color: ${(props) => props.theme.colors.white};
@@ -56,7 +55,6 @@ const Switcher = () => {
         <Route path="/rsvp" element={<RSVP />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/lodging" element={<Lodging />} />
-        <Route path="/us" element={<Us />} />
         <Route path="/registry" element={<Registry />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>

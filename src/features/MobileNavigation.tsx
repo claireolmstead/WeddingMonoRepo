@@ -18,7 +18,7 @@ const HamburgerMenuIcon = styled(DehazeIcon)`
   transition: all 0.7s;
 
   &:hover {
-    color: ${(props) => props.theme.colors.red};
+    color: ${(props) => props.theme.colors.orange};
   }
 `;
 
@@ -29,25 +29,29 @@ const DrawerItems = styled.div`
   width: 90vw;
 
   .active {
-    background-color: ${(props) => props.theme.colors.tan};
+    background-color: ${(props) => props.theme.colors.lightBlue};
   }
 `;
 
 const DrawerTopItem = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.lightGray};
   display: flex;
   justify-content: space-between;
   padding: 8px 20px;
 `;
 
 const DrawerLogo = styled.img`
-  background-color: ${(props) => props.theme.colors.lightGray};
   height: 40px;
 `;
 
 const ExitIcon = styled(CloseIcon)`
+  color: ${(props) => props.theme.colors.black};
   cursor: pointer;
+  transition: all 0.3s;
+  &:hover,
+  &:active {
+    color: ${(props) => props.theme.colors.pink};
+  }
 `;
 
 const DrawerNavLink = styled(NavLink)`
@@ -58,7 +62,7 @@ const DrawerNavLink = styled(NavLink)`
 
   &:hover,
   &:active {
-    background-color: ${(props) => props.theme.colors.tan};
+    background-color: ${(props) => props.theme.colors.lightBlue};
     text-decoration: none;
   }
 
@@ -92,9 +96,8 @@ const MobileNavigation = () => {
             <DrawerNavLink to="/rsvp" onClick={() => setIsOpen(false)}>
               RSVP
             </DrawerNavLink>
-            <DrawerNavLink to="/registry">Registry</DrawerNavLink>
-            <DrawerNavLink to="/us" onClick={() => setIsOpen(false)}>
-              Us
+            <DrawerNavLink to="/registry" onClick={() => setIsOpen(false)}>
+              Registry
             </DrawerNavLink>
           </DrawerItems>
         </Drawer>

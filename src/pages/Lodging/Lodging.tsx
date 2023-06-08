@@ -3,6 +3,7 @@ import React from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
 import { lodging } from '../../consts/accommodations';
+import RegistryBackgroundImg from '../../images/wideshot/RegistryBackground.jpg';
 import Container from '../../uiComponents/Container';
 import LodgingListItemBlock from '../../uiComponents/LodgingListItemBlock';
 import LodgingImages from './LodgingImages';
@@ -30,9 +31,15 @@ const LodgingBlockContainer = styled(Container)`
   grid-template-columns: 1fr 1fr;
 `;
 
+const LodgingBackground = styled.img`
+  ${(props) => props.theme.mixins.backgroundImage};
+  background-image: url(${RegistryBackgroundImg});
+`;
+
 const Lodging = () => {
   return (
     <>
+      <LodgingBackground />
       <Container>
         <LodgingTitleBlock>
           <LodgingTitle>Pioneertown, CA</LodgingTitle>

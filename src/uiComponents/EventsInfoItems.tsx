@@ -78,10 +78,12 @@ const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
             {event.location}
           </EventLocation>
 
-          <EventWhatTo onClick={handleToggleDrawer}>
-            <StarIcon />
-            <i>What To Wear + What To Know</i>
-          </EventWhatTo>
+          {event.whatToWear && (
+            <EventWhatTo onClick={handleToggleDrawer}>
+              <StarIcon />
+              <i>What To Wear + What To Know</i>
+            </EventWhatTo>
+          )}
 
           <AddToCalendarButton
             name={event.title}

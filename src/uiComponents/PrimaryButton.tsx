@@ -12,7 +12,7 @@ interface PrimaryInputProps {
 
 const StyledButton = styled.button<{ colorWay: PrimaryInputProps['colorWay'] }>`
   background-color: ${(props) =>
-    props.colorWay === 'secondary' ? props.theme.colors.orange : props.theme.colors.pink};
+    props.colorWay === 'secondary' ? props.theme.colors.lightBlue : props.theme.colors.pink};
   border: none;
   border-radius: 8px;
   color: ${(props) => props.theme.colors.white};
@@ -29,19 +29,19 @@ const StyledButton = styled.button<{ colorWay: PrimaryInputProps['colorWay'] }>`
   &:hover {
     background-color: ${(props) =>
       props.colorWay === 'secondary'
-        ? props.theme.colors.hoverDarkTan
-        : props.theme.colors.hoverRed};
+        ? props.theme.colors.lightBlueHover
+        : props.theme.colors.pinkHover};
   }
 
   &:disabled:hover {
-    background-color: ${(props) => props.theme.colors.disabledRed};
+    background-color: ${(props) => props.theme.colors.lightGray};
   }
 
   &:active {
     background-color: ${(props) =>
       props.colorWay === 'secondary'
-        ? props.theme.colors.hoverDarkTan
-        : props.theme.colors.hoverRed};
+        ? props.theme.colors.lightBlueHover
+        : props.theme.colors.pinkHover};
   }
 `;
 

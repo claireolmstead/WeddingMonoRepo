@@ -2,9 +2,16 @@ import styled from '@emotion/styled';
 import React, { useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../../context/CurInvitesContext';
+import HomeBackgroundImg from '../../images/wideshot/HomeBackground.jpg';
 import Container from '../../uiComponents/Container';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 import RSVPFormList from './RSVPFormList';
+
+const RSVPBackground = styled.img`
+  ${(props) => props.theme.mixins.backgroundImage};
+  background-image: url(${HomeBackgroundImg});
+  background-position: top;
+`;
 
 const RSVPContainer = styled(Container)`
   align-items: center;
@@ -15,10 +22,15 @@ const RSVPContainer = styled(Container)`
 `;
 
 const RSVPName = styled.div`
-  color: ${(props) => props.theme.colors.red};
+  color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.type.main_body};
   font-size: 28px;
   font-weight: bold;
+`;
+
+const RSVPTitle = styled.div`
+  ${(props) => props.theme.type.sub_title};
+  color: ${(props) => props.theme.colors.orange};
 `;
 
 const RSVP = () => {
@@ -29,26 +41,22 @@ const RSVP = () => {
 
   return (
     <>
+      <RSVPBackground />
       <RSVPContainer>
-        <h1>RSVP</h1>
+        <RSVPTitle>{hasAllRsvped && !isEditing ? 'Successful RSVP!' : 'RSVP'}</RSVPTitle>
         {hasAllRsvped && !isEditing ? (
           <>
-            <div>Successful RSVP!</div>
             {invites.map((person) => (
               <RSVPName key={person.id}>
                 {person.first} {person.last}
               </RSVPName>
             ))}
-            <PrimaryButton
-              type={'button'}
-              colorWay={'secondary'}
-              onClick={() => setIsEditing(true)}
-            >
+            <PrimaryButton type={'button'} onClick={() => setIsEditing(true)}>
               Edit RSVP
             </PrimaryButton>
           </>
         ) : (
-          <RSVPFormList invites={invites} />
+          <RSVPFormList invites={invites} setIsFinished={() => setIsEditing(false)} />
         )}
       </RSVPContainer>
     </>

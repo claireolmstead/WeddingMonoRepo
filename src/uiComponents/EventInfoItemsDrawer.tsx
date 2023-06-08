@@ -10,16 +10,35 @@ import { Event } from '../types';
 
 const ModalInner = styled.div`
   align-items: center;
+  align-self: center;
   background-color: ${(props) => props.theme.colors.white};
   border-radius: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  font-size: 16px;
   gap: 20px;
   height: 100vh;
   justify-content: center;
-  overflow: scroll;
+  max-width: 1200px;
   padding: 16px;
+
+  .title {
+    color: ${(props) => props.theme.colors.pink};
+    ${(props) => props.theme.type.sub_page_title};
+    font-size: 18px;
+  }
+
+  .subtitle {
+    color: ${(props) => props.theme.colors.green};
+    font-size: 18px;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 
   @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
     padding: 30px 50px;
@@ -27,8 +46,9 @@ const ModalInner = styled.div`
 `;
 
 const EventInfoItemsModalImage = styled.img`
-  max-height: 300px;
-  max-width: 300px;
+  height: 300px;
+  object-fit: cover;
+  width: 300px;
 `;
 
 const ExitIcon = styled(CloseIcon)`
@@ -48,6 +68,10 @@ const DrawerSubTitle = styled.div`
   color: ${(props) => props.theme.colors.lightBlue};
 `;
 
+const DrawerTextBlock = styled.div`
+  align-self: flex-start;
+`;
+
 interface EventInfoItemsModalProps {
   event: Event;
   isOpen: boolean;
@@ -61,7 +85,7 @@ const EventInfoItemsDrawer = ({ event, isOpen, handleToggleDrawer }: EventInfoIt
         <ExitIcon onClick={handleToggleDrawer} />
         <DrawerTitle>{event.title}</DrawerTitle>
         <DrawerSubTitle>WHAT TO WEAR</DrawerSubTitle>
-        <div>{event.whatToWear}</div>
+        <DrawerTextBlock>{event.whatToWear}</DrawerTextBlock>
         {event?.images && (
           <Swiper
             modules={[Autoplay, Keyboard, Scrollbar, Zoom, Navigation]}
@@ -70,9 +94,9 @@ const EventInfoItemsDrawer = ({ event, isOpen, handleToggleDrawer }: EventInfoIt
             keyboard={true}
             scrollbar={true}
             loop={true}
-            style={{ width: '75vw', maxWidth: '1000px' }}
+            style={{ width: '75vw', maxWidth: '1200px' }}
             spaceBetween={0}
-            slidesPerView={5}
+            slidesPerView={4}
           >
             {event.images.map((image) => (
               <SwiperSlide key={image}>
@@ -82,7 +106,7 @@ const EventInfoItemsDrawer = ({ event, isOpen, handleToggleDrawer }: EventInfoIt
           </Swiper>
         )}
         <DrawerSubTitle>WHAT TO KNOW</DrawerSubTitle>
-        <div>{event.whatToKnow}</div>
+        <DrawerTextBlock>{event.whatToKnow}</DrawerTextBlock>
       </ModalInner>
     </Drawer>
   );

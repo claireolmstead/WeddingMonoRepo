@@ -17,13 +17,13 @@ const TableHeadCell = styled(TableCell)`
   font-weight: bold;
   text-transform: uppercase;
   &:hover {
-    color: ${(props) => props.theme.colors.hoverDarkTan};
+    color: ${(props) => props.theme.colors.pinkHover};
   }
 `;
 
 const RsvpListBlock = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.tan};
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 10px;
   color: black;
   display: flex;
