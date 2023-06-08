@@ -5,6 +5,7 @@ import { Autoplay, Keyboard, Navigation, Scrollbar, Zoom } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ScreenSizes } from '../../consts/vars';
+import HomeBackgroundImg from '../../images/HomeBackgroundImg.jpg';
 import img1 from '../../images/Us/img1.jpg';
 import img2 from '../../images/Us/img2.jpg';
 import img3 from '../../images/Us/img3.jpg';
@@ -16,7 +17,6 @@ import img8 from '../../images/Us/img8.jpg';
 import img9 from '../../images/Us/img9.jpg';
 import img10 from '../../images/Us/img10.jpg';
 import img11 from '../../images/Us/img11.jpg';
-import HomeBackgroundImg from '../../images/wideshot/HomeBackground.jpg';
 import Container from '../../uiComponents/Container';
 
 const HomeBackground = styled.img`

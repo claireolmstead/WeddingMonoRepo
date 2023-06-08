@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React, { useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../../context/CurInvitesContext';
-import HomeBackgroundImg from '../../images/wideshot/HomeBackground.jpg';
+import HomeBackgroundImg from '../../images/HomeBackgroundImg.jpg';
 import Container from '../../uiComponents/Container';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 import RSVPFormList from './RSVPFormList';

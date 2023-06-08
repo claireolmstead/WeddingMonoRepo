@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { CORRECT_PASSWORD } from '../../consts/vars';
 import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { getInvites } from '../../hooks/getInvitesFromId';
-import LoginBackgroundImg from '../../images/wideshot/LoginBackground.jpg';
+import LoginBackgroundImg from '../../images/LoginBackgroundImg.jpg';
 import Container from '../../uiComponents/Container';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 import PrimaryInput from '../../uiComponents/PrimaryInput';

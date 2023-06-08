@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { lodging } from '../../consts/accommodations';
-import RegistryBackgroundImg from '../../images/wideshot/RegistryBackground.jpg';
+import RegistryBackgroundImg from '../../images/RegistryBackground.jpg';
 import Container from '../../uiComponents/Container';
 import LodgingListItemBlock from '../../uiComponents/LodgingListItemBlock';
 import LodgingImages from './LodgingImages';
