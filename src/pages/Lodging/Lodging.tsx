@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { Parallax } from 'react-scroll-parallax';
 
 import { lodging } from '../../consts/accommodations';
 import RegistryBackgroundImg from '../../images/wideshot/RegistryBackground.jpg';

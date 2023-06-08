@@ -38,11 +38,19 @@ const ModalInner = styled.div`
 
 const CreateInviteGroupTitle = styled.div`
   ${(props) => props.theme.type.sub_title};
+  text-align: center;
 `;
 
 const NamesRow = styled.div`
   display: flex;
   gap: 20px;
+`;
+
+const CreateInviteGroupButton = styled(PrimaryButton)`
+  max-width: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: auto;
 `;
 
 const CreateInviteGroup = () => {
@@ -98,7 +106,9 @@ const CreateInviteGroup = () => {
 
   return (
     <>
-      <PrimaryButton onClick={() => setIsOpen(true)}>Create a new invite group</PrimaryButton>
+      <CreateInviteGroupButton onClick={() => setIsOpen(true)}>
+        Create a new invite group
+      </CreateInviteGroupButton>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <ModalInner>
           <CreateInviteGroupTitle>Create A New Invite Group</CreateInviteGroupTitle>
