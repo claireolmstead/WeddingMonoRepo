@@ -16,6 +16,12 @@ interface TabPanelProps {
   value: number;
 }
 
+const RSVPFormTabs = styled(Tabs)`
+  .MuiTabs-scrollButtons.Mui-disabled {
+    opacity: 0.3;
+  }
+`;
+
 const RSVPFormTab = styled(Tab)`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.type.main_body};
@@ -46,11 +52,17 @@ const RSVPFormList = ({ invites, setIsFinished }: RSVPFormListProps) => {
   };
   return (
     <>
-      <Tabs value={value} onChange={handleChange}>
+      <RSVPFormTabs
+        value={value}
+        onChange={handleChange}
+        variant="scrollable"
+        scrollButtons
+        allowScrollButtonsMobile
+      >
         {invites?.map((person) => (
-          <RSVPFormTab label={`${person.first} ${person.last}`} key={person.id} />
+          <RSVPFormTab label={`${person.first} ${person.last}`} key={person.id} wrapped />
         ))}
-      </Tabs>
+      </RSVPFormTabs>
       {invites?.map((person, index) => (
         <TabPanel value={value} index={index} key={person.id}>
           <RSVPForm

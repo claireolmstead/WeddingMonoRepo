@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 import CloseIcon from '@mui/icons-material/Close';
 import { Drawer } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Autoplay, Keyboard, Navigation, Scrollbar, Zoom } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ScreenSizes } from '../consts/vars';
+import { ScreenContext } from '../context/ScreenContext';
 import { Event } from '../types';
 
-const ModalInner = styled.div`
+const ModalInner = styled.div<{ isMobile: boolean }>`
   align-items: center;
   align-self: center;
   background-color: ${(props) => props.theme.colors.white};
@@ -17,7 +18,7 @@ const ModalInner = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 16px;
-  gap: 20px;
+  gap: ${(props) => (props.isMobile ? '10px' : '20px')};
   height: 100vh;
   justify-content: center;
   max-width: 1200px;
@@ -61,6 +62,7 @@ const ExitIcon = styled(CloseIcon)`
 const DrawerTitle = styled.div`
   ${(props) => props.theme.type.sub_title};
   color: ${(props) => props.theme.colors.orange};
+  text-align: center;
 `;
 
 const DrawerSubTitle = styled.div`
@@ -79,9 +81,11 @@ interface EventInfoItemsModalProps {
 }
 
 const EventInfoItemsDrawer = ({ event, isOpen, handleToggleDrawer }: EventInfoItemsModalProps) => {
+  const { isMobile } = useContext(ScreenContext);
+
   return (
     <Drawer open={isOpen} onClose={handleToggleDrawer} anchor={'bottom'}>
-      <ModalInner>
+      <ModalInner isMobile={isMobile}>
         <ExitIcon onClick={handleToggleDrawer} />
         <DrawerTitle>{event.title}</DrawerTitle>
         <DrawerSubTitle>WHAT TO WEAR</DrawerSubTitle>
@@ -96,7 +100,22 @@ const EventInfoItemsDrawer = ({ event, isOpen, handleToggleDrawer }: EventInfoIt
             loop={true}
             style={{ width: '75vw', maxWidth: '1200px' }}
             spaceBetween={0}
-            slidesPerView={4}
+            slidesPerView={1}
+            breakpoints={{
+              500: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+              1440: {
+                slidesPerView: 5,
+                spaceBetween: 100,
+              },
+            }}
           >
             {event.images.map((image) => (
               <SwiperSlide key={image}>

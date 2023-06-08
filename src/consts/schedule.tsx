@@ -165,13 +165,17 @@ export const schedule: Schedule = [
             </div>
             <Row isTopAligned={true}>
               <StarIcon />
-              <b>Cowgirls:</b> Pile on turquoise jewelry and pair your favorite cowboy hat with your
-              cocktail dress. Sterling-style, we&apos;re wearing color, sparkles, and fur.
+              <div>
+                <b>Gals:</b> Pile on turquoise and pair your hat with your cocktail dress.
+                Sterling-style, we&apos;re wearing color, sparkles, and fur.
+              </div>
             </Row>
             <Row isTopAligned={true}>
               <StarIcon />
-              <b>Cowboys:</b> Break out your bolo tie with your suit. Show off your best hat and
-              belt buckle.
+              <div>
+                <b>Guys:</b> Break out your bolo tie with your suit. Show off your best hat and belt
+                buckle.
+              </div>
             </Row>
           </div>
         ),
@@ -179,15 +183,17 @@ export const schedule: Schedule = [
           <div className={'column'}>
             <Row isTopAligned={true}>
               <StarIcon />
-              <b>Attire:</b> The wedding venue is entirely outdoors, and the desert nights can get
-              chilly. Please bring an extra layer and opt for cowboy boots since we will be kicking
-              up dust!
+              <div>
+                <b>Attire:</b> The venue is entirely outdoors and the nights can get chilly. Please
+                bring an extra layer and opt for boots since we will be kicking up dust!
+              </div>
             </Row>
             <Row isTopAligned={true}>
               <StarIcon />
-              <b>Transportation:</b> Rimrock Ranch has limited parking so please plan on taking
-              advantage of the shuttles. Please do not park on the street outside of Rimrock Ranch
-              as it is not allowed.
+              <div>
+                <b>Transportation:</b> Rimrock Ranch has limited parking so plan on taking the
+                shuttles. Please do not park outside of Rimrock Ranch as it is not allowed.
+              </div>
             </Row>
           </div>
         ),

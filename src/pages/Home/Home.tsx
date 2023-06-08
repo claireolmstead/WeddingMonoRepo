@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Autoplay, Keyboard, Navigation, Scrollbar, Zoom } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ScreenSizes } from '../../consts/vars';
+import { ScreenContext } from '../../context/ScreenContext';
 import HomeBackgroundImg from '../../images/HomeBackgroundImg.jpg';
 import img1 from '../../images/Us/img1.jpg';
 import img2 from '../../images/Us/img2.jpg';
@@ -117,6 +118,7 @@ const HomeImage = styled.img`
 
 const Home = () => {
   const images = [img1, img10, img2, img3, img4, img5, img6, img7, img8, img9, img11];
+  const { isMobile, isTablet, isDesktop } = useContext(ScreenContext);
 
   return (
     <>
@@ -129,14 +131,30 @@ const Home = () => {
         <HomeRSVP to={'/rsvp'}>RSVP</HomeRSVP>
       </HomeContent>
       <HomeSwiper
+        className={'.homeSwiper'}
         modules={[Autoplay, Keyboard, Scrollbar, Zoom, Navigation]}
         navigation={true}
         autoplay={true}
         keyboard={true}
         scrollbar={true}
         loop={true}
-        spaceBetween={100}
-        slidesPerView={4}
+        spaceBetween={0}
+        slidesPerView={1}
+        breakpoints={{
+          500: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+          1440: {
+            slidesPerView: 5,
+            spaceBetween: 100,
+          },
+        }}
       >
         {images.map((image) => (
           <SwiperSlide key={image}>

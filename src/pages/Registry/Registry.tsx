@@ -22,11 +22,19 @@ const RegistryContainer = styled(Container)`
   text-align: center;
 `;
 
+const RegistryTitle = styled.div`
+  ${(props) => props.theme.type.sub_title};
+  color: ${(props) => props.theme.colors.orange};
+  margin-top: 20px;
+  text-align: center;
+`;
+
 const Registry = () => {
   return (
     <>
       <RegistryBackground />
       <RegistryContainer>
+        <RegistryTitle>Registry</RegistryTitle>
         <a
           href={
             'https://www.bloomingdales.com/registry/wedding/guest/STERLING-OLMSTEAD-NICK-REYNOLDS/?registryId=7437693'

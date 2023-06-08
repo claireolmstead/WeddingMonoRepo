@@ -7,7 +7,7 @@ import LodgingListItem from './LodgingListItem';
 
 const ListItemContent = styled.div`
   align-items: center;
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.blue};
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -15,7 +15,7 @@ const ListItemContent = styled.div`
   max-width: 500px;
 
   a {
-    color: ${(props) => props.theme.colors.black};
+    color: ${(props) => props.theme.colors.blue};
   }
 `;
 
@@ -26,18 +26,16 @@ interface ListItemBlockProps {
 
 const LodgingListItemBlock = ({ list, className }: ListItemBlockProps) => {
   return (
-    <Container>
-      <ListItemContent className={className}>
-        {list.map((listItem) => (
-          <LodgingListItem
-            key={listItem.title}
-            title={listItem.title}
-            description={listItem.description}
-            lodgingInfoItems={listItem?.infoItems}
-          />
-        ))}
-      </ListItemContent>
-    </Container>
+    <ListItemContent className={className}>
+      {list.map((listItem) => (
+        <LodgingListItem
+          key={listItem.title}
+          title={listItem.title}
+          description={listItem.description}
+          lodgingInfoItems={listItem?.infoItems}
+        />
+      ))}
+    </ListItemContent>
   );
 };
 

@@ -31,6 +31,8 @@ const RSVPName = styled.div`
 const RSVPTitle = styled.div`
   ${(props) => props.theme.type.sub_title};
   color: ${(props) => props.theme.colors.orange};
+  margin-top: 20px;
+  text-align: center;
 `;
 
 const RSVP = () => {

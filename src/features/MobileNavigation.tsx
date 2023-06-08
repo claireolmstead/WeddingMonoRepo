@@ -5,7 +5,7 @@ import { Box, Drawer } from '@mui/material';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Logo from '../images/Logo.svg';
+import Logo from '../images/Logo.png';
 
 const MobileNavigationBlock = styled.div`
   position: absolute;
@@ -45,7 +45,7 @@ const DrawerLogo = styled.img`
 `;
 
 const ExitIcon = styled(CloseIcon)`
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.blue};
   cursor: pointer;
   transition: all 0.3s;
   &:hover,
@@ -56,8 +56,9 @@ const ExitIcon = styled(CloseIcon)`
 
 const DrawerNavLink = styled(NavLink)`
   background-color: ${(props) => props.theme.colors.white};
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.green};
   padding: 20px;
+  text-transform: uppercase;
   transition: all 0.5s;
 
   &:hover,
@@ -67,7 +68,7 @@ const DrawerNavLink = styled(NavLink)`
   }
 
   &:visited {
-    color: ${(props) => props.theme.colors.black};
+    color: ${(props) => props.theme.colors.green};
   }
 `;
 
