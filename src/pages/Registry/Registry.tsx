@@ -23,7 +23,7 @@ const RegistryContainer = styled(Container)`
 `;
 
 const RegistryTitle = styled.div`
-  ${(props) => props.theme.type.sub_title};
+  ${(props) => props.theme.type.page_title};
   color: ${(props) => props.theme.colors.orange};
   margin-top: 20px;
   text-align: center;

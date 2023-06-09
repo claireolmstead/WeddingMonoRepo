@@ -16,13 +16,12 @@ const ListItemInfo = styled.div`
 
 const ListItemTitle = styled.div`
   ${(props) => props.theme.type.sub_title};
-  color: ${(props) => props.theme.colors.orange};
-  font-size: 28px;
+  color: ${(props) => props.theme.colors.pink};
   padding-bottom: 20px;
 `;
 
 const ListItemDescription = styled.div`
-  color: ${(props) => props.theme.colors.pink};
+  color: ${(props) => props.theme.colors.green};
   font-size: 14px;
   margin-bottom: 16px;
 `;

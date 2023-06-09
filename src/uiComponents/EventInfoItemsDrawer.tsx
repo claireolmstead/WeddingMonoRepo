@@ -53,10 +53,18 @@ const EventInfoItemsModalImage = styled.img`
 `;
 
 const ExitIcon = styled(CloseIcon)`
+  color: ${(props) => props.theme.colors.green};
   cursor: pointer;
+  height: 1.5em;
   position: absolute;
   right: 20px;
   top: 20px;
+  transition: all 0.3s;
+  width: 1.5em;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.blue};
+  }
 `;
 
 const DrawerTitle = styled.div`

@@ -8,17 +8,10 @@ import Container from '../../uiComponents/Container';
 import LodgingListItemBlock from '../../uiComponents/LodgingListItemBlock';
 import LodgingImages from './LodgingImages';
 
-const LodgingTitleBlock = styled.div`
-  align-items: center;
-  color: ${(props) => props.theme.colors.green};
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 50px;
-`;
-
 const LodgingTitle = styled.div`
-  ${(props) => props.theme.type.sub_title};
-  margin-top: 20px;
+  ${(props) => props.theme.type.page_title};
+  color: ${(props) => props.theme.colors.orange};
+  margin: 20px 0;
   text-align: center;
 `;
 
@@ -29,6 +22,7 @@ const LodgingBlock = styled.div`
 `;
 
 const LodgingBlockContainer = styled(Container)<{ isMobile?: boolean }>`
+  align-items: start;
   display: grid;
   gap: 30px;
   grid-template-columns: ${(props) => (props.isMobile ? `1fr` : `1fr 1fr`)};
@@ -39,6 +33,10 @@ const LodgingBackground = styled.img`
   background-image: url(${RegistryBackgroundImg});
 `;
 
+const LodgingItem1 = styled.div<{ isMobile?: boolean }>`
+  ${(props) => props.isMobile && `grid-row: 2`};
+`;
+
 const Lodging = () => {
   const { isMobile } = useContext(ScreenContext);
 
@@ -46,16 +44,13 @@ const Lodging = () => {
     <>
       <LodgingBackground />
       <Container>
-        <LodgingTitleBlock>
-          <LodgingTitle>Pioneertown, CA</LodgingTitle>
-          <div>
-            <b>Stay + Play</b>
-          </div>
-        </LodgingTitleBlock>
+        <LodgingTitle>Pioneertown, CA</LodgingTitle>
       </Container>
       <LodgingBlock>
         <LodgingBlockContainer isMobile={isMobile}>
-          <LodgingImages />
+          <LodgingItem1 isMobile={isMobile}>
+            <LodgingImages />
+          </LodgingItem1>
           <LodgingListItemBlock list={lodging} />
         </LodgingBlockContainer>
       </LodgingBlock>

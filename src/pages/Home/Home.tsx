@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import React, { useContext, useEffect } from 'react';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Autoplay, Keyboard, Navigation, Scrollbar, Zoom } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ScreenSizes } from '../../consts/vars';
-import { ScreenContext } from '../../context/ScreenContext';
 import HomeBackgroundImg from '../../images/HomeBackgroundImg.jpg';
 import img1 from '../../images/Us/img1.jpg';
 import img2 from '../../images/Us/img2.jpg';
@@ -44,7 +44,6 @@ const HomeDate = styled.div`
 
   @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
     font-size: 16px;
-    color: ${(props) => props.theme.colors.white};
     font-weight: bold;
   }
 
@@ -56,7 +55,7 @@ const HomeDate = styled.div`
 const HomeInviteBlock = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 16px;
   margin: 50px 0;
 
   @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
@@ -116,9 +115,22 @@ const HomeImage = styled.img`
   }
 `;
 
+const HomeDownIcon = styled(ExpandMoreIcon)`
+  bottom: 0;
+  cursor: pointer;
+  height: 60px;
+  left: 20px;
+  position: fixed;
+  transition: all 0.3s;
+  width: 60px;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.orange};
+  }
+`;
+
 const Home = () => {
   const images = [img1, img10, img2, img3, img4, img5, img6, img7, img8, img9, img11];
-  const { isMobile, isTablet, isDesktop } = useContext(ScreenContext);
 
   return (
     <>
@@ -129,6 +141,11 @@ const Home = () => {
           <HomeDate>OCTOBER 27, 2023 | PIONEERTOWN, CA</HomeDate>
         </HomeInviteBlock>
         <HomeRSVP to={'/rsvp'}>RSVP</HomeRSVP>
+        <HomeDownIcon
+          onClick={() =>
+            window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth' })
+          }
+        />
       </HomeContent>
       <HomeSwiper
         className={'.homeSwiper'}
