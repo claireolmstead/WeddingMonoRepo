@@ -37,7 +37,12 @@ const FileUpload = () => {
   }, [inputRef]);
 
   const saveDataFromFile = () => {
-    const createInvite = async (newPerson: { first: string; last: string; partyId: string }) => {
+    const createInvite = async (newPerson: {
+      first: string;
+      last: string;
+      partyId: string;
+      rehearsal: string;
+    }) => {
       const personId = getPersonId(newPerson.first, newPerson.last);
       const docRef = doc(db, 'person', `${personId}`);
       await doesPersonExist(docRef);
@@ -46,7 +51,13 @@ const FileUpload = () => {
       return data;
     };
 
-    const writeInvite = (person: { first: string; last: string; partyId: string; id: string }) => {
+    const writeInvite = (person: {
+      first: string;
+      last: string;
+      partyId: string;
+      id: string;
+      rehearsal: string;
+    }) => {
       const docRef = doc(db, 'person', `${person.id}`);
       setDoc(docRef, person)
         .then(() => {

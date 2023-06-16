@@ -46,20 +46,21 @@ const RSVP = () => {
       <RSVPBackground />
       <RSVPContainer>
         <RSVPTitle>{hasAllRsvped && !isEditing ? 'Successful RSVP!' : 'RSVP'}</RSVPTitle>
-        {hasAllRsvped && !isEditing ? (
-          <>
-            {invites.map((person) => (
-              <RSVPName key={person.id}>
-                {person.first} {person.last}
-              </RSVPName>
-            ))}
-            <PrimaryButton type={'button'} onClick={() => setIsEditing(true)}>
-              Edit RSVP
-            </PrimaryButton>
-          </>
-        ) : (
-          <RSVPFormList invites={invites} setIsFinished={() => setIsEditing(false)} />
-        )}
+        <div>Check back soon to RSVP!</div>
+        {/*{hasAllRsvped && !isEditing ? (*/}
+        {/*  <>*/}
+        {/*    {invites.map((person) => (*/}
+        {/*      <RSVPName key={person.id}>*/}
+        {/*        {person.first} {person.last}*/}
+        {/*      </RSVPName>*/}
+        {/*    ))}*/}
+        {/*    <PrimaryButton type={'button'} onClick={() => setIsEditing(true)}>*/}
+        {/*      Edit RSVP*/}
+        {/*    </PrimaryButton>*/}
+        {/*  </>*/}
+        {/*) : (*/}
+        {/*  <RSVPFormList invites={invites} setIsFinished={() => setIsEditing(false)} />*/}
+        {/*)}*/}
       </RSVPContainer>
     </>
   );

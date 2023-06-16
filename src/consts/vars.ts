@@ -1,4 +1,4 @@
-export const CORRECT_PASSWORD = 'BirdsTheWord';
+export const CORRECT_PASSWORD = 'birdstheword';
 
 export const ScreenSizes = {
   MIN_SCREEN: 500,

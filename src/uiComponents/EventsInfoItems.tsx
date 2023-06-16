@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarIcon from '@mui/icons-material/Star';
-import { AddToCalendarButton } from 'add-to-calendar-button-react';
-import React, { useState } from 'react';
+// import { AddToCalendarButton } from 'add-to-calendar-button-react';
+import React, { useContext, useState } from 'react';
 
-import { Event } from '../types';
+import { CurInvitesContext } from '../context/CurInvitesContext';
+import { Event, Welcome } from '../types';
 import EventInfoItemsDrawer from './EventInfoItemsDrawer';
 import Row from './Row';
 
@@ -17,7 +18,7 @@ const EventInfo = styled.div`
 `;
 
 const EventTime = styled.div`
-  color: ${(props) => props.theme.colors.orange};
+  color: ${(props) => props.theme.colors.pink};
   font-weight: bold;
   text-transform: uppercase;
   white-space: nowrap;
@@ -25,7 +26,7 @@ const EventTime = styled.div`
 
 const EventTitle = styled.div`
   ${(props) => props.theme.type.sub_page_title};
-  color: ${(props) => props.theme.colors.pink};
+  color: ${(props) => props.theme.colors.orange};
 `;
 
 const EventLocation = styled.div`
@@ -34,6 +35,10 @@ const EventLocation = styled.div`
   cursor: pointer;
   display: flex;
   gap: 8px;
+
+  a {
+    color: ${(props) => props.theme.colors.green};
+  }
 
   &:hover {
     text-decoration: underline;
@@ -58,6 +63,8 @@ interface EventInfoItemsProps {
 }
 
 const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
+  const { invites } = useContext(CurInvitesContext);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggleDrawer = () => {
@@ -67,44 +74,51 @@ const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
   return (
     <>
       {events.map((event) => (
-        <EventInfo key={event.title}>
-          <Row>
-            <EventTime>{event?.time}</EventTime>
-            <EventTitle>{event.title}</EventTitle>
-          </Row>
+        <>
+          {(!invites || (invites && invites[0].rehearsal !== Welcome.ATTENDING)) &&
+          event.title === 'Love Birds Rehearsal Dinner' ? (
+            <></>
+          ) : (
+            <EventInfo key={event.title}>
+              <Row>
+                <EventTime>{event?.time}</EventTime>
+                <EventTitle>{event.title}</EventTitle>
+              </Row>
 
-          <EventLocation>
-            <LocationOnIcon />
-            {event.location}
-          </EventLocation>
+              <EventLocation>
+                <LocationOnIcon />
+                {event.location}
+              </EventLocation>
 
-          {event.whatToWear && (
-            <EventWhatTo onClick={handleToggleDrawer}>
-              <StarIcon />
-              <i>What To Wear + What To Know</i>
-            </EventWhatTo>
+              {event.whatToWear && (
+                <EventWhatTo onClick={handleToggleDrawer}>
+                  <StarIcon />
+                  <i>What To Wear + What To Know</i>
+                </EventWhatTo>
+              )}
+
+              {/*<AddToCalendarButton*/}
+              {/*  name={event.title}*/}
+              {/*  startDate={event.startDate}*/}
+              {/*  startTime={event.startTime}*/}
+              {/*  endTime={event.endTime}*/}
+              {/*  options={['iCal', 'Apple', 'Google', 'Yahoo']}*/}
+              {/*  timeZone="America/Los_Angeles"*/}
+              {/*  hideCheckmark={true}*/}
+              {/*  styleLight="--btn-background: rgba(0, 0, 0, 0); --btn-background-hover: none; --btn-text: #fff; --btn-shadow: none; --btn-shadow-hover:none; --btn-shadow-active: none; --btn-border: none; --btn-text-hover: #f16522; margin: -1em; --font: Futura;"*/}
+              {/*  lightMode="bodyScheme"*/}
+              {/*  trigger={'click'}*/}
+              {/*/>*/}
+
+              <div>{event.description}</div>
+              <EventInfoItemsDrawer
+                isOpen={isOpen}
+                handleToggleDrawer={handleToggleDrawer}
+                event={event}
+              />
+            </EventInfo>
           )}
-
-          <AddToCalendarButton
-            name={event.title}
-            startDate={event.startDate}
-            startTime={event.startTime}
-            endTime={event.endTime}
-            options={['iCal', 'Apple', 'Google', 'Yahoo']}
-            timeZone="America/Los_Angeles"
-            hideCheckmark={true}
-            styleLight="--btn-background: rgba(0, 0, 0, 0); --btn-background-hover: none; --btn-text: #fff; --btn-shadow: none; --btn-shadow-hover:none; --btn-shadow-active: none; --btn-border: none; --btn-text-hover: #f16522; margin: -1em; --font: Futura;"
-            lightMode="bodyScheme"
-            trigger={'click'}
-          />
-
-          <div>{event.description}</div>
-          <EventInfoItemsDrawer
-            isOpen={isOpen}
-            handleToggleDrawer={handleToggleDrawer}
-            event={event}
-          />
-        </EventInfo>
+        </>
       ))}
     </>
   );

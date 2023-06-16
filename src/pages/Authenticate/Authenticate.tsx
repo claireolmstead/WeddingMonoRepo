@@ -48,6 +48,7 @@ const AuthenticateFormTitle = styled.div`
 `;
 
 const AuthenticateInputs = styled.div`
+  align-items: start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -56,25 +57,43 @@ const AuthenticateInputs = styled.div`
 `;
 
 const AuthenticateInputBlock = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
+enum passwordStatusType {
+  'NOTCONFIRMED' = 'NOTCONFIRMED',
+  'CONFIRMED' = 'CONFIRMED',
+  'ERROR' = 'ERROR',
+}
+
+enum lookupStatusType {
+  'NOINVITES' = 'NOINVITES',
+  'NOTCONFIRMED' = 'NOTCONFIRMED',
+  'CONFIRMED' = 'CONFIRMED',
+}
+
 const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
-  const { isNotMe, setIsNotMe, invites, setInvites } = useContext(CurInvitesContext);
+  const { invites, setInvites } = useContext(CurInvitesContext);
   const navigate = useNavigate();
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isNotFound, setIsNotFound] = useState<boolean>(false);
-  const [hasPasswordError, setHasPasswordError] = useState<boolean>(false);
-  const [isConfirmed, setIsConfirmed] = useState(false);
+
+  const [passwordStatus, setPasswordStatus] = useState<passwordStatusType>(
+    passwordStatusType.NOTCONFIRMED
+  );
+  const [lookupStatus, setLookupStatus] = useState<lookupStatusType>(lookupStatusType.NOINVITES);
 
   useEffect(() => {
-    if (isNotMe) {
-      setIsConfirmed(false);
+    if (invites && invites.length > 0) {
+      setLookupStatus(lookupStatusType.NOTCONFIRMED);
+    } else {
+      setLookupStatus(lookupStatusType.NOINVITES);
     }
-  }, [isNotMe]);
+  }, [invites]);
 
   const inviteLookup = async () => {
     const personId = name.toLowerCase().replace(/ /g, '');
@@ -88,33 +107,39 @@ const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
   };
 
   const onConfirm = () => {
-    setAuthenticated();
-    navigate('/home');
+    if (password.toLowerCase() === CORRECT_PASSWORD) {
+      setPasswordStatus(passwordStatusType.CONFIRMED);
+      setAuthenticated();
+      navigate('/home');
+    } else {
+      setPasswordStatus(passwordStatusType.ERROR);
+    }
   };
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
-    setIsNotMe(false);
-    invites && invites.length === 0 && (await inviteLookup());
-    setName('');
-    setPassword('');
-    if (invites && invites.length > 0 && password === CORRECT_PASSWORD) {
-      setIsConfirmed(true);
-      setHasPasswordError(false);
+    if (!invites || (invites && invites.length === 0)) {
+      await inviteLookup();
+      setName('');
     }
-    if (password !== CORRECT_PASSWORD) {
-      setHasPasswordError(true);
+
+    if (password.toLowerCase() === CORRECT_PASSWORD) {
+      setPasswordStatus(passwordStatusType.CONFIRMED);
+    } else {
+      setPasswordStatus(passwordStatusType.ERROR);
+      setPassword('');
     }
   };
 
   const handleOnNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
-    setIsNotFound(false);
+    if (isNotFound) setIsNotFound(false);
   };
 
   const handleOnPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
-    setHasPasswordError(false);
+    if (passwordStatus === passwordStatusType.ERROR)
+      setPasswordStatus(passwordStatusType.NOTCONFIRMED);
   };
 
   return (
@@ -126,36 +151,35 @@ const Authenticate = ({ setAuthenticated }: AuthenticateProps) => {
           <AuthenticateForm>
             <AuthenticateInputs>
               <AuthenticateInputBlock>
-                {!isConfirmed && (
-                  <PrimaryInput
-                    value={name}
-                    placeholder={'First Last'}
-                    onChange={handleOnNameChange}
-                  />
-                )}
-                {invites && invites.length > 0 && (
+                <PrimaryInput
+                  value={name}
+                  placeholder={'First Last'}
+                  onChange={handleOnNameChange}
+                />
+                {invites && passwordStatus !== passwordStatusType.ERROR && (
                   <InviteGroupList people={invites} hasTitle={false} hasNotMe={false} />
                 )}
                 {isNotFound && <div>Not found. Make sure name is as appears on the invite.</div>}
               </AuthenticateInputBlock>
               <AuthenticateInputBlock>
-                {(!(isConfirmed && !hasPasswordError) || hasPasswordError) && (
+                {passwordStatus !== passwordStatusType.CONFIRMED && (
                   <PrimaryInput
                     value={password}
                     placeholder={'Password'}
                     onChange={handleOnPasswordChange}
                   />
                 )}
-                {hasPasswordError && <div>Incorrect Password.</div>}
+                {passwordStatus === passwordStatusType.ERROR && <div>Incorrect Password.</div>}
               </AuthenticateInputBlock>
             </AuthenticateInputs>
-            {isConfirmed ? (
+            {lookupStatus === lookupStatusType.NOINVITES ||
+            passwordStatus !== passwordStatusType.CONFIRMED ? (
+              <PrimaryButton onClick={onSubmit}>Submit</PrimaryButton>
+            ) : (
               <>
                 <PrimaryButton onClick={onConfirm}>Confirm</PrimaryButton>
-                <div onClick={() => setIsConfirmed(false)}>Back</div>
+                <div onClick={() => setLookupStatus(lookupStatusType.NOINVITES)}>Back</div>
               </>
-            ) : (
-              <PrimaryButton onClick={onSubmit}>Submit</PrimaryButton>
             )}
           </AuthenticateForm>
         </AuthenticateBlock>

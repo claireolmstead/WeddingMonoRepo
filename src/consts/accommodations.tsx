@@ -37,24 +37,6 @@ export const lodging: LodgingItems = [
         Pioneertown Motel
       </a>,
       <a
-        key={'autocamp'}
-        href={
-          'https://autocamp.com/joshua-tree/?gclid=CjwKCAjw67ajBhAVEiwA2g_jELcyvWL08-SgtWrMDf6qKAQcHctlC6h4RBIE_gK6dMG8QtQAQkNiHBoCyvcQAvD_BwE'
-        }
-        rel={'noreferrer'}
-        target={'_blank'}
-      >
-        Autocamp Joshua Tree
-      </a>,
-      <a
-        key={'stayfieldtrip'}
-        href={'https://www.stayfieldtrip.com/joshua-tree/?sort_by=rotation&location_area_id=13513'}
-        rel={'noreferrer'}
-        target={'_blank'}
-      >
-        Fieldtrip
-      </a>,
-      <a
         key={'stayfieldtrip'}
         href={'https://www.stayfieldtrip.com/joshua-tree/?sort_by=rotation&location_area_id=13513'}
         rel={'noreferrer'}
@@ -75,8 +57,21 @@ export const lodging: LodgingItems = [
   {
     title: 'TRAVEL',
     infoItems: [
-      <div key={'fly'}>Fly into this airport</div>,
-      <div key={'fly'}>Other fun facts</div>,
+      <div key={'fly'}>
+        Palm Springs International Airport (PSP) is the local airport, and is about a 45-minute
+        drive from Pioneertown.
+      </div>,
+      <div key={'fly2'}>
+        For more flight availability, the below airports are each around a 2-2.5 hour drive:
+        <ul>
+          <li>LAX: Los Angeles International Airport</li>
+          <li>SNA: John Wayne Airport</li>
+          <li>SAN: San Diego International Airport</li>
+        </ul>
+      </div>,
+      <div key={'car'}>
+        We recommend bringing or renting a car, as ubers/lyfts are scarce in the area.
+      </div>,
     ],
   },
   {
@@ -89,6 +84,46 @@ export const lodging: LodgingItems = [
         target={'_blank'}
       >
         Pappy And Harriet&apos;s
+      </a>,
+      <a
+        key={'https://www.lacopinekitchen.com/'}
+        href={'https://www.lacopinekitchen.com/'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        La Copine
+      </a>,
+      <a
+        key={'https://www.reddogpioneertown.com/'}
+        href={'https://www.reddogpioneertown.com/'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        Red Dog Saloon
+      </a>,
+      <a
+        key={'https://masomenosjt.com/'}
+        href={'https://masomenosjt.com/'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        Más o Menos
+      </a>,
+      <a
+        key={'https://cafefrontier.square.site/'}
+        href={'https://cafefrontier.square.site/'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        Frontier Cafe
+      </a>,
+      <a
+        key={'https://www.giantrockmeetingroom.com/'}
+        href={'https://www.giantrockmeetingroom.com/'}
+        rel={'noreferrer'}
+        target={'_blank'}
+      >
+        Giant Rock Meeting Room
       </a>,
     ],
   },

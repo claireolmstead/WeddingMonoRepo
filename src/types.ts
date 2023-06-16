@@ -7,7 +7,7 @@ export type Event = {
   startDate: string;
   startTime: string;
   endTime: string;
-  location?: string;
+  location?: ReactElement;
   description?: string | ReactElement;
   whatToWear?: ReactElement;
   whatToKnow?: ReactElement;
@@ -52,7 +52,8 @@ export type Person = {
   id: string;
   first: string;
   last: string;
-  partyId: number;
+  partyId: string;
+  rehearsal: Welcome;
   welcome: Welcome;
   ceremony: Ceremony;
   pickleball: Pickleball;

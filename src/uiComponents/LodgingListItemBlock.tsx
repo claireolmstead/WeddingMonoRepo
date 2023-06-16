@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { LodgingItems } from '../types';
-import Container from './Container';
 import LodgingListItem from './LodgingListItem';
 
 const ListItemContent = styled.div`

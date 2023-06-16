@@ -46,7 +46,17 @@ export const schedule: Schedule = [
         startDate: '2023-10-26',
         startTime: '15:30',
         endTime: '19:30',
-        location: 'Rimrock Ranch | 50857 Burns Canyon Rd, Pioneertown, CA 92268',
+        location: (
+          <a
+            href={
+              'https://www.google.com/maps/dir/41.6908586,-70.276548/50857+Burns+Canyon+Rd,+Pioneertown,+CA+92268/@32.7962769,-129.6956196,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x80db2c321a5919e3:0xf74385197508c08!2m2!1d-116.5557096!2d34.1973745?entry=ttu'
+            }
+            rel={'noreferrer'}
+            target={'_blank'}
+          >
+            Rimrock Ranch | 50857 Burns Canyon Rd, Pioneertown, CA 92268
+          </a>
+        ),
         description:
           'After rehearsing for the big day, celebrate Sterling and Nick with a special dinner and toasts to the love birds.',
         whatToWear: (
@@ -100,7 +110,17 @@ export const schedule: Schedule = [
         startDate: '2023-10-26',
         startTime: '20:00',
         endTime: '22:00',
-        location: 'The Red Dog Saloon | 53539 Mane St, Pioneertown, CA 92268',
+        location: (
+          <a
+            href={
+              'https://www.google.com/maps/dir/41.6823105,-70.0360165/the+red+dog+saloon+joshua+tree/@32.1492637,-129.6356609,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x80db28d8cd747a19:0x7f623b673592ce31!2m2!1d-116.4962467!2d34.1568771?entry=ttu'
+            }
+            rel={'noreferrer'}
+            target={'_blank'}
+          >
+            The Red Dog Saloon | 53539 Mane St, Pioneertown, CA 92268
+          </a>
+        ),
         description:
           'For those who will already be in town, the bride and groom plan to saddle up at the Red Dog Saloon. Drop in to say howdy to the love birds and say “adios” to Sterling Olmstead before she becomes a Reynolds.',
         whatToWear: (
@@ -145,13 +165,34 @@ export const schedule: Schedule = [
         startDate: '2023-10-27',
         startTime: '14:00',
         endTime: '14:15',
-        location: 'The Pioneertown Motel',
-        description: `Hitch a ride with us or else you'll be left in the dust! Very limited parking at Rimrock Ranch so please consider using our shuttle!`,
+        location: (
+          <a
+            href={
+              'https://www.google.com/maps/dir/41.6908586,-70.276548/the+pioneertown+motel/@32.792704,-129.6649053,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x80db28dfa15c5261:0xa665d4d4eb6ad4d0!2m2!1d-116.4932911!2d34.1575685?entry=ttu'
+            }
+            rel={'noreferrer'}
+            target={'_blank'}
+          >
+            The Pioneertown Motel | 5240 Curtis Rd, Pioneertown, CA 92268
+          </a>
+        ),
+        description:
+          'Hitch a ride with us or else youll be left in the dust! Very limited parking at Rimrock Ranch so please consider using our shuttle!',
       },
       {
         title: 'Love Birds Roundup',
-        time: '3 - 10 pm',
-        location: 'Rimrock Ranch | 50857 Burns Canyon Rd, Pioneertown, CA 92268',
+        time: '3:30 - 10 pm',
+        location: (
+          <a
+            href={
+              'https://www.google.com/maps/dir/41.6908586,-70.276548/50857+Burns+Canyon+Rd,+Pioneertown,+CA+92268/@32.7962769,-129.6956196,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x80db2c321a5919e3:0xf74385197508c08!2m2!1d-116.5557096!2d34.1973745?entry=ttu'
+            }
+            rel={'noreferrer'}
+            target={'_blank'}
+          >
+            Rimrock Ranch | 50857 Burns Canyon Rd, Pioneertown, CA 92268
+          </a>
+        ),
         startDate: '2023-10-27',
         startTime: '15:00',
         endTime: '22:00',
@@ -222,7 +263,17 @@ export const schedule: Schedule = [
         startDate: '2023-10-28',
         startTime: '11:00',
         endTime: '14:00',
-        location: 'Hoopa House | Need address',
+        location: (
+          <a
+            href={
+              'https://www.google.com/maps/dir//54929+Hoopa+Trail,+Yucca+Valley,+CA+92284/@34.0936626,-116.4684492,14.87z/data=!4m9!4m8!1m0!1m5!1m1!1s0x80db27b4aea2ca8b:0x53997ae834718c76!2m2!1d-116.4661826!2d34.098728!3e0?entry=ttu'
+            }
+            rel={'noreferrer'}
+            target={'_blank'}
+          >
+            Hoopa House | 54929 Hoopa Trail, Yucca Valley, CA 92284
+          </a>
+        ),
         description: (
           <a href="https://www.instagram.com/the_hoopahouse/" target="_blank" rel="noreferrer">
             Before Nick and Sterling ride off into the sunset, wrap up the wedding weekend with a

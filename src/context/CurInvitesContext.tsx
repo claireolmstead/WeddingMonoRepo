@@ -29,7 +29,6 @@ const CurInvitesContextProvider = ({ children }: Props): JSX.Element => {
 
   useEffect(() => {
     const curInvites = window.localStorage.getItem('curInvites');
-    console.log(curInvites);
     if (curInvites) {
       setInvites(JSON.parse(curInvites));
     }
