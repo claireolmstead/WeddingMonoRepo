@@ -71,6 +71,9 @@ const RsvpList = () => {
               <TableHeadCell onClick={() => getPeople('rehearsal')}>Rehearsal</TableHeadCell>
               <TableHeadCell onClick={() => getPeople('welcome')}>Welcome</TableHeadCell>
               <TableHeadCell onClick={() => getPeople('ceremony')}>Ceremony</TableHeadCell>
+              <TableHeadCell onClick={() => getPeople('ceremonyTransportation')}>
+                Ceremony Transport
+              </TableHeadCell>
               <TableHeadCell onClick={() => getPeople('pickleball')}>Pickleball</TableHeadCell>
             </TableRow>
           </TableHead>
@@ -87,6 +90,7 @@ const RsvpList = () => {
                 <TableCell>{rsvp.rehearsal}</TableCell>
                 <TableCell>{rsvp.welcome}</TableCell>
                 <TableCell>{rsvp.ceremony}</TableCell>
+                <TableCell>{rsvp.ceremonyTransportation}</TableCell>
                 <TableCell>{rsvp.pickleball}</TableCell>
               </RsvpBodyTableRow>
             ))}
