@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
 import { schedule } from '../../consts/schedule';
+import { ScreenSizes } from '../../consts/vars';
 import { ScreenContext } from '../../context/ScreenContext';
 import ScheduleBackgroundImage from '../../images/ScheduleBackground.jpg';
 import StarPartition from '../../images/StarPartition.png';
@@ -38,9 +39,13 @@ const ScheduleItemBlock = styled(Parallax)<{ isMobile: boolean }>`
   align-items: center;
   background-color: rgba(255, 255, 255, 0.2);
   display: flex;
+  height: 100vh;
   justify-content: flex-end;
-  min-height: 100vh;
   width: ${(props) => (props.isMobile ? '100%' : '70%')};
+
+  @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
+    max-height: 1000px;
+  }
 `;
 
 const ScheduleMaxWidthWrapper = styled(MaxWidthWrapper)`
@@ -64,7 +69,8 @@ const ScheduleTitle = styled.div`
 `;
 
 const ScheduleStarPartition = styled.img`
-  height: 30px;
+  height: 24px;
+  margin: -20px 0;
   width: 100%;
 `;
 

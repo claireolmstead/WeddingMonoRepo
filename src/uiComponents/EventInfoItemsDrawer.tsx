@@ -85,16 +85,17 @@ const DrawerTextBlock = styled.div`
 interface EventInfoItemsModalProps {
   event: Event;
   isOpen: boolean;
-  handleToggleDrawer: () => void;
+  handleCloseDrawer: () => void;
 }
 
-const EventInfoItemsDrawer = ({ event, isOpen, handleToggleDrawer }: EventInfoItemsModalProps) => {
+const EventInfoItemsDrawer = ({ event, isOpen, handleCloseDrawer }: EventInfoItemsModalProps) => {
   const { isMobile } = useContext(ScreenContext);
+  console.log(event);
 
   return (
-    <Drawer open={isOpen} onClose={handleToggleDrawer} anchor={'bottom'}>
+    <Drawer open={isOpen} onClose={handleCloseDrawer} anchor={'bottom'}>
       <ModalInner isMobile={isMobile}>
-        <ExitIcon onClick={handleToggleDrawer} />
+        <ExitIcon onClick={handleCloseDrawer} />
         <DrawerTitle>{event.title}</DrawerTitle>
         <DrawerSubTitle>WHAT TO WEAR</DrawerSubTitle>
         <DrawerTextBlock>{event.whatToWear}</DrawerTextBlock>

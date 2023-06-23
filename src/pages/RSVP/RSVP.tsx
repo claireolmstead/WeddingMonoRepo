@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React, { useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../../context/CurInvitesContext';
+import { getInvites } from '../../hooks/getInvitesFromId';
 import HomeBackgroundImg from '../../images/HomeBackgroundImg.jpg';
 import Container from '../../uiComponents/Container';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
@@ -36,31 +37,46 @@ const RSVPTitle = styled.div`
 `;
 
 const RSVP = () => {
-  const { invites, hasAllRsvped } = useContext(CurInvitesContext);
+  const { invites, setInvites, hasAllRsvped, setHasAllRsvped } = useContext(CurInvitesContext);
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   if (!invites) return <>Not yet logged in.</>;
+
+  const inviteLookup = async () => {
+    const inviteList = await getInvites(invites[0].id);
+    if (!inviteList) {
+      setInvites([]);
+    } else {
+      setInvites(inviteList);
+    }
+  };
 
   return (
     <>
       <RSVPBackground />
       <RSVPContainer>
         <RSVPTitle>{hasAllRsvped && !isEditing ? 'Successful RSVP!' : 'RSVP'}</RSVPTitle>
-        <div>Check back soon to RSVP!</div>
-        {/*{hasAllRsvped && !isEditing ? (*/}
-        {/*  <>*/}
-        {/*    {invites.map((person) => (*/}
-        {/*      <RSVPName key={person.id}>*/}
-        {/*        {person.first} {person.last}*/}
-        {/*      </RSVPName>*/}
-        {/*    ))}*/}
-        {/*    <PrimaryButton type={'button'} onClick={() => setIsEditing(true)}>*/}
-        {/*      Edit RSVP*/}
-        {/*    </PrimaryButton>*/}
-        {/*  </>*/}
-        {/*) : (*/}
-        {/*  <RSVPFormList invites={invites} setIsFinished={() => setIsEditing(false)} />*/}
-        {/*)}*/}
+        {hasAllRsvped && !isEditing ? (
+          <>
+            {invites.map((person) => (
+              <RSVPName key={person.id}>
+                {person.first} {person.last}
+              </RSVPName>
+            ))}
+            <PrimaryButton type={'button'} onClick={() => setIsEditing(true)}>
+              Edit RSVP
+            </PrimaryButton>
+          </>
+        ) : (
+          <RSVPFormList
+            invites={invites}
+            setIsFinished={() => {
+              inviteLookup();
+              setIsEditing(false);
+              setHasAllRsvped(true);
+            }}
+          />
+        )}
       </RSVPContainer>
     </>
   );

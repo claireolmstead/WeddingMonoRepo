@@ -9,6 +9,7 @@ export type CurInvitesType = {
   hasAllRsvped: boolean;
   isNotMe: boolean;
   setIsNotMe: (isNotMe: boolean) => void;
+  setHasAllRsvped: (hasRSVP: boolean) => void;
 };
 
 type Props = {
@@ -20,6 +21,7 @@ export const CurInvitesContext = createContext<CurInvitesType>({
   hasAllRsvped: false,
   isNotMe: false,
   setIsNotMe: () => undefined,
+  setHasAllRsvped: () => undefined,
 });
 
 const CurInvitesContextProvider = ({ children }: Props): JSX.Element => {
@@ -35,7 +37,13 @@ const CurInvitesContextProvider = ({ children }: Props): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    if (!invites) return;
+    console.log('invites:', invites);
+    if (!invites || invites.length < 1) return;
+
+    console.log(invites);
+
+    window.localStorage.setItem('curInvites', JSON.stringify(invites));
+
     const hasRsvped = hasAllResponded(invites);
     setHasAllRsvped(hasRsvped);
   }, [invites]);
@@ -46,6 +54,7 @@ const CurInvitesContextProvider = ({ children }: Props): JSX.Element => {
     hasAllRsvped,
     isNotMe,
     setIsNotMe,
+    setHasAllRsvped,
   };
 
   return <CurInvitesContext.Provider value={defaultValue}>{children}</CurInvitesContext.Provider>;

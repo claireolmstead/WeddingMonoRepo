@@ -177,7 +177,7 @@ export const schedule: Schedule = [
           </a>
         ),
         description:
-          'Hitch a ride with us or else youll be left in the dust! Very limited parking at Rimrock Ranch so please consider using our shuttle!',
+          "Hitch a ride with us or else you'll be left in the dust! Very limited parking at Rimrock Ranch so please consider using our shuttle! Shuttles will be departing outside the entrance of Pioneertown Motel every 10 minutes starting at 2:30pm. The last shuttle will depart at 3:00pm.",
       },
       {
         title: 'Love Birds Roundup',

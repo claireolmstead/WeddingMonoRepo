@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 import { doc, setDoc } from '@firebase/firestore';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Field, Form } from 'react-final-form';
 import { Parallax } from 'react-scroll-parallax';
 
 import { db } from '../../App';
 import { ScreenSizes } from '../../consts/vars';
+import { CurInvitesContext } from '../../context/CurInvitesContext';
 import StarBorder from '../../images/StarBorder.png';
 import { Ceremony, Person, Pickleball, Welcome } from '../../types';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
@@ -124,9 +125,13 @@ interface RSVPFormProps {
 }
 
 const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormProps) => {
+  const { invites, setInvites } = useContext(CurInvitesContext);
   const onSubmit = (values: Person) => {
     const personId = (person.first + person.last).toLowerCase();
     const docRef = doc(db, 'person', `${personId}`);
+    if (values.ceremony === Ceremony.NOT_ATTENDING) {
+      values.ceremonyTransportation = Ceremony.NOT_ATTENDING;
+    }
     setDoc(docRef, values)
       .then(() => {
         !isFinalPerson ? goToNext() : setIsFinished();
@@ -146,7 +151,7 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
           onSubmit(values as Person);
         }}
       >
-        {({ handleSubmit, submitting }) => (
+        {({ handleSubmit, submitting, values }) => (
           <form style={{ width: '100%' }}>
             <RSVPFormSectionBlock>
               <Parallax rotateY={[-60, 60]}>
@@ -186,9 +191,9 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
                         name="ceremony"
                         component="input"
                         type="radio"
-                        value={Ceremony.SHUTTLING}
+                        value={Ceremony.ATTENDING}
                       />
-                      Shuttling
+                      Attending
                     </RSVPFormLabel>
                     <RSVPFormLabel>
                       <RSVPFormField
@@ -200,6 +205,37 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
                       Not Attending
                     </RSVPFormLabel>
                   </RSVPFormOptions>
+                  {values.ceremony === Ceremony.ATTENDING && (
+                    <RSVPFormOptions style={{ marginTop: 20 }}>
+                      <RSVPFormLabel>
+                        <RSVPFormField
+                          name="ceremonyTransportation"
+                          component="input"
+                          type="radio"
+                          value={Ceremony.SHUTTLING}
+                        />
+                        Shuttling
+                      </RSVPFormLabel>
+                      <RSVPFormLabel>
+                        <RSVPFormField
+                          name="ceremonyTransportation"
+                          component="input"
+                          type="radio"
+                          value={Ceremony.DRIVING}
+                        />
+                        Driving
+                      </RSVPFormLabel>
+                      <RSVPFormLabel>
+                        <RSVPFormField
+                          name="ceremonyTransportation"
+                          component="input"
+                          type="radio"
+                          value={Ceremony.OTHER}
+                        />
+                        Other
+                      </RSVPFormLabel>
+                    </RSVPFormOptions>
+                  )}
                 </RSVPFormSection2>
               </Parallax>
 

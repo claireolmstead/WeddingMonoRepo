@@ -14,13 +14,11 @@ const EventInfo = styled.div`
   flex-direction: column;
   gap: 20px;
   margin-bottom: 30px;
-  margin-left: 30px;
 `;
 
 const EventTime = styled.div`
   color: ${(props) => props.theme.colors.pink};
-  font-weight: bold;
-  text-transform: uppercase;
+  ${(props) => props.theme.type.sub_page_title};
   white-space: nowrap;
 `;
 
@@ -65,10 +63,14 @@ interface EventInfoItemsProps {
 const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
   const { invites } = useContext(CurInvitesContext);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenTitle, setIsOpenTitle] = useState('');
 
-  const handleToggleDrawer = () => {
-    setIsOpen(!isOpen);
+  const handleOpenDrawer = (title: string) => {
+    setIsOpenTitle(title);
+  };
+
+  const handleCloseDrawer = () => {
+    setIsOpenTitle('');
   };
 
   return (
@@ -91,7 +93,7 @@ const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
               </EventLocation>
 
               {event.whatToWear && (
-                <EventWhatTo onClick={handleToggleDrawer}>
+                <EventWhatTo onClick={() => handleOpenDrawer(event.title)}>
                   <StarIcon />
                   <i>What To Wear + What To Know</i>
                 </EventWhatTo>
@@ -112,8 +114,9 @@ const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
 
               <div>{event.description}</div>
               <EventInfoItemsDrawer
-                isOpen={isOpen}
-                handleToggleDrawer={handleToggleDrawer}
+                key={event.title}
+                isOpen={isOpenTitle === event.title}
+                handleCloseDrawer={handleCloseDrawer}
                 event={event}
               />
             </EventInfo>
