@@ -7,6 +7,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { db } from '../../App';
 import { ScreenSizes } from '../../consts/vars';
 import { CurInvitesContext } from '../../context/CurInvitesContext';
+import { ScreenContext } from '../../context/ScreenContext';
 import StarBorder from '../../images/StarBorder.png';
 import { Ceremony, Person, Pickleball, Welcome } from '../../types';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
@@ -155,7 +156,7 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
         {({ handleSubmit, submitting, values }) => (
           <form style={{ width: '100%' }}>
             <RSVPFormSectionBlock>
-              <Parallax rotateY={isMobile && [-60, 60]}>
+              <Parallax rotateY={!isMobile ? [-60, 60] : [0, 0]}>
                 <RSVPFormSection1>
                   <Date>Thursday, October 26, 2023</Date>
                   <Description>Welcome Party</Description>
@@ -182,7 +183,7 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
                 </RSVPFormSection1>
               </Parallax>
 
-              <Parallax rotateY={isMobile && [-60, 60]}>
+              <Parallax rotateY={!isMobile ? [-60, 60] : [0, 0]}>
                 <RSVPFormSection2>
                   <Date>Friday, October 27, 2023</Date>
                   <Description>Wedding</Description>
@@ -240,7 +241,7 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
                 </RSVPFormSection2>
               </Parallax>
 
-              <Parallax rotateY={isMobile && [-60, 60]}>
+              <Parallax rotateY={!isMobile ? [-60, 60] : [0, 0]}>
                 <RSVPFormSection3>
                   <Date>Saturday, October 28, 2023</Date>
                   <Description>Pickleball Social</Description>
