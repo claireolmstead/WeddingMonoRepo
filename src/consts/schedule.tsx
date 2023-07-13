@@ -161,7 +161,7 @@ export const schedule: Schedule = [
     events: [
       {
         title: 'Pioneertown Shuttle to Rimrock Ranch',
-        time: '2 pm',
+        time: '2:30 pm',
         startDate: '2023-10-27',
         startTime: '14:00',
         endTime: '14:15',
@@ -197,7 +197,7 @@ export const schedule: Schedule = [
         startTime: '15:00',
         endTime: '22:00',
         description:
-          'Please join us to celebrate the wedding of Nick and Sterling! Arrive at Rimrock Ranch for a welcome cocktail. The ceremony begins at 3:45pm with dinner and dancing following.',
+          'Please join us to celebrate the wedding of Nick and Sterling! Arrive at Rimrock Ranch for a welcome cocktail. The ceremony begins at 3:30pm with dinner and dancing following.',
         whatToWear: (
           <div className={'column'}>
             <div className={'title'}>California Cowboy Cocktail</div>
@@ -259,9 +259,9 @@ export const schedule: Schedule = [
     events: [
       {
         title: 'Pickleball Social',
-        time: '1:45 pm',
+        time: '12:00 pm',
         startDate: '2023-10-28',
-        startTime: '11:00',
+        startTime: '12:00',
         endTime: '14:00',
         location: (
           <a

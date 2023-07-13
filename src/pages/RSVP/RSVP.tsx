@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
-import React, { useContext, useState } from 'react';
+import CloseIcon from '@mui/icons-material/Close';
+import { Button, IconButton, Snackbar } from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import React, { forwardRef, useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { getInvites } from '../../hooks/getInvitesFromId';
@@ -36,9 +39,16 @@ const RSVPTitle = styled.div`
   text-align: center;
 `;
 
+const RSVPAlert = styled.span`
+  align-self: center;
+  display: flex;
+  gap: 30px;
+`;
+
 const RSVP = () => {
   const { invites, setInvites, hasAllRsvped, setHasAllRsvped } = useContext(CurInvitesContext);
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
 
   if (!invites) return <>Not yet logged in.</>;
 
@@ -50,6 +60,10 @@ const RSVP = () => {
       setInvites(inviteList);
     }
   };
+
+  const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
   return (
     <>
@@ -74,10 +88,22 @@ const RSVP = () => {
               inviteLookup();
               setIsEditing(false);
               setHasAllRsvped(true);
+              setIsSnackbarOpen(true);
             }}
           />
         )}
       </RSVPContainer>
+      <Snackbar
+        open={isSnackbarOpen}
+        autoHideDuration={3000}
+        onClose={() => setIsSnackbarOpen(false)}
+      >
+        <Alert onClick={() => setIsSnackbarOpen(false)} severity="success">
+          <RSVPAlert>
+            Successful RSVP! <CloseIcon fontSize="small" style={{ cursor: 'pointer' }} />
+          </RSVPAlert>
+        </Alert>
+      </Snackbar>
     </>
   );
 };

@@ -14,11 +14,11 @@ export const type = {
     }
 
     @media only screen and (min-width: ${ScreenSizes.DESKTOP}px) {
-      font-size: 50px;
+      font-size: 40px;
     }
 
     @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
-      font-size: 60px;
+      font-size: 50px;
     }
   `,
   sub_title: css`

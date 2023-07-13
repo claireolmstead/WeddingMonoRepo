@@ -6,6 +6,7 @@ import { ScreenSizes } from '../consts/vars';
 
 const NavBlock = styled.div`
   display: flex;
+  font-size: 14px;
   gap: 20px;
   justify-content: center;
 

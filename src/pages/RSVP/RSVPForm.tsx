@@ -126,8 +126,7 @@ interface RSVPFormProps {
 }
 
 const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormProps) => {
-  const { isMobile } = useContext(ScreenContext);
-  const { invites, setInvites } = useContext(CurInvitesContext);
+  const { isDesktop } = useContext(ScreenContext);
   const onSubmit = (values: Person) => {
     const personId = (person.first + person.last).toLowerCase();
     const docRef = doc(db, 'person', `${personId}`);
@@ -156,7 +155,7 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
         {({ handleSubmit, submitting, values }) => (
           <form style={{ width: '100%' }}>
             <RSVPFormSectionBlock>
-              <Parallax rotateY={!isMobile ? [-60, 60] : [0, 0]}>
+              <Parallax rotateY={isDesktop ? [-60, 60] : [0, 0]}>
                 <RSVPFormSection1>
                   <Date>Thursday, October 26, 2023</Date>
                   <Description>Welcome Party</Description>
@@ -183,7 +182,7 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
                 </RSVPFormSection1>
               </Parallax>
 
-              <Parallax rotateY={!isMobile ? [-60, 60] : [0, 0]}>
+              <Parallax rotateY={isDesktop ? [-60, 60] : [0, 0]}>
                 <RSVPFormSection2>
                   <Date>Friday, October 27, 2023</Date>
                   <Description>Wedding</Description>
@@ -241,7 +240,7 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
                 </RSVPFormSection2>
               </Parallax>
 
-              <Parallax rotateY={!isMobile ? [-60, 60] : [0, 0]}>
+              <Parallax rotateY={isDesktop ? [-60, 60] : [0, 0]}>
                 <RSVPFormSection3>
                   <Date>Saturday, October 28, 2023</Date>
                   <Description>Pickleball Social</Description>

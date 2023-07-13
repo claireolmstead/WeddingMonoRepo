@@ -42,13 +42,8 @@ const HomeDate = styled.div`
   font-size: 14px;
   font-weight: bold;
 
-  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
-    font-size: 16px;
-    font-weight: bold;
-  }
-
   @media only screen and (min-width: ${ScreenSizes.WIDESCREEN}px) {
-    font-size: 20px;
+    font-size: 16px;
   }
 `;
 
