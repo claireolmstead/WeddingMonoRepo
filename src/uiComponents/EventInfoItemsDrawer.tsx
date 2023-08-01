@@ -90,7 +90,6 @@ interface EventInfoItemsModalProps {
 
 const EventInfoItemsDrawer = ({ event, isOpen, handleCloseDrawer }: EventInfoItemsModalProps) => {
   const { isMobile } = useContext(ScreenContext);
-  console.log(event);
 
   return (
     <Drawer open={isOpen} onClose={handleCloseDrawer} anchor={'bottom'}>

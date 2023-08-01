@@ -10,6 +10,18 @@ import Pickleballimg_5 from '../images/Pickleball/img_5.png';
 import Pickleballimg_6 from '../images/Pickleball/img_6.png';
 import Pickleballimg_7 from '../images/Pickleball/img_7.png';
 import Pickleballimg_8 from '../images/Pickleball/img_8.png';
+import Rehearsal_1 from '../images/Rehearsal/Rehearsal_1.jpeg';
+import Rehearsal_2 from '../images/Rehearsal/Rehearsal_2.jpeg';
+import Rehearsal_3 from '../images/Rehearsal/Rehearsal_3.jpeg';
+import Rehearsal_4 from '../images/Rehearsal/Rehearsal_4.jpeg';
+import Rehearsal_5 from '../images/Rehearsal/Rehearsal_5.jpeg';
+import Rehearsal_6 from '../images/Rehearsal/Rehearsal_6.jpeg';
+import Rehearsal_7 from '../images/Rehearsal/Rehearsal_7.jpeg';
+import Rehearsal_8 from '../images/Rehearsal/Rehearsal_8.jpeg';
+import Rehearsal_9 from '../images/Rehearsal/Rehearsal_9.jpeg';
+import Rehearsal_10 from '../images/Rehearsal/Rehearsal_10.jpeg';
+import Rehearsal_11 from '../images/Rehearsal/Rehearsal_11.jpeg';
+import Rehearsal_12 from '../images/Rehearsal/Rehearsal_12.jpeg';
 import Weddingimg_0 from '../images/Wedding/img.png';
 import Weddingimg_1 from '../images/Wedding/img_1.png';
 import Weddingimg_2 from '../images/Wedding/img_2.png';
@@ -69,7 +81,7 @@ export const schedule: Schedule = [
             </Row>
             <Row isTopAligned={true}>
               <StarIcon />
-              <b>Cowboys:</b> Opt for denim and button-down shirts paired with cowboy boots and a
+              <b>Cowboys:</b> Let&apos;s dress up in a button-down paired with cowboy boots and a
               cowboy hat.
             </Row>
           </div>
@@ -90,18 +102,18 @@ export const schedule: Schedule = [
           </div>
         ),
         images: [
-          WelcomePartyimg_0,
-          WelcomePartyimg_1,
-          WelcomePartyimg_2,
-          WelcomePartyimg_3,
-          WelcomePartyimg_4,
-          WelcomePartyimg_5,
-          WelcomePartyimg_6,
-          WelcomePartyimg_7,
-          WelcomePartyimg_8,
-          WelcomePartyimg_9,
-          WelcomePartyimg_10,
-          WelcomePartyimg_11,
+          Rehearsal_1,
+          Rehearsal_2,
+          Rehearsal_3,
+          Rehearsal_4,
+          Rehearsal_5,
+          Rehearsal_6,
+          Rehearsal_7,
+          Rehearsal_8,
+          Rehearsal_9,
+          Rehearsal_10,
+          Rehearsal_11,
+          Rehearsal_12,
         ],
       },
       {
@@ -285,7 +297,8 @@ export const schedule: Schedule = [
             <div className={'title'}>“Country” Club</div>
             <Row isTopAligned={true}>
               <StarIcon />
-              If you opt-in for pickleball tennis attire is a must. Think vintage country club chic.
+              If you opt-in for pickleball tennis attire is a must. Think <b>all-white</b> vintage
+              country club chic.
             </Row>
           </div>
         ),

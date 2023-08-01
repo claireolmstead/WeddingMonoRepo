@@ -1,10 +1,11 @@
-import { doc, setDoc } from '@firebase/firestore';
+import { collection, doc, getDocs, orderBy, query, setDoc } from '@firebase/firestore';
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import * as XLSX from 'xlsx';
 
 import { db } from '../../App';
 import { doesPersonExist } from '../../hooks/doesPersonExist';
 import { getPersonId } from '../../hooks/getPersonId';
+import { Person } from '../../types';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 
 const FileUpload = () => {
@@ -76,12 +77,34 @@ const FileUpload = () => {
     }
   };
 
+  const getPeople = async (orderKey?: string) => {
+    const q = query(collection(db, 'person'), orderBy(orderKey || 'partyId'));
+    const querySnapshot = await getDocs(q);
+    let people: Person[] = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      people = [...people, data as Person];
+    });
+    return people;
+  };
+
+  const exportDataToFile = async () => {
+    const people = await getPeople();
+    const worksheet = XLSX.utils.json_to_sheet(people);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Reynolds_Rsvps');
+    XLSX.writeFile(workbook, 'Reynolds_Rsvps.xlsx', { compression: true });
+  };
+
   return (
     <>
       <input type="file" ref={inputRef} />
       {uploadData && uploadData?.length > 0 && (
         <PrimaryButton onClick={saveDataFromFile}>Save Data</PrimaryButton>
       )}
+      <PrimaryButton colorWay={'secondary'} onClick={exportDataToFile}>
+        Export Responses
+      </PrimaryButton>
     </>
   );
 };

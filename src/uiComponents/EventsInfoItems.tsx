@@ -5,7 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 import React, { useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../context/CurInvitesContext';
-import { Event, Welcome } from '../types';
+import { Event, Rehearsal, Welcome } from '../types';
 import EventInfoItemsDrawer from './EventInfoItemsDrawer';
 import Row from './Row';
 
@@ -73,12 +73,16 @@ const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
     setIsOpenTitle('');
   };
 
+  const isShowingRehearsal =
+    invites &&
+    invites?.length > 0 &&
+    (invites[0].rehearsal === Rehearsal.ATTENDING || invites[0].rehearsal !== Rehearsal.YES);
+
   return (
     <>
       {events.map((event) => (
         <>
-          {(!invites || (invites && invites[0].rehearsal !== Welcome.ATTENDING)) &&
-          event.title === 'Love Birds Rehearsal Dinner' ? (
+          {!isShowingRehearsal && event.title === 'Love Birds Rehearsal Dinner' ? (
             <></>
           ) : (
             <EventInfo key={event.title}>

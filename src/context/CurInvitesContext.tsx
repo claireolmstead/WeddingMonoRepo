@@ -37,11 +37,7 @@ const CurInvitesContextProvider = ({ children }: Props): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    console.log('invites:', invites);
     if (!invites || invites.length < 1) return;
-
-    console.log(invites);
-
     window.localStorage.setItem('curInvites', JSON.stringify(invites));
 
     const hasRsvped = hasAllResponded(invites);

@@ -50,12 +50,19 @@ export enum Welcome {
   NOT_ATTENDING = 'NOT_ATTENDING',
 }
 
+export enum Rehearsal {
+  YES = 'Yes',
+  NO = 'No',
+  ATTENDING = 'ATTENDING',
+  NOT_ATTENDING = 'NOT_ATTENDING',
+}
+
 export type Person = {
   id: string;
   first: string;
   last: string;
   partyId: string;
-  rehearsal: Welcome;
+  rehearsal: Rehearsal;
   welcome: Welcome;
   ceremony: Ceremony;
   ceremonyTransportation: Ceremony;
