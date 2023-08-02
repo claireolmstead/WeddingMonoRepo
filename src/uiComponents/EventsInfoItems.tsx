@@ -76,7 +76,7 @@ const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
   const isShowingRehearsal =
     invites &&
     invites?.length > 0 &&
-    (invites[0].rehearsal === Rehearsal.ATTENDING || invites[0].rehearsal !== Rehearsal.YES);
+    (invites[0].rehearsal === Rehearsal.ATTENDING || invites[0].rehearsal === Rehearsal.YES);
 
   return (
     <>

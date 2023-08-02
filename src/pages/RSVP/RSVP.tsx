@@ -8,6 +8,7 @@ import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { getInvites } from '../../hooks/getInvitesFromId';
 import HomeBackgroundImg from '../../images/HomeBackgroundImg.jpg';
 import Container from '../../uiComponents/Container';
+import Footer from '../../uiComponents/Footer';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 import RSVPFormList from './RSVPFormList';
 
@@ -45,7 +46,7 @@ const RSVPAlert = styled.span`
   gap: 30px;
 `;
 
-const RSVP = () => {
+const RSVP = ({ setIsAuthenticated }: { setIsAuthenticated: (value: boolean) => void }) => {
   const { invites, setInvites, hasAllRsvped, setHasAllRsvped } = useContext(CurInvitesContext);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
@@ -104,6 +105,7 @@ const RSVP = () => {
           </RSVPAlert>
         </Alert>
       </Snackbar>
+      <Footer setIsAuthenticated={setIsAuthenticated} />
     </>
   );
 };

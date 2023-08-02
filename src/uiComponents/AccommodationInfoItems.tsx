@@ -7,12 +7,12 @@ import { LodgingItem } from '../types';
 const AccommodationInfoItem = styled.div`
   align-items: center;
   color: inherit;
-  cursor: pointer;
   display: flex;
   gap: 8px;
   margin-bottom: 20px;
 
-  &:hover {
+  a:hover {
+    cursor: pointer;
     text-decoration: underline;
   }
 `;

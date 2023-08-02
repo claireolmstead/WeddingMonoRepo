@@ -64,6 +64,7 @@ export const lodging: LodgingItems = [
       <div key={'fly2'}>
         For more flight availability, the below airports are each around a 2-2.5 hour drive:
         <ul>
+          <li>ONT: Ontario International Airport</li>
           <li>LAX: Los Angeles International Airport</li>
           <li>SNA: John Wayne Airport</li>
           <li>SAN: San Diego International Airport</li>

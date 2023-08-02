@@ -16,13 +16,15 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const CurInvitesContext = createContext<CurInvitesType>({
+export const defaultValue = {
   setInvites: () => undefined,
   hasAllRsvped: false,
   isNotMe: false,
   setIsNotMe: () => undefined,
   setHasAllRsvped: () => undefined,
-});
+};
+
+export const CurInvitesContext = createContext<CurInvitesType>(defaultValue);
 
 const CurInvitesContextProvider = ({ children }: Props): JSX.Element => {
   const [invites, setInvites] = useState<Person[] | undefined>([]);

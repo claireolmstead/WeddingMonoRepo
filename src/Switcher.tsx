@@ -18,6 +18,7 @@ import Lodging from './pages/Lodging/Lodging';
 import Registry from './pages/Registry/Registry';
 import RSVP from './pages/RSVP/RSVP';
 import Schedule from './pages/Schedule/Schedule';
+import Footer from './uiComponents/Footer';
 
 const AppBody = styled.div`
   color: ${(props) => props.theme.colors.white};
@@ -52,7 +53,7 @@ const Switcher = () => {
           element={<Authenticate setAuthenticated={() => setIsAuthenticated(true)} />}
         />
         <Route path="/home" element={<Home />} />
-        <Route path="/rsvp" element={<RSVP />} />
+        <Route path="/rsvp" element={<RSVP setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/lodging" element={<Lodging />} />
         <Route path="/registry" element={<Registry />} />
