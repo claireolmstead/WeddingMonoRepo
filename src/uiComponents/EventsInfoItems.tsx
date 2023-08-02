@@ -5,7 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 import React, { useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../context/CurInvitesContext';
-import { Event, Rehearsal, Welcome } from '../types';
+import { Event, Rehearsal } from '../types';
 import EventInfoItemsDrawer from './EventInfoItemsDrawer';
 import Row from './Row';
 

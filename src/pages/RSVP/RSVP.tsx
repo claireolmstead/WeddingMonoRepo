@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import CloseIcon from '@mui/icons-material/Close';
-import { Button, IconButton, Snackbar } from '@mui/material';
+import { Snackbar } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import React, { forwardRef, useContext, useState } from 'react';
 
