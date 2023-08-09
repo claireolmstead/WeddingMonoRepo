@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 import { doc, setDoc } from '@firebase/firestore';
-import React, { useContext } from 'react';
+import CloseIcon from '@mui/icons-material/Close';
+import { Alert } from '@mui/lab';
+import { Snackbar } from '@mui/material';
+import React, { useContext, useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import { Parallax } from 'react-scroll-parallax';
 
@@ -117,6 +120,12 @@ const RSVPFormField = styled(Field)`
   }
 `;
 
+const RSVPAlert = styled.span`
+  align-self: center;
+  display: flex;
+  gap: 30px;
+`;
+
 interface RSVPFormProps {
   person: Person;
   isFinalPerson: boolean;
@@ -125,6 +134,8 @@ interface RSVPFormProps {
 }
 
 const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormProps) => {
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
+
   const { isWideScreen } = useContext(ScreenContext);
   const onSubmit = (values: Person) => {
     const personId = (person.first + person.last).toLowerCase();
@@ -142,13 +153,31 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
       });
   };
 
+  const validate = (values: Person) => {
+    const errors: Record<string, string> = {};
+    if (!values.welcome) {
+      errors.welcome = 'Field is required';
+    }
+    if (!values.ceremony) {
+      errors.ceremony = 'Field is required';
+    }
+    if (!values.pickleball) {
+      errors.pickleball = 'Field is required';
+    }
+    if (Object.keys(errors).length === 0) {
+      setIsSnackbarOpen(false);
+    } else setIsSnackbarOpen(true);
+    return Object.keys(errors).length === 0;
+  };
+
   return (
     <RSVPFormContainer>
       <Form
         key={person.id}
         initialValues={person}
-        onSubmit={(values) => {
-          onSubmit(values as Person);
+        onSubmit={(values: Person) => {
+          const hasNoErrors = validate(values);
+          hasNoErrors && onSubmit(values);
         }}
       >
         {({ handleSubmit, submitting, values }) => (
@@ -284,6 +313,17 @@ const RSVPForm = ({ person, isFinalPerson, goToNext, setIsFinished }: RSVPFormPr
           </form>
         )}
       </Form>
+      <Snackbar
+        open={isSnackbarOpen}
+        autoHideDuration={3000}
+        onClose={() => setIsSnackbarOpen(false)}
+      >
+        <Alert onClick={() => setIsSnackbarOpen(false)} severity="error">
+          <RSVPAlert>
+            Must complete each field <CloseIcon fontSize="small" style={{ cursor: 'pointer' }} />
+          </RSVPAlert>
+        </Alert>
+      </Snackbar>
     </RSVPFormContainer>
   );
 };
