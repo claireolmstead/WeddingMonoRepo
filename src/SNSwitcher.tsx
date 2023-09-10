@@ -10,14 +10,14 @@ import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
-import Header from './features/Header';
-import Admin from './pages/Admin/Admin';
-import Authenticate from './pages/Authenticate/Authenticate';
-import Home from './pages/Home/Home';
-import Lodging from './pages/Lodging/Lodging';
-import Registry from './pages/Registry/Registry';
-import RSVP from './pages/RSVP/RSVP';
-import Schedule from './pages/Schedule/Schedule';
+import Header from './SNFeatures/Header';
+import Admin from './SNPages/Admin/Admin';
+import Authenticate from './SNPages/Authenticate/Authenticate';
+import Home from './SNPages/Home/Home';
+import Lodging from './SNPages/Lodging/Lodging';
+import Registry from './SNPages/Registry/Registry';
+import RSVP from './SNPages/RSVP/RSVP';
+import Schedule from './SNPages/Schedule/Schedule';
 import NotificationModal from './uiComponents/NotificationModal/NotificationModal';
 
 const AppBody = styled.div`
@@ -25,7 +25,7 @@ const AppBody = styled.div`
   min-height: 100vh;
 `;
 
-const Switcher = () => {
+const SNSwitcher = () => {
   const navigate = useNavigate();
   const auth = window.localStorage.getItem('isAuthenticated');
   const isAuth: boolean = auth && JSON.parse(auth);
@@ -65,4 +65,4 @@ const Switcher = () => {
   );
 };
 
-export default Switcher;
+export default SNSwitcher;
