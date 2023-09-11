@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { ScreenSizes } from '../consts/vars';
-import Logo from '../images/Logo.png';
+import Logo from '../images/CBImages/Logo.png';
 import Container from '../uiComponents/Container';
 import Navigation from './Navigation';
 
@@ -33,7 +34,8 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Link to={'/home'}>
-        <HeaderImg src={Logo} alt={'N+S'} />
+        {/*<HeaderImg src={Logo} alt={'N+S'} />*/}
+        <HeaderImg src={Logo} alt={'C+B'} />
       </Link>
       <Navigation />
     </HeaderContainer>

@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 
 import { lodging } from '../../consts/accommodations';
 import { ScreenContext } from '../../context/ScreenContext';
-import RegistryBackgroundImg from '../../images/RegistryBackground.jpg';
+import RegistryBackgroundImg from '../../images/NSImages/RegistryBackground.jpg';
 import Container from '../../uiComponents/Container';
 import LodgingListItemBlock from '../../uiComponents/LodgingListItemBlock';
 import LodgingImages from './LodgingImages';
