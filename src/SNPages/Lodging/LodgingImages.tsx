@@ -1,14 +1,14 @@
 import { ImageList, ImageListItem } from '@mui/material';
 import React from 'react';
 
-import img from '../../images/Pioneertown/img.png';
-import img_1 from '../../images/Pioneertown/img_1.png';
-import img_2 from '../../images/Pioneertown/img_2.png';
-import img_3 from '../../images/Pioneertown/img_3.png';
-import img_4 from '../../images/Pioneertown/img_4.png';
-import img_5 from '../../images/Pioneertown/img_5.png';
-import img_6 from '../../images/Pioneertown/img_6.png';
-import img_7 from '../../images/Pioneertown/img_7.png';
+import img from '../../images/NSImages/Pioneertown/img.png';
+import img_1 from '../../images/NSImages/Pioneertown/img_1.png';
+import img_2 from '../../images/NSImages/Pioneertown/img_2.png';
+import img_3 from '../../images/NSImages/Pioneertown/img_3.png';
+import img_4 from '../../images/NSImages/Pioneertown/img_4.png';
+import img_5 from '../../images/NSImages/Pioneertown/img_5.png';
+import img_6 from '../../images/NSImages/Pioneertown/img_6.png';
+import img_7 from '../../images/NSImages/Pioneertown/img_7.png';
 
 const LodgingImages = () => {
   const images = [img, img_1, img_2, img_3, img_4, img_5, img_6, img_7];

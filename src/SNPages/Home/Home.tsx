@@ -6,18 +6,18 @@ import { Autoplay, Keyboard, Navigation, Scrollbar, Zoom } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ScreenSizes } from '../../consts/vars';
-import HomeBackgroundImg from '../../images/HomeBackgroundImg.jpg';
-import img1 from '../../images/Us/img1.jpg';
-import img2 from '../../images/Us/img2.jpg';
-import img3 from '../../images/Us/img3.jpg';
-import img4 from '../../images/Us/img4.jpg';
-import img5 from '../../images/Us/img5.jpg';
-import img6 from '../../images/Us/img6.jpg';
-import img7 from '../../images/Us/img7.jpg';
-import img8 from '../../images/Us/img8.jpg';
-import img9 from '../../images/Us/img9.jpg';
-import img10 from '../../images/Us/img10.jpg';
-import img11 from '../../images/Us/img11.jpg';
+import HomeBackgroundImg from '../../images/NSImages/HomeBackgroundImg.jpg';
+import img1 from '../../images/NSImages/Us/img1.jpg';
+import img2 from '../../images/NSImages/Us/img2.jpg';
+import img3 from '../../images/NSImages/Us/img3.jpg';
+import img4 from '../../images/NSImages/Us/img4.jpg';
+import img5 from '../../images/NSImages/Us/img5.jpg';
+import img6 from '../../images/NSImages/Us/img6.jpg';
+import img7 from '../../images/NSImages/Us/img7.jpg';
+import img8 from '../../images/NSImages/Us/img8.jpg';
+import img9 from '../../images/NSImages/Us/img9.jpg';
+import img10 from '../../images/NSImages/Us/img10.jpg';
+import img11 from '../../images/NSImages/Us/img11.jpg';
 import Container from '../../uiComponents/Container';
 
 const HomeBackground = styled.img`

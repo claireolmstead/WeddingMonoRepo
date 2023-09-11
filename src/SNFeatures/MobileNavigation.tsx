@@ -5,7 +5,7 @@ import { Box, Drawer } from '@mui/material';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Logo from '../images/Logo.png';
+import Logo from '../images/NSImages/Logo.png';
 
 const MobileNavigationBlock = styled.div`
   position: absolute;

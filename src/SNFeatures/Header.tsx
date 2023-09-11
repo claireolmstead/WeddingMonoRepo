@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { ScreenSizes } from '../consts/vars';
 import { ScreenContext } from '../context/ScreenContext';
-import Logo from '../images/Logo.png';
+import Logo from '../images/NSImages/Logo.png';
 import Container from '../uiComponents/Container';
 import MobileNavigation from './MobileNavigation';
 import Navigation from './Navigation';

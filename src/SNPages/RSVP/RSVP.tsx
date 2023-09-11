@@ -6,7 +6,7 @@ import React, { forwardRef, useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { getInvites } from '../../hooks/getInvitesFromId';
-import HomeBackgroundImg from '../../images/HomeBackgroundImg.jpg';
+import HomeBackgroundImg from '../../images/NSImages/HomeBackgroundImg.jpg';
 import Container from '../../uiComponents/Container';
 import Footer from '../../uiComponents/Footer';
 import PrimaryButton from '../../uiComponents/PrimaryButton';

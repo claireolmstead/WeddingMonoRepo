@@ -10,7 +10,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { db } from '../../App';
 import { ScreenSizes } from '../../consts/vars';
 import { ScreenContext } from '../../context/ScreenContext';
-import StarBorder from '../../images/StarBorder.png';
+import StarBorder from '../../images/NSImages/StarBorder.png';
 import { Ceremony, Person, Pickleball, Welcome } from '../../types';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 

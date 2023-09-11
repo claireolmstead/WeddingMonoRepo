@@ -5,8 +5,8 @@ import { Parallax } from 'react-scroll-parallax';
 import { schedule } from '../../consts/schedule';
 import { ScreenSizes } from '../../consts/vars';
 import { ScreenContext } from '../../context/ScreenContext';
-import ScheduleBackgroundImage from '../../images/ScheduleBackground.jpg';
-import StarPartition from '../../images/StarPartition.png';
+import ScheduleBackgroundImage from '../../images/NSImages/ScheduleBackground.jpg';
+import StarPartition from '../../images/NSImages/StarPartition.png';
 import EventsInfoItems from '../../uiComponents/EventsInfoItems';
 import { MaxWidthWrapper } from '../../uiComponents/MaxWidthWrapper';
 

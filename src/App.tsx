@@ -1,5 +1,4 @@
 import './App.css';
-import 'dotenv/config';
 
 import { ThemeProvider } from '@emotion/react';
 import { getAnalytics } from '@firebase/analytics';
@@ -14,8 +13,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import CBSwitcher from './CBSwitcher';
 import CurInvitesContextProvider from './context/CurInvitesContext';
 import ScreenContextProvider from './context/ScreenContext';
-import env from './environment';
-import SNSwitcher from './SNSwitcher';
+// import SNSwitcher from './SNSwitcher';
 import { theme } from './style/Theme';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -44,7 +42,10 @@ function App() {
       <CurInvitesContextProvider>
         <ThemeProvider theme={theme}>
           <ParallaxProvider>
-            <Router>{env.IS_CB ? <CBSwitcher /> : <SNSwitcher />}</Router>
+            {/*<Router>{env.IS_CB ? <CBSwitcher /> : <SNSwitcher />}</Router>*/}
+            <Router>
+              <CBSwitcher />
+            </Router>
           </ParallaxProvider>
         </ThemeProvider>
       </CurInvitesContextProvider>
