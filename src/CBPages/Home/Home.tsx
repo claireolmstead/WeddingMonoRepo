@@ -13,10 +13,31 @@ const HomeBackground = styled.img`
     background-position: center;
   }
 `;
+
+const HomeTitleBlock = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  ${(props) => props.theme.type.main_body};
+`;
+
+const HomeNames = styled.div`
+  ${(props) => props.theme.type.large_page_title};
+`;
+
 const Home = () => {
   return (
     <>
       <HomeBackground />
+      <HomeTitleBlock>
+        <>Please join us for the wedding of</>
+        <HomeNames>Claire Olmstead</HomeNames>
+        <>to</>
+        <HomeNames>Brooks Clark</HomeNames>
+      </HomeTitleBlock>
     </>
   );
 };

@@ -9,6 +9,15 @@ export const mixins = {
     top: 0;
     width: 100vw;
   `,
+  backgroundGradient: css`
+    background: rgb(194, 183, 177)
+      linear-gradient(0deg, rgba(194, 183, 177, 1) 0%, rgba(177, 187, 197, 1) 100%);
+    background-size: cover;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+  `,
   underlineHover: css`
     &::before {
       background-color: #ffffff;

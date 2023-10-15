@@ -2,12 +2,32 @@ import { css } from '@emotion/react';
 
 import { ScreenSizes } from '../consts/vars';
 
+// const SNTitleFont = css`
+//   font-family: 'filmotype-western', serif;
+//   letter-spacing: 8px;
+//   text-transform: uppercase;
+// `;
+//
+// const SNBodyFont = css`
+//   font-family: 'futura', sans-serif;
+// `;
+
+const CBTitleFont = css`
+  font-family: 'liza-display-new', sans-serif;
+`;
+
+const CBBodyFont = css`
+  font-family: 'itc-avant-garde-gothic-pro', sans-serif;
+`;
+
+const TitleFont = CBTitleFont;
+const PageTitleFont = CBBodyFont;
+const BodyFont = CBBodyFont;
+
 export const type = {
   main_title: css`
-    font-family: 'filmotype-western', serif;
+    ${TitleFont};
     font-size: 24px;
-    letter-spacing: 8px;
-    text-transform: uppercase;
 
     @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
       font-size: 30px;
@@ -22,10 +42,8 @@ export const type = {
     }
   `,
   sub_title: css`
-    font-family: 'filmotype-western', serif;
+    ${TitleFont};
     font-size: 20px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
 
     @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
       font-size: 24px;
@@ -36,9 +54,8 @@ export const type = {
     }
   `,
   page_title: css`
-    font-family: 'filmotype-western', serif;
+    ${PageTitleFont};
     font-size: 24px;
-    letter-spacing: 8px;
     text-transform: uppercase;
 
     @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
@@ -49,18 +66,28 @@ export const type = {
       font-size: 36px;
     }
   `,
+  large_page_title: css`
+    ${TitleFont};
+    font-size: 32px;
+
+    @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+      font-size: 38px;
+    }
+
+    @media only screen and (min-width: ${ScreenSizes.DESKTOP}px) {
+      font-size: 50px;
+    }
+  `,
   sub_page_title: css`
-    font-family: 'futura', sans-serif;
+    ${BodyFont};
     font-size: 18px;
     font-weight: bold;
-    letter-spacing: 3px;
-    text-transform: uppercase;
 
     @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
       font-size: 22px;
     }
   `,
   main_body: css`
-    font-family: 'futura', sans-serif;
+    ${BodyFont};
   `,
 };
