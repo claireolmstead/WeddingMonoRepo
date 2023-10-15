@@ -73,16 +73,18 @@ const EventsInfoItems = ({ events }: EventInfoItemsProps) => {
     setIsOpenTitle('');
   };
 
-  const isShowingRehearsal =
-    invites &&
-    invites?.length > 0 &&
-    (invites[0].rehearsal === Rehearsal.ATTENDING || invites[0].rehearsal === Rehearsal.YES);
+  const isShowingRehearsal = () => {
+    const responses = invites?.map(
+      (invite) => invite.rehearsal === Rehearsal.ATTENDING || invite.rehearsal === Rehearsal.YES
+    );
+    return responses?.includes(true);
+  };
 
   return (
     <>
       {events.map((event) => (
         <>
-          {!isShowingRehearsal && event.title === 'Love Birds Rehearsal Dinner' ? (
+          {!isShowingRehearsal() && event.title === 'Love Birds Rehearsal Dinner' ? (
             <></>
           ) : (
             <EventInfo key={event.title}>

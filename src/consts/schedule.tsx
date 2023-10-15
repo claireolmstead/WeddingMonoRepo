@@ -54,7 +54,7 @@ export const schedule: Schedule = [
     events: [
       {
         title: 'Love Birds Rehearsal Dinner',
-        time: '3:30 pm',
+        time: '5 pm',
         startDate: '2023-10-26',
         startTime: '15:30',
         endTime: '19:30',
@@ -70,7 +70,7 @@ export const schedule: Schedule = [
           </a>
         ),
         description:
-          'After rehearsing for the big day, celebrate Sterling and Nick with a special dinner and toasts to the love birds.',
+          'Join us at 5 pm to rehearse for the big day. At 5:30 pm, celebrate Sterling and Nick with a special dinner and toasts to the love birds.',
         whatToWear: (
           <div className={'column'}>
             <div className={'title'}>Romantic Country</div>
@@ -214,7 +214,7 @@ export const schedule: Schedule = [
           <div className={'column'}>
             <div className={'title'}>California Cowboy Cocktail</div>
             <div className={'subtitle'}>
-              Celebrate Sterling and Nick’s wild romance with your finest formal Western wear.
+              Celebrate Sterling and Nick’s wild romance with your finest FORMAL Western wear.
             </div>
             <Row isTopAligned={true}>
               <StarIcon />
