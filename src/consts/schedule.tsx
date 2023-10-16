@@ -209,7 +209,7 @@ export const schedule: Schedule = [
         startTime: '15:00',
         endTime: '22:00',
         description:
-          'Please join us to celebrate the wedding of Nick and Sterling! Arrive at Rimrock Ranch for a welcome cocktail. The ceremony begins at 3:30pm with dinner and dancing following.',
+          'Please join us to celebrate the wedding of Nick and Sterling! Arrive at Rimrock Ranch for a welcome cocktail. The ceremony begins at 3:30pm with dinner and dancing following. FORMAL ATTIRE.',
         whatToWear: (
           <div className={'column'}>
             <div className={'title'}>California Cowboy Cocktail</div>
