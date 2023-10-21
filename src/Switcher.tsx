@@ -18,6 +18,7 @@ import Lodging from './pages/Lodging/Lodging';
 import Registry from './pages/Registry/Registry';
 import RSVP from './pages/RSVP/RSVP';
 import Schedule from './pages/Schedule/Schedule';
+import NotificationModal from './uiComponents/NotificationModal/NotificationModal';
 
 const AppBody = styled.div`
   color: ${(props) => props.theme.colors.white};
@@ -29,6 +30,7 @@ const Switcher = () => {
   const auth = window.localStorage.getItem('isAuthenticated');
   const isAuth: boolean = auth && JSON.parse(auth);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(isAuth ?? false);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   useEffect(() => {
     if (window.location.pathname !== '/' && !isAuthenticated) {
@@ -46,6 +48,7 @@ const Switcher = () => {
   return (
     <AppBody>
       {isAuthenticated && <Header />}
+      <NotificationModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <Routes>
         <Route
           path="/"

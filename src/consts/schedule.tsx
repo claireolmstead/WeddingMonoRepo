@@ -180,16 +180,16 @@ export const schedule: Schedule = [
         location: (
           <a
             href={
-              'https://www.google.com/maps/dir/41.6908586,-70.276548/the+pioneertown+motel/@32.792704,-129.6649053,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x80db28dfa15c5261:0xa665d4d4eb6ad4d0!2m2!1d-116.4932911!2d34.1575685?entry=ttu'
+              'https://www.google.com/maps/dir//pioneertown+corrals/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x80db28df142f225b:0x8eea98090689d1d5?sa=X&ved=2ahUKEwju9dGchoaCAxWRJEQIHa7RBTsQ9Rd6BAhaEAA&ved=2ahUKEwju9dGchoaCAxWRJEQIHa7RBTsQ9Rd6BAhgEAQ'
             }
             rel={'noreferrer'}
             target={'_blank'}
           >
-            The Pioneertown Motel | 5240 Curtis Rd, Pioneertown, CA 92268
+            Pioneertown Corrals | 53626 Mane St, Pioneertown, CA 92268
           </a>
         ),
         description:
-          "Hitch a ride with us or else you'll be left in the dust! Very limited parking at Rimrock Ranch so please consider using our shuttle! Shuttles will be departing outside the entrance of Pioneertown Motel every 10 minutes starting at 2:30pm. The last shuttle will depart at 3:00pm.",
+          "Hitch a ride with us or else you'll be left in the dust! Very limited parking at Rimrock Ranch so please consider using our shuttle! Shuttles will be departing outside the entrance of Pioneertown Corrals every 10 minutes starting at 2:30pm. The last shuttle will depart at 3:00pm.",
       },
       {
         title: 'Love Birds Roundup',
