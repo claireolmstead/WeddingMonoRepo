@@ -134,13 +134,13 @@ export const schedule: Schedule = [
           </a>
         ),
         description:
-          'For those who will already be in town, the bride and groom plan to saddle up at the Red Dog Saloon. Drop in to say howdy to the love birds and say “adios” to Sterling Olmstead before she becomes a Reynolds.',
+          'Howdy! Sterling & Nick will be meeting at Red Dog Saloon for cocktails starting around 8pm. Next door Pappy & Harriet’s will have live music where some people may end up later in the night!',
         whatToWear: (
           <Row isTopAligned={true}>
             <StarIcon />
-            The Red Dog Saloon has been serving cowboys and rockstars since 1946, so dig out your
-            denim and embrace this staple of the old west. Think rugged ranch mixed with old
-            Hollywood western.
+            These bars have been serving cowboys and rockstars since 1946, so dig out your denim and
+            embrace this staple of the old west. Think rugged ranch mixed with old Hollywood
+            western.
           </Row>
         ),
         whatToKnow: (
@@ -189,7 +189,7 @@ export const schedule: Schedule = [
           </a>
         ),
         description:
-          "Hitch a ride with us or else you'll be left in the dust! Very limited parking at Rimrock Ranch so please consider using our shuttle! Shuttles will be departing outside the entrance of Pioneertown Corrals every 10 minutes starting at 2:30pm. The last shuttle will depart at 3:00pm.",
+          'We have reserved the parking lot at the Pioneertown Corrals. Shuttles will be departing outside the entrance of the Pioneertown Corrals every 10 minutes starting at 2:30pm. The last shuttle will depart at 3:00 pm so please arrive early. There is very limited parking at the venue and parking on the street is not allowed. Come early, have a beer, and don’t be on the last shuttle!',
       },
       {
         title: 'Love Birds Roundup',
@@ -278,18 +278,19 @@ export const schedule: Schedule = [
         location: (
           <a
             href={
-              'https://www.google.com/maps/dir//54929+Hoopa+Trail,+Yucca+Valley,+CA+92284/@34.0936626,-116.4684492,14.87z/data=!4m9!4m8!1m0!1m5!1m1!1s0x80db27b4aea2ca8b:0x53997ae834718c76!2m2!1d-116.4661826!2d34.098728!3e0?entry=ttu'
+              'https://www.google.com/maps/dir//55100+Martinez+Trail,+Yucca+Valley,+CA+92284/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x80db27d30806d169:0xf236c4978713f69e?sa=X&ved=2ahUKEwjhwuPc94-CAxVMJUQIHcpjCyIQwwV6BAgREAA&ved=2ahUKEwjhwuPc94-CAxVMJUQIHcpjCyIQwwV6BAgTEAQ'
             }
             rel={'noreferrer'}
             target={'_blank'}
           >
-            Hoopa House | 54929 Hoopa Trail, Yucca Valley, CA 92284
+            Hawk’s Landing Golf Course | 55100 Martinez Trail, Yucca Valley, CA 92284
           </a>
         ),
         description: (
           <a href="https://www.instagram.com/the_hoopahouse/" target="_blank" rel="noreferrer">
-            Before Nick and Sterling ride off into the sunset, wrap up the wedding weekend with a
-            casual BBQ Reynolds-style and pickleball at the Hoopa House.
+            We reserved the parking lot at Hawk’s Landing Golf Course. Shuttles will take you to the
+            Hoopa House starting at 11:30AM. It’s a private property so the shuttles are a must! Get
+            dressed in your best white tennis attire for a fun day of games, food, and drinks!
           </a>
         ),
         whatToWear: (

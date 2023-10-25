@@ -19,7 +19,7 @@ const InnerModal = styled.div`
   left: 50%;
   max-width: 600px;
   outline: none;
-  padding: 16px;
+  padding: 40px 16px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
