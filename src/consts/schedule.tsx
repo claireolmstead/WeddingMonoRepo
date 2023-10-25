@@ -54,7 +54,7 @@ export const schedule: Schedule = [
     events: [
       {
         title: 'Love Birds Rehearsal Dinner',
-        time: '5 pm',
+        time: '4 pm',
         startDate: '2023-10-26',
         startTime: '15:30',
         endTime: '19:30',
@@ -70,7 +70,7 @@ export const schedule: Schedule = [
           </a>
         ),
         description:
-          'Join us at 5 pm to rehearse for the big day. At 5:30 pm, celebrate Sterling and Nick with a special dinner and toasts to the love birds.',
+          "For those of you in the wedding, join us at 4 pm to rehearse for the big day. At 5:00 pm, we'll all come together to celebrate Sterling and Nick with a special dinner and toasts to the love birds.",
         whatToWear: (
           <div className={'column'}>
             <div className={'title'}>Romantic Country</div>
