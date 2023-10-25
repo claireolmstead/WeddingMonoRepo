@@ -9,11 +9,11 @@ import { Person } from '../../types';
 import PrimaryButton from '../../uiComponents/PrimaryButton';
 
 const FileUpload = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<any>();
   const [uploadData, setUploadData] = useState<any[]>();
   const [people, setPeople] = useState<any[]>([]);
 
-  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (e: any) => {
     if (!e.target.files) return;
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -29,9 +29,9 @@ const FileUpload = () => {
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.addEventListener(
+      inputRef.current?.addEventListener(
         'change',
-        (e) => handleFile(e as unknown as ChangeEvent<HTMLInputElement>),
+        (e: unknown) => handleFile(e as unknown as ChangeEvent<HTMLInputElement>),
         false
       );
     }

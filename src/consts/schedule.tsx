@@ -188,8 +188,22 @@ export const schedule: Schedule = [
             Pioneertown Corrals | 53626 Mane St, Pioneertown, CA 92268
           </a>
         ),
-        description:
-          'We have reserved the parking lot at the Pioneertown Corrals. Shuttles will be departing outside the entrance of the Pioneertown Corrals every 10 minutes starting at 2:30pm. The last shuttle will depart at 3:00 pm so please arrive early. There is very limited parking at the venue and parking on the street is not allowed. Come early, have a beer, and don’t be on the last shuttle!',
+        description: (
+          <div style={{ background: '#f16522', padding: '10px' }}>
+            <div>
+              {'We have reserved the parking lot at the Pioneertown Corrals. Shuttles will be departing outside the entrance' +
+                ' of the Pioneertown Corrals every 10 minutes starting at 2:30pm. The last shuttle will depart at 3:00 pm so' +
+                ' PLEASE ARRIVE EARLY. There is very limited parking at the venue and parking on the street is not allowed.' +
+                ' Come early, have a beer, and don’t be on the last shuttle!'}
+            </div>
+            <br />
+            <div>
+              {'Guests can leave their vehicles at the Pioneertown Corrals overnight but they have to be PICKED UP BY 10 AM the following morning. ' +
+                'Please be advised we are not responsible for any lost, stolen or damaged items to or from the vehicle ' +
+                'and there is no overnight security.'}
+            </div>
+          </div>
+        ),
       },
       {
         title: 'Love Birds Roundup',
