@@ -18,6 +18,7 @@ const HomeTitleBlock = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  gap: 16px;
   justify-content: center;
   position: absolute;
   width: 100%;
@@ -25,7 +26,7 @@ const HomeTitleBlock = styled.div`
 `;
 
 const HomeNames = styled.div`
-  ${(props) => props.theme.type.large_page_title};
+  ${(props) => props.theme.type.sn_large_page_title};
 `;
 
 const Home = () => {

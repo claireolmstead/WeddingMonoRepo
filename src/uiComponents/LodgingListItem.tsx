@@ -15,7 +15,7 @@ const ListItemInfo = styled.div`
 `;
 
 const ListItemTitle = styled.div`
-  ${(props) => props.theme.type.sub_title};
+  ${(props) => props.theme.type.sn_sub_title};
   color: ${(props) => props.theme.colors.pink};
   padding-bottom: 20px;
 `;

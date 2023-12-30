@@ -13,7 +13,7 @@ const InviteGroupListBlock = styled.div`
 `;
 
 const InviteGroupListTitle = styled.div`
-  ${(props) => props.theme.type.sub_page_title};
+  ${(props) => props.theme.type.sn_sub_page_title};
   padding-bottom: 20px;
 `;
 

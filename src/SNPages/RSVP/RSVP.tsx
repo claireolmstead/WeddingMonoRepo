@@ -34,7 +34,7 @@ const RSVPName = styled.div`
 `;
 
 const RSVPTitle = styled.div`
-  ${(props) => props.theme.type.page_title};
+  ${(props) => props.theme.type.sn_page_title};
   color: ${(props) => props.theme.colors.orange};
   margin-top: 20px;
   text-align: center;

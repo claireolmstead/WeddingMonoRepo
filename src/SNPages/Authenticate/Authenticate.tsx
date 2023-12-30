@@ -43,7 +43,7 @@ const AuthenticateForm = styled.form`
 
 const AuthenticateFormTitle = styled.div`
   color: ${(props) => props.theme.colors.orange};
-  ${(props) => props.theme.type.main_title};
+  ${(props) => props.theme.type.sn_main_title};
   text-align: center;
 `;
 
@@ -63,7 +63,7 @@ const AuthenticateInputBlock = styled.div`
   gap: 8px;
 `;
 
-enum passwordStatusType {
+export enum passwordStatusType {
   'NOTCONFIRMED' = 'NOTCONFIRMED',
   'CONFIRMED' = 'CONFIRMED',
   'ERROR' = 'ERROR',

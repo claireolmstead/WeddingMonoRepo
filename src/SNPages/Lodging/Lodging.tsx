@@ -9,7 +9,7 @@ import LodgingListItemBlock from '../../uiComponents/LodgingListItemBlock';
 import LodgingImages from './LodgingImages';
 
 const LodgingTitle = styled.div`
-  ${(props) => props.theme.type.page_title};
+  ${(props) => props.theme.type.sn_page_title};
   color: ${(props) => props.theme.colors.orange};
   margin: 20px 0;
   text-align: center;

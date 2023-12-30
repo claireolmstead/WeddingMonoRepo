@@ -26,7 +26,7 @@ const ModalInner = styled.div<{ isMobile: boolean }>`
 
   .title {
     color: ${(props) => props.theme.colors.pink};
-    ${(props) => props.theme.type.sub_page_title};
+    ${(props) => props.theme.type.sn_sub_page_title};
     font-size: 18px;
   }
 
@@ -68,13 +68,13 @@ const ExitIcon = styled(CloseIcon)`
 `;
 
 const DrawerTitle = styled.div`
-  ${(props) => props.theme.type.sub_title};
+  ${(props) => props.theme.type.sn_sub_title};
   color: ${(props) => props.theme.colors.orange};
   text-align: center;
 `;
 
 const DrawerSubTitle = styled.div`
-  ${(props) => props.theme.type.sub_page_title};
+  ${(props) => props.theme.type.sn_sub_page_title};
   color: ${(props) => props.theme.colors.lightBlue};
 `;
 

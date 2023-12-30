@@ -45,6 +45,7 @@ const MenuCloseIcon = styled(CloseIcon)`
 
 const NavLink = styled(Link)`
   ${(props) => props.theme.mixins.underlineHover};
+  letter-spacing: 10px;
   opacity: 45%;
   padding-left: 20px;
   position: relative;

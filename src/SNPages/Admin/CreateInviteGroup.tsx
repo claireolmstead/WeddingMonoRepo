@@ -37,7 +37,7 @@ const ModalInner = styled.div`
 `;
 
 const CreateInviteGroupTitle = styled.div`
-  ${(props) => props.theme.type.sub_title};
+  ${(props) => props.theme.type.sn_sub_title};
   text-align: center;
 `;
 

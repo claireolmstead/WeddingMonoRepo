@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +10,7 @@ import Navigation from './Navigation';
 const HeaderContainer = styled(Container)`
   align-items: center;
   display: flex;
+  height: 80px;
   justify-content: space-between;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -19,7 +19,10 @@ const HeaderContainer = styled(Container)`
 `;
 
 const HeaderImg = styled.img`
-  height: 50px;
+  height: 40px;
+  left: 20px;
+  position: fixed;
+  top: 20px;
 
   @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
     height: 60px;
@@ -33,7 +36,7 @@ const HeaderImg = styled.img`
 const Header = () => {
   return (
     <HeaderContainer>
-      <Link to={'/home'}>
+      <Link to={'/'}>
         {/*<HeaderImg src={Logo} alt={'N+S'} />*/}
         <HeaderImg src={Logo} alt={'C+B'} />
       </Link>

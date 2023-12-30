@@ -33,7 +33,7 @@ const Date = styled.div`
 const Description = styled.div`
   font-size: 20px;
   margin-bottom: 30px;
-  ${(props) => props.theme.type.sub_title};
+  ${(props) => props.theme.type.sn_sub_title};
 `;
 
 const RSVPFormSectionBlock = styled.div`

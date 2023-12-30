@@ -18,12 +18,12 @@ const EventInfo = styled.div`
 
 const EventTime = styled.div`
   color: ${(props) => props.theme.colors.pink};
-  ${(props) => props.theme.type.sub_page_title};
+  ${(props) => props.theme.type.sn_sub_page_title};
   white-space: nowrap;
 `;
 
 const EventTitle = styled.div`
-  ${(props) => props.theme.type.sub_page_title};
+  ${(props) => props.theme.type.sn_sub_page_title};
   color: ${(props) => props.theme.colors.orange};
 `;
 
