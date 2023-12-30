@@ -18,6 +18,13 @@ export const mixins = {
     top: 0;
     width: 100vw;
   `,
+  backgroundBlackOverlay: css`
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  `,
   underlineHover: css`
     &::before {
       background-color: #ffffff;

@@ -63,7 +63,7 @@ const HomeInviteBlock = styled.div`
 `;
 
 const HomeNames = styled.div`
-  ${(props) => props.theme.type.main_title};
+  ${(props) => props.theme.type.sn_main_title};
   color: ${(props) => props.theme.colors.orange};
   line-height: 1;
 `;

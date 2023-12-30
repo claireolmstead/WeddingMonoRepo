@@ -30,7 +30,7 @@ const ScheduleGrid = styled.div`
 `;
 
 const ListItemTitle = styled.div`
-  ${(props) => props.theme.type.sub_title};
+  ${(props) => props.theme.type.sn_sub_title};
   align-self: flex-start;
   text-align: left;
 `;
@@ -60,7 +60,7 @@ const ScheduleMaxWidthWrapper = styled(MaxWidthWrapper)`
 `;
 
 const ScheduleTitle = styled.div`
-  ${(props) => props.theme.type.page_title};
+  ${(props) => props.theme.type.sn_page_title};
   color: ${(props) => props.theme.colors.orange};
   margin: 20px 0;
   position: absolute;

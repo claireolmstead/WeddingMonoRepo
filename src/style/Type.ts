@@ -13,7 +13,9 @@ import { ScreenSizes } from '../consts/vars';
 // `;
 
 const CBTitleFont = css`
-  font-family: 'liza-display-new', sans-serif;
+  font-family: 'itc-avant-garde-gothic-pro', sans-serif;
+  letter-spacing: 10px;
+  text-transform: uppercase;
 `;
 
 const CBBodyFont = css`
@@ -25,7 +27,20 @@ const PageTitleFont = CBBodyFont;
 const BodyFont = CBBodyFont;
 
 export const type = {
-  main_title: css`
+  cb_page_title: css`
+    ${CBTitleFont};
+    font-size: 80px;
+    opacity: 20%;
+  `,
+  cb_sub_title: css`
+    ${CBTitleFont};
+    font-size: 30px;
+  `,
+  cb_large_body: css`
+    ${CBBodyFont};
+    font-size: 22px;
+  `,
+  sn_main_title: css`
     ${TitleFont};
     font-size: 24px;
 
@@ -41,7 +56,7 @@ export const type = {
       font-size: 50px;
     }
   `,
-  sub_title: css`
+  sn_sub_title: css`
     ${TitleFont};
     font-size: 20px;
 
@@ -53,7 +68,7 @@ export const type = {
       font-size: 28px;
     }
   `,
-  page_title: css`
+  sn_page_title: css`
     ${PageTitleFont};
     font-size: 24px;
     text-transform: uppercase;
@@ -66,7 +81,7 @@ export const type = {
       font-size: 36px;
     }
   `,
-  large_page_title: css`
+  sn_large_page_title: css`
     ${TitleFont};
     font-size: 32px;
 
@@ -78,7 +93,7 @@ export const type = {
       font-size: 50px;
     }
   `,
-  sub_page_title: css`
+  sn_sub_page_title: css`
     ${BodyFont};
     font-size: 18px;
     font-weight: bold;

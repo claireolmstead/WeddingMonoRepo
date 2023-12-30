@@ -7,10 +7,11 @@ import 'swiper/css/zoom';
 import 'swiper/css/navigation';
 
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Header from './CBFeatures/Header';
+import Login from './CBFeatures/Login';
 import Events from './CBPages/Events/Events';
 import Home from './CBPages/Home/Home';
 import Registry from './CBPages/Registry/Registry';
@@ -26,9 +27,21 @@ const AppBody = styled.div`
 `;
 
 const CBSwitcher = () => {
+  const auth = window.localStorage.getItem('isAuthenticated');
+  const isAuth: boolean = auth && JSON.parse(auth);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(isAuth);
+
+  useEffect(() => {
+    window.localStorage.setItem('isAuthenticated', isAuthenticated.toString());
+  }, [isAuthenticated]);
+
   return (
     <AppBody>
       <Header />
+      <Login
+        handlePassword={(isCorrect: boolean) => setIsAuthenticated(isCorrect)}
+        isOpen={!isAuthenticated}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/rsvp" element={<RSVP />} />

@@ -12,7 +12,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import Header from './SNFeatures/Header';
 import Admin from './SNPages/Admin/Admin';
-import Authenticate from './SNPages/Authenticate/Authenticate';
+// import Authenticate from './SNPages/Authenticate/Authenticate';
 import Home from './SNPages/Home/Home';
 import Lodging from './SNPages/Lodging/Lodging';
 import Registry from './SNPages/Registry/Registry';
@@ -50,10 +50,10 @@ const SNSwitcher = () => {
       {isAuthenticated && <Header />}
       <NotificationModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <Routes>
-        <Route
+        {/* <Route
           path="/"
           element={<Authenticate setAuthenticated={() => setIsAuthenticated(true)} />}
-        />
+        /> */}
         <Route path="/home" element={<Home />} />
         <Route path="/rsvp" element={<RSVP setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/schedule" element={<Schedule />} />
