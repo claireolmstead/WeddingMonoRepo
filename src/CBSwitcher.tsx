@@ -7,7 +7,7 @@ import 'swiper/css/zoom';
 import 'swiper/css/navigation';
 
 import styled from '@emotion/styled';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Header from './CBFeatures/Header';
@@ -15,11 +15,14 @@ import Login from './CBFeatures/Login';
 import Events from './CBPages/Events/Events';
 import Home from './CBPages/Home/Home';
 import Registry from './CBPages/Registry/Registry';
+import EditInvite from './CBPages/RSVP/EditInvite/EditInvite';
 import RSVP from './CBPages/RSVP/RSVP';
 import Todo from './CBPages/Todo/Todo';
 import Travel from './CBPages/Travel/Travel';
 import Us from './CBPages/Us/Us';
+import { CurInvitesContext } from './context/CurInvitesContext';
 import Admin from './SNPages/Admin/Admin';
+import { Person } from './types';
 
 const AppBody = styled.div`
   color: ${(props) => props.theme.colors.white};
@@ -30,6 +33,7 @@ const CBSwitcher = () => {
   const auth = window.localStorage.getItem('isAuthenticated');
   const isAuth: boolean = auth && JSON.parse(auth);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(isAuth);
+  const { invites } = useContext(CurInvitesContext);
 
   useEffect(() => {
     window.localStorage.setItem('isAuthenticated', isAuthenticated.toString());
@@ -45,6 +49,7 @@ const CBSwitcher = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/rsvp" element={<RSVP />} />
+        <Route path="/rsvp/edit" element={<EditInvite invites={invites as Person[]} />} />
         <Route path="/events" element={<Events />} />
         <Route path="/Travel" element={<Travel />} />
         <Route path="/registry" element={<Registry />} />

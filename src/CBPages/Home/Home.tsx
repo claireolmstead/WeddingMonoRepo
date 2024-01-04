@@ -15,6 +15,7 @@ const HomeBackground = styled.img`
 `;
 
 const HomeTitleBlock = styled.div`
+  ${(props) => props.theme.type.cb_xs_title};
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -22,7 +23,6 @@ const HomeTitleBlock = styled.div`
   justify-content: center;
   position: absolute;
   width: 100%;
-  ${(props) => props.theme.type.main_body};
 `;
 
 const HomeNames = styled.div`

@@ -24,7 +24,6 @@ const RSVPFormContainer = styled.div`
 `;
 
 const Date = styled.div`
-  //font-size: 14px;
   color: ${(props) => props.theme.colors.orange};
   font-weight: bold;
   margin-bottom: 10px;

@@ -5,6 +5,7 @@ import { ScreenSizes } from '../../consts/vars';
 import TravelImg from '../../images/CBImages/Travel.jpg';
 import BCPrimaryButton from '../../uiComponents/BCPrimaryButton';
 import Container from '../../uiComponents/Container';
+import { PageTitle } from '../../uiComponents/PageTitle';
 
 const TravelBackground = styled.img`
   ${(props) => props.theme.mixins.backgroundImage};
@@ -24,7 +25,6 @@ const TravelBlock = styled(Container)`
   align-items: center;
   display: flex;
   flex-direction: column;
-  position: relative;
   text-align: center;
 `;
 
@@ -37,7 +37,7 @@ const TravelItemsBlock = styled.div`
   max-width: 650px;
 `;
 
-const TravelTitle = styled.div`
+const TravelSubTitle = styled.div`
   ${(props) => props.theme.type.cb_sub_title};
   color: ${(props) => props.theme.colors.orange};
 `;
@@ -48,11 +48,12 @@ const Travel = () => {
       <TravelBackground />
       <BlackOverlay />
       <TravelBlock>
+        <PageTitle>Travel</PageTitle>
         <TravelItemsBlock>
           All wedding weekend events will take place at the _____ on the Big Island of Hawaii.
         </TravelItemsBlock>
         <TravelItemsBlock>
-          <TravelTitle>Flight</TravelTitle>
+          <TravelSubTitle>Flight</TravelSubTitle>
           <div>
             The closest airport is the Kona International Airport, which is about a 35 minute drive
             to the hotel.
@@ -60,7 +61,7 @@ const Travel = () => {
           <div>Airport pickups are available through the hotel.</div>
         </TravelItemsBlock>
         <TravelItemsBlock>
-          <TravelTitle>Accommodations</TravelTitle>
+          <TravelSubTitle>Accommodations</TravelSubTitle>
           <div>We hope that all guests are able to stay in our room block at the _____.</div>
           <div>
             For more information and to book your room please call the front desk and mention our
@@ -69,7 +70,6 @@ const Travel = () => {
           <BCPrimaryButton>Visit Website</BCPrimaryButton>
         </TravelItemsBlock>
       </TravelBlock>
-      Travel
     </>
   );
 };

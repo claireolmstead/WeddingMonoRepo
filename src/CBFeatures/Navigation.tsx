@@ -66,6 +66,7 @@ const Navigation = () => {
   };
 
   const handleClose = () => {
+    window.scrollTo(0, 0);
     setIsOpen(false);
   };
 
