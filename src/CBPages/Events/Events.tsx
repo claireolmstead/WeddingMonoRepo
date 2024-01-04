@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ScreenSizes } from '../../consts/vars';
 import EventsImg from '../../images/CBImages/Events.jpg';
 import Container from '../../uiComponents/Container';
+import { PageTitle } from '../../uiComponents/PageTitle';
 import Day1 from './Day1';
 import Day2 from './Day2';
 import Day3 from './Day3';
@@ -36,11 +37,6 @@ const EventsBlock = styled.div`
   justify-content: center;
 `;
 
-const EventsTitle = styled.div`
-  ${(props) => props.theme.type.cb_page_title};
-  text-align: center;
-`;
-
 export type EventsDay = 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
 
 const Events = () => {
@@ -65,7 +61,7 @@ const Events = () => {
       <EventsBackground />
       <BlackOverlay />
       <EventsContainer>
-        <EventsTitle>Events</EventsTitle>
+        <PageTitle>Events</PageTitle>
         <EventsBlock>
           <EventsNav curDay={curDay} setCurDay={setCurDay} />
           {visibleDay()}

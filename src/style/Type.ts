@@ -29,16 +29,31 @@ const BodyFont = CBBodyFont;
 export const type = {
   cb_page_title: css`
     ${CBTitleFont};
-    font-size: 80px;
+    font-size: 60px;
     opacity: 20%;
+    padding-bottom: 12px;
   `,
   cb_sub_title: css`
     ${CBTitleFont};
     font-size: 30px;
   `,
+  cb_small_title: css`
+    ${CBTitleFont};
+    font-size: 18px;
+    letter-spacing: 6px;
+  `,
+  cb_xs_title: css`
+    ${CBTitleFont};
+    font-size: 14px;
+    letter-spacing: 4px;
+  `,
   cb_large_body: css`
     ${CBBodyFont};
     font-size: 22px;
+  `,
+  cb_small_body: css`
+    ${CBBodyFont};
+    font-size: 12px;
   `,
   sn_main_title: css`
     ${TitleFont};

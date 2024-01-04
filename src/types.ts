@@ -75,3 +75,5 @@ export type NewPerson = {
   last: string;
   partyId: number;
 };
+
+export type RSVPState = 'UNDEFINED' | 'PENDING' | 'EDITING' | 'RESPONDED';

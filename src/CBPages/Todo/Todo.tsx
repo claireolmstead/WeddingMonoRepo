@@ -4,6 +4,7 @@ import React from 'react';
 import { ScreenSizes } from '../../consts/vars';
 import ToDoImg from '../../images/CBImages/ToDo.jpg';
 import Container from '../../uiComponents/Container';
+import { PageTitle } from '../../uiComponents/PageTitle';
 
 const ToDoBackground = styled.img`
   ${(props) => props.theme.mixins.backgroundImage};
@@ -22,7 +23,6 @@ const BlackOverlay = styled.div`
 const TodoBlock = styled(Container)`
   display: flex;
   flex-direction: column;
-  position: relative;
   text-align: center;
 `;
 
@@ -33,7 +33,7 @@ const TodoItemsBlock = styled.div`
   margin-bottom: 50px;
 `;
 
-const TodoTitle = styled.div`
+const TodoSubTitle = styled.div`
   ${(props) => props.theme.type.cb_sub_title};
   color: ${(props) => props.theme.colors.orange};
 `;
@@ -44,8 +44,9 @@ const Todo = () => {
       <ToDoBackground />
       <BlackOverlay />
       <TodoBlock>
+        <PageTitle>TODO</PageTitle>
         <TodoItemsBlock>
-          <TodoTitle>Activities</TodoTitle>
+          <TodoSubTitle>Activities</TodoSubTitle>
           <a>Golf</a>
           <a>Pickleball</a>
           <a>Tennis</a>
@@ -54,13 +55,12 @@ const Todo = () => {
           <a>Hiking</a>
         </TodoItemsBlock>
         <TodoItemsBlock>
-          <TodoTitle>Dining</TodoTitle>
+          <TodoSubTitle>Dining</TodoSubTitle>
           <a>Dining Option 1</a>
           <a>Dining Option 2</a>
           <a>Dining Option 3</a>
         </TodoItemsBlock>
       </TodoBlock>
-      Todo
     </>
   );
 };

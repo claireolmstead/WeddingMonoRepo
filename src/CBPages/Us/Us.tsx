@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { ImageList, ImageListItem } from '@mui/material';
 import React from 'react';
 
+import Container from '../../uiComponents/Container';
+import { PageTitle } from '../../uiComponents/PageTitle';
 import { usData } from './usData';
 
 const PageBackground = styled.div`
@@ -12,22 +14,13 @@ const BlackOverlay = styled.div`
   ${(props) => props.theme.mixins.backgroundBlackOverlay};
 `;
 
-const PageBody = styled.div`
-  position: relative;
-`;
-
-const PageTitle = styled.div`
-  ${(props) => props.theme.type.sn_page_title};
-`;
-
 const Us = () => {
   return (
     <div>
       <PageBackground />
       <BlackOverlay />
-      <PageBody>
+      <Container>
         <PageTitle>Us</PageTitle>
-
         <ImageList cols={4}>
           {usData.map((item) => (
             <ImageListItem key={item.img}>
@@ -40,7 +33,7 @@ const Us = () => {
             </ImageListItem>
           ))}
         </ImageList>
-      </PageBody>
+      </Container>
     </div>
   );
 };
