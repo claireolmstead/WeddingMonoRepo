@@ -37,6 +37,11 @@ export enum Pickleball {
   NOT_ATTENDING = 'NOT_ATTENDING',
 }
 
+export enum BeachDay {
+  ATTENDING = 'ATTENDING',
+  NOT_ATTENDING = 'NOT_ATTENDING',
+}
+
 export enum Ceremony {
   DRIVING = 'DRIVING',
   SHUTTLING = 'SHUTTLING',
@@ -67,6 +72,7 @@ export type Person = {
   ceremony: Ceremony;
   ceremonyTransportation: Ceremony;
   pickleball: Pickleball;
+  beachDay: BeachDay;
 };
 
 export type NewPerson = {

@@ -13,13 +13,16 @@ import { ScreenSizes } from '../consts/vars';
 // `;
 
 const CBTitleFont = css`
-  font-family: 'itc-avant-garde-gothic-pro', sans-serif;
-  letter-spacing: 10px;
-  text-transform: uppercase;
+  font-family: 'adobe-handwriting-ernie', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.25;
 `;
 
 const CBBodyFont = css`
-  font-family: 'itc-avant-garde-gothic-pro', sans-serif;
+  font-family: 'minion-pro', serif;
+  letter-spacing: 6px;
 `;
 
 const TitleFont = CBTitleFont;
@@ -27,11 +30,23 @@ const PageTitleFont = CBBodyFont;
 const BodyFont = CBBodyFont;
 
 export const type = {
-  cb_page_title: css`
+  cb_title: css`
     ${CBTitleFont};
+  `,
+  cb_body: css`
+    ${CBBodyFont};
+  `,
+  cb_body_italics: css`
+    ${CBBodyFont};
+    font-style: italic;
+  `,
+  cb_page_title: css`
+    ${CBBodyFont};
     font-size: 60px;
-    opacity: 20%;
+    letter-spacing: 16px;
+    opacity: 25%;
     padding-bottom: 12px;
+    text-transform: uppercase;
   `,
   cb_sub_title: css`
     ${CBTitleFont};
@@ -40,12 +55,10 @@ export const type = {
   cb_small_title: css`
     ${CBTitleFont};
     font-size: 18px;
-    letter-spacing: 6px;
   `,
   cb_xs_title: css`
     ${CBTitleFont};
     font-size: 14px;
-    letter-spacing: 4px;
   `,
   cb_large_body: css`
     ${CBBodyFont};
@@ -53,7 +66,7 @@ export const type = {
   `,
   cb_small_body: css`
     ${CBBodyFont};
-    font-size: 12px;
+    font-size: 14px;
   `,
   sn_main_title: css`
     ${TitleFont};

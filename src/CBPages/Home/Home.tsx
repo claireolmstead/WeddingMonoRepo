@@ -3,30 +3,87 @@ import React from 'react';
 
 import { ScreenSizes } from '../../consts/vars';
 import HomeImg from '../../images/CBImages/HomeImg.jpg';
+import Container from '../../uiComponents/Container';
 
 const HomeBackground = styled.img`
   ${(props) => props.theme.mixins.backgroundImage};
   background-image: url(${HomeImg});
   background-position: top;
+  width: 100%;
 
   @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
     background-position: center;
   }
 `;
 
-const HomeTitleBlock = styled.div`
-  ${(props) => props.theme.type.cb_xs_title};
+const HomeTitleBlock = styled(Container)`
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-size: 20px;
   gap: 16px;
   justify-content: center;
+  padding-top: 20px;
   position: absolute;
+  text-align: center;
   width: 100%;
+
+  p {
+    font-size: 16px;
+    letter-spacing: 4px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+    padding-top: 0px;
+  }
 `;
 
-const HomeNames = styled.div`
-  ${(props) => props.theme.type.sn_large_page_title};
+const HomeName = styled.div`
+  color: ${(props) => props.theme.colors.orange};
+  ${(props) => props.theme.type.cb_title};
+  font-size: 40px;
+  line-height: 1.5;
+
+  @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+    font-size: 50px;
+  }
+`;
+
+const HomeName1 = styled(HomeName)`
+  @keyframes slidein {
+    from {
+      opacity: 0;
+      transform: translateX(10%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  animation: slidein 1.5s;
+`;
+
+const HomeName2 = styled(HomeName)`
+  @keyframes slidein2 {
+    0% {
+      opacity: 0;
+      transform: translateX(10%);
+    }
+
+    30% {
+      opacity: 0;
+      transform: translateX(10%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  animation: slidein2 2s;
 `;
 
 const Home = () => {
@@ -34,10 +91,10 @@ const Home = () => {
     <>
       <HomeBackground />
       <HomeTitleBlock>
-        <>Please join us for the wedding of</>
-        <HomeNames>Claire Olmstead</HomeNames>
-        <>to</>
-        <HomeNames>Brooks Clark</HomeNames>
+        <p>Please join us for the wedding of</p>
+        <HomeName1>Claire Olmstead</HomeName1>
+        <p>to</p>
+        <HomeName2>Brooks Clark</HomeName2>
       </HomeTitleBlock>
     </>
   );

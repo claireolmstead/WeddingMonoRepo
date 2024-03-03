@@ -36,7 +36,6 @@ const Login = ({
   isOpen: boolean;
 }) => {
   const [password, setPassword] = useState<string>('');
-  console.log('ISOPEN', isOpen);
 
   const onPasswordEnter = (password: string) => {
     const isCorrect = password.toLowerCase() === 'aloha';
@@ -52,7 +51,9 @@ const Login = ({
         placeholder="password"
       />
 
-      <EnterBtn onClick={() => onPasswordEnter(password)}>SUBMIT</EnterBtn>
+      <EnterBtn className="btn" onClick={() => onPasswordEnter(password)}>
+        SUBMIT
+      </EnterBtn>
     </LoginDropdown>
   );
 };

@@ -4,15 +4,18 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Futura', sans-serif;
+  font-family: 'minion-pro', serif;
   font-size: 16px;
+  letter-spacing: 1px;
   overflow-x: hidden;
   /*background-color: #A3CEF1;*/
   padding-bottom: 100px;
 }
 
 button, input {
-  font-family: 'Futura', sans-serif;
+  /*font-family: 'Futura', sans-serif;*/
+  font-family: 'minion-pro', serif;
+  text-transform: uppercase;
   font-size: 18px;
 }
 
