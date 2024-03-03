@@ -1,43 +1,62 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ScreenSizes } from '../../../consts/vars';
-import RSVPImg from '../../../images/CBImages/RSVP.jpg';
-import { Person } from '../../../types';
-import Container from '../../../uiComponents/Container';
-import { PageTitle } from '../../../uiComponents/PageTitle';
+import { Person, RSVPState } from '../../../types';
 import EditInviteForm from './EditInviteForm';
 import EditInviteNames from './EditInviteNames';
 
-const RSVPBackground = styled.img`
-  ${(props) => props.theme.mixins.backgroundImage};
-  background-image: url(${RSVPImg});
-  background-position: top;
+const EditInviteBlock = styled.div`
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
 
   @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
-    background-position: center;
+    flex-direction: row;
   }
 `;
 
-const BlackOverlay = styled.div`
-  ${(props) => props.theme.mixins.backgroundBlackOverlay};
+const EditInviteRight = styled.div`
+  width: 600px;
 `;
 
-const EditInvite = ({ invites }: { invites: Person[] }) => {
+const EditInvite = ({
+  invites,
+  setRsvpState,
+}: {
+  invites: Person[];
+  setRsvpState: (state: RSVPState) => void;
+}) => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const goToNext = () => {
+    const i = activeIndex + 1;
+    setActiveIndex(i);
+  };
+
+  const goToPrev = () => {
+    const i = activeIndex - 1;
+    setActiveIndex(i);
+  };
+
   return (
     <>
-      <RSVPBackground />
-      <BlackOverlay />
-      <Container>
-        <PageTitle>RSVP</PageTitle>
-        <EditInviteNames />
-        <EditInviteForm
-          isFinalPerson={false}
-          person={invites[0]}
-          goToNext={() => {}}
-          setIsFinished={() => {}}
-        />
-      </Container>
+      <EditInviteBlock>
+        <EditInviteNames invites={invites} activeIndex={activeIndex} />
+        <EditInviteRight>
+          <EditInviteForm
+            person={invites[activeIndex]}
+            prevPerson={invites[activeIndex - 1]}
+            nextPerson={invites[activeIndex + 1]}
+            goToNext={goToNext}
+            goToPrev={goToPrev}
+            setIsFinished={() => setRsvpState('RESPONDED')}
+          />
+        </EditInviteRight>
+      </EditInviteBlock>
     </>
   );
 };

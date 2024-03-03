@@ -8,7 +8,7 @@ const MenuItems = styled.div<{ isOpen: boolean }>`
   backdrop-filter: brightness(90%) blur(30px);
   display: flex;
   flex-direction: column;
-  font-size: 9vh;
+  font-size: 7vh;
   height: 100vh;
   left: 0;
   padding-top: 70px;
@@ -48,6 +48,7 @@ const NavLink = styled(Link)`
   letter-spacing: 10px;
   opacity: 45%;
   padding-left: 20px;
+  padding-top: 20px;
   position: relative;
   text-transform: uppercase;
   transition: 0.3s ease-in-out;
@@ -72,9 +73,9 @@ const Navigation = () => {
 
   return (
     <>
-      <MenuOpenIcon onClick={handleOpen} />
+      <MenuOpenIcon className="btn" onClick={handleOpen} />
       <MenuItems isOpen={isOpen}>
-        <MenuCloseIcon onClick={handleClose} />
+        <MenuCloseIcon className="btn" onClick={handleClose} />
         <NavLink to={'/'} onClick={handleClose}>
           Home
         </NavLink>
@@ -90,9 +91,9 @@ const Navigation = () => {
         <NavLink to={'/todo'} onClick={handleClose}>
           To Do
         </NavLink>
-        <NavLink to={'/registry'} onClick={handleClose}>
-          Registry
-        </NavLink>
+        {/*<NavLink to={'/registry'} onClick={handleClose}>*/}
+        {/*  Registry*/}
+        {/*</NavLink>*/}
         <NavLink to={'/rsvp'} onClick={handleClose}>
           RSVP
         </NavLink>

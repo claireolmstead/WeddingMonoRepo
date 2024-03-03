@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const NoFillButton = styled.div`
-  ${(props) => props.theme.type.cb_xs_title};
   cursor: pointer;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 `;

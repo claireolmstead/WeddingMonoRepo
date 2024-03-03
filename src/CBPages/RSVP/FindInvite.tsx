@@ -11,12 +11,14 @@ const FindInviteBlock = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
   justify-content: center;
 `;
 
-const FindInviteSubtitle = styled(Subtitle)`
+const FindInviteSubtitle = styled.div`
+  ${(props) => props.theme.type.cb_large_body};
   color: ${(props) => props.theme.colors.orange};
+  text-transform: uppercase;
 `;
 
 const FindInvite = () => {
@@ -50,9 +52,11 @@ const FindInvite = () => {
 
   return (
     <FindInviteBlock>
-      <FindInviteSubtitle variant="sm">Find your invite</FindInviteSubtitle>
+      <FindInviteSubtitle>Find your invite</FindInviteSubtitle>
       <PrimaryInputCB value={name} onChange={handleOnNameChange} placeholder="FIRST LAST" />
-      <NoFillButton onClick={onSubmit}>Search</NoFillButton>
+      <NoFillButton className="btn" onClick={onSubmit}>
+        Search
+      </NoFillButton>
     </FindInviteBlock>
   );
 };

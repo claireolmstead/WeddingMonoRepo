@@ -1,11 +1,13 @@
 export const colors = {
   pink: '#e8a3bb',
   pinkHover: '#de93ad',
-  orange: '#f16522',
+  // orange: '#f16522',
   green: '#0fa58c',
   lightBlue: '#A3CEF1',
   lightBlueHover: '#6d8b9e',
   blue: '#1f3c7c',
+
+  orange: '#E68105',
   black: '#000',
   lightGray: '#D1D1D1',
   grey: '#68717C',

@@ -68,7 +68,7 @@ const NotificationModal = ({ isOpen, setIsOpen }: NotificationModalProps) => {
   return (
     <Modal open={isOpen} onClose={() => setIsOpen(false)}>
       <InnerModal>
-        <ExitBtn onClick={() => setIsOpen(false)} />
+        <ExitBtn className="btn" onClick={() => setIsOpen(false)} />
         <ModalBlock>
           <ModalTitle>The countdown is on!</ModalTitle>
           <ModalSubTitle>Make sure to checkout our updated schedule!</ModalSubTitle>

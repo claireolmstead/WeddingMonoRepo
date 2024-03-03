@@ -46,17 +46,21 @@ const Line = styled.div`
 const EventsNav = ({ curDay, setCurDay }: EventsNavProps) => {
   return (
     <NavBlock>
-      <NavItem onClick={() => setCurDay('FRIDAY')} isActive={curDay === 'FRIDAY'}>
+      <NavItem className="btn" onClick={() => setCurDay('FRIDAY')} isActive={curDay === 'FRIDAY'}>
         Welcome
         <Circle isActive={curDay === 'FRIDAY'} />
       </NavItem>
       <Line />
-      <NavItem onClick={() => setCurDay('SATURDAY')} isActive={curDay === 'SATURDAY'}>
+      <NavItem
+        className="btn"
+        onClick={() => setCurDay('SATURDAY')}
+        isActive={curDay === 'SATURDAY'}
+      >
         Wedding
         <Circle isActive={curDay === 'SATURDAY'} />
       </NavItem>
       <Line />
-      <NavItem onClick={() => setCurDay('SUNDAY')} isActive={curDay === 'SUNDAY'}>
+      <NavItem className="btn" onClick={() => setCurDay('SUNDAY')} isActive={curDay === 'SUNDAY'}>
         Beach Day
         <Circle isActive={curDay === 'SUNDAY'} />
       </NavItem>

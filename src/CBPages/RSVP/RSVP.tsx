@@ -33,6 +33,7 @@ const RSVPContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 `;
 
 const RSVP = () => {
@@ -40,13 +41,16 @@ const RSVP = () => {
   const { invites } = useContext(CurInvitesContext);
 
   useEffect(() => {
+    console.log(rsvpState);
+
     if (invites && invites?.length > 0) {
-      if (hasAllResponded(invites)) {
+      if (hasAllResponded(invites) && rsvpState !== 'EDITING') {
         setRsvpState('RESPONDED');
         return;
       }
-      setRsvpState('PENDING');
+      // setRsvpState('PENDING');
     }
+    // eslint-disable-next-line
   }, [invites]);
 
   const getRSVPState = () => {
@@ -55,13 +59,13 @@ const RSVP = () => {
         return <FindInvite />;
       }
       case 'PENDING': {
-        return <PendingInvite />;
+        return <PendingInvite setRsvpState={setRsvpState} />;
       }
       case 'EDITING': {
-        return <EditInvite invites={invites as Person[]} />;
+        return <EditInvite invites={invites as Person[]} setRsvpState={setRsvpState} />;
       }
       case 'RESPONDED': {
-        return <RespondedInvite invites={invites as Person[]} />;
+        return <RespondedInvite invites={invites as Person[]} setRsvpState={setRsvpState} />;
       }
     }
   };

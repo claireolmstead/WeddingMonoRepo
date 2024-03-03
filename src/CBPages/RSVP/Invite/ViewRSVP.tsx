@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import CheckIcon from '@mui/icons-material/Check';
+import { Check, Close } from '@mui/icons-material';
 import React from 'react';
 
-import { Person } from '../../../types';
+import { BeachDay, Ceremony, Person, Welcome } from '../../../types';
 import { Subtitle } from '../../../uiComponents/Subtitle';
 
 const ViewRSVPBlock = styled.div`
@@ -22,6 +22,8 @@ const ViewRSVPRow = styled.div`
 
 const ViewRSVPRowItem = styled(ViewRSVPRow)`
   gap: 4px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 `;
 
 const ViewRSVP = ({ invites }: { invites: Person[] }) => {
@@ -29,21 +31,21 @@ const ViewRSVP = ({ invites }: { invites: Person[] }) => {
     <ViewRSVPBlock>
       {invites.map((invite) => (
         <div key={invite.id}>
-          <Subtitle variant="sm">
+          <Subtitle>
             {invite.first} {invite.last}
           </Subtitle>
           <ViewRSVPRow>
             <ViewRSVPRowItem>
-              <CheckIcon />
-              <div>Rehearsal</div>
+              {invite.welcome === Welcome.ATTENDING ? <Check /> : <Close />}
+              <div>Welcome Party</div>
             </ViewRSVPRowItem>
             <ViewRSVPRowItem>
-              <CheckIcon />
-              <div>Welcome</div>
-            </ViewRSVPRowItem>
-            <ViewRSVPRowItem>
-              <CheckIcon />
+              {invite.ceremony === Ceremony.ATTENDING ? <Check /> : <Close />}
               <div>Wedding</div>
+            </ViewRSVPRowItem>
+            <ViewRSVPRowItem>
+              {invite.beachDay === BeachDay.ATTENDING ? <Check /> : <Close />}
+              <div>Beach Day</div>
             </ViewRSVPRowItem>
           </ViewRSVPRow>
         </div>

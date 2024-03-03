@@ -38,6 +38,18 @@ const TravelItemsBlock = styled.div`
 `;
 
 const TravelSubTitle = styled.div`
+  @keyframes slidein {
+    from {
+      opacity: 0;
+      transform: translateX(10%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  animation: slidein 1s;
   ${(props) => props.theme.type.cb_sub_title};
   color: ${(props) => props.theme.colors.orange};
 `;
@@ -50,24 +62,27 @@ const Travel = () => {
       <TravelBlock>
         <PageTitle>Travel</PageTitle>
         <TravelItemsBlock>
-          All wedding weekend events will take place at the _____ on the Big Island of Hawaii.
+          All wedding weekend events will take place at the Mauna Kea Beach Hotel on the Big Island
+          of Hawaii.
         </TravelItemsBlock>
         <TravelItemsBlock>
           <TravelSubTitle>Flight</TravelSubTitle>
           <div>
-            The closest airport is the Kona International Airport, which is about a 35 minute drive
-            to the hotel.
+            The closest airport is the Kona International Airport (KOA), which is about a 35 minute
+            drive to the hotel.
           </div>
           <div>Airport pickups are available through the hotel.</div>
         </TravelItemsBlock>
         <TravelItemsBlock>
           <TravelSubTitle>Accommodations</TravelSubTitle>
-          <div>We hope that all guests are able to stay in our room block at the _____.</div>
+          <div>We hope that all guests are able to stay in our room block at the Mauna Kea.</div>
           <div>
-            For more information and to book your room please call the front desk and mention our
-            wedding. 949.500.8690
+            For more information and to book your room please call the front desk and mention the
+            &quot;Olmstead & Clark Wedding&quot;.
           </div>
-          <BCPrimaryButton>Visit Website</BCPrimaryButton>
+          <a href={'https://www.maunakearesort.com/'} target={'_blank'} rel={'noreferrer'}>
+            <BCPrimaryButton>Mauna Kea Website</BCPrimaryButton>
+          </a>
         </TravelItemsBlock>
       </TravelBlock>
     </>
