@@ -30,6 +30,7 @@ const EventsContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 50px;
+  padding: 0 60px;
   position: relative;
 `;
 

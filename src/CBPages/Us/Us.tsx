@@ -14,14 +14,18 @@ const BlackOverlay = styled.div`
   ${(props) => props.theme.mixins.backgroundBlackOverlay};
 `;
 
+const UsContainer = styled(Container)`
+  padding: 0 60px;
+`;
+
 const Us = () => {
   return (
     <div>
       <PageBackground />
       <BlackOverlay />
-      <Container>
+      <UsContainer>
         <PageTitle>Us</PageTitle>
-        <ImageList cols={4}>
+        <ImageList cols={3}>
           {usData.map((item) => (
             <ImageListItem key={item.img}>
               <img
@@ -33,7 +37,7 @@ const Us = () => {
             </ImageListItem>
           ))}
         </ImageList>
-      </Container>
+      </UsContainer>
     </div>
   );
 };

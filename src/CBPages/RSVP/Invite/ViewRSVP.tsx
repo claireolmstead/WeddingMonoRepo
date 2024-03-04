@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Check, Close } from '@mui/icons-material';
 import React from 'react';
 
+import { ScreenSizes } from '../../../consts/vars';
 import { BeachDay, Ceremony, Person, Welcome } from '../../../types';
 import { Subtitle } from '../../../uiComponents/Subtitle';
 
@@ -15,9 +16,13 @@ const ViewRSVPBlock = styled.div`
 const ViewRSVPRow = styled.div`
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 12px;
   justify-content: center;
+
+  @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
+    flex-direction: row;
+  }
 `;
 
 const ViewRSVPRowItem = styled(ViewRSVPRow)`

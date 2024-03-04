@@ -21,7 +21,6 @@ const InviteBlock = styled.div`
   min-height: 320px;
   padding: 50px 80px;
   text-align: center;
-  width: 100%;
 
   @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
     width: 600px;

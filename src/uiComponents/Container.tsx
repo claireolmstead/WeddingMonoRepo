@@ -7,6 +7,8 @@ interface ContainerProps {
 }
 
 const StyleContainer = styled.div`
+  box-sizing: border-box;
+  max-width: 100vw;
   padding: 0 30px;
   position: relative;
 `;
