@@ -68,13 +68,9 @@ const RsvpList = () => {
               <TableHeadCell onClick={() => getPeople('first')}>First</TableHeadCell>
               <TableHeadCell onClick={() => getPeople('last')}>Last</TableHeadCell>
               <TableHeadCell onClick={() => getPeople('partyId')}>Party ID</TableHeadCell>
-              <TableHeadCell onClick={() => getPeople('rehearsal')}>Rehearsal</TableHeadCell>
               <TableHeadCell onClick={() => getPeople('welcome')}>Welcome</TableHeadCell>
               <TableHeadCell onClick={() => getPeople('ceremony')}>Ceremony</TableHeadCell>
-              <TableHeadCell onClick={() => getPeople('ceremonyTransportation')}>
-                Ceremony Transport
-              </TableHeadCell>
-              <TableHeadCell onClick={() => getPeople('pickleball')}>Pickleball</TableHeadCell>
+              <TableHeadCell onClick={() => getPeople('beachDay')}>Ceremony</TableHeadCell>
             </TableRow>
           </TableHead>
 
@@ -90,8 +86,7 @@ const RsvpList = () => {
                 <TableCell>{rsvp.rehearsal}</TableCell>
                 <TableCell>{rsvp.welcome}</TableCell>
                 <TableCell>{rsvp.ceremony}</TableCell>
-                <TableCell>{rsvp.ceremonyTransportation}</TableCell>
-                <TableCell>{rsvp.pickleball}</TableCell>
+                <TableCell>{rsvp.beachDay}</TableCell>
               </RsvpBodyTableRow>
             ))}
           </RsvpListTableBody>

@@ -62,7 +62,7 @@ const Todo = () => {
       <ToDoBackground />
       <BlackOverlay />
       <TodoBlock>
-        <PageTitle>TODO</PageTitle>
+        <PageTitle>TO DO</PageTitle>
         <TodoItemsBlock>
           <TodoSubTitle>Activities</TodoSubTitle>
           <a
@@ -77,7 +77,7 @@ const Todo = () => {
             target={'_blank'}
             rel="noreferrer"
           >
-            Tennis
+            Pickleball & Tennis
           </a>
           <a
             href="https://www.maunakearesort.com/play/activities/kids-programs"

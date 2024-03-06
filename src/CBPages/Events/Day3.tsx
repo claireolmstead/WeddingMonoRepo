@@ -23,8 +23,8 @@ const Day3 = () => {
         <Subtitle>Beach Day</Subtitle>
         <DatePlace>Hau Tree</DatePlace>
         <Details>
-          Please join the newly weds for an afternoon of lounging, swimming, and maybe a Fredrico or
-          two.
+          Please join the newlyweds for an afternoon of lounging, swimming, and maybe a Fredrico or
+          two
         </Details>
         <Details>ATTIRE: Board Shorts & Bikinis</Details>
       </EventItem>

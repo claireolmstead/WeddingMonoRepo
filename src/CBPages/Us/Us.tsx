@@ -26,16 +26,19 @@ const Us = () => {
       <UsContainer>
         <PageTitle>Us</PageTitle>
         <ImageList cols={3}>
-          {usData.map((item) => (
-            <ImageListItem key={item.img}>
-              <img
-                srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                alt={item.title}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
+          {usData
+            .slice(0)
+            .reverse()
+            .map((item) => (
+              <ImageListItem key={item.img}>
+                <img
+                  srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                  src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+              </ImageListItem>
+            ))}
         </ImageList>
       </UsContainer>
     </div>

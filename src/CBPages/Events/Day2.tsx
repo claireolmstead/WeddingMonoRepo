@@ -22,11 +22,13 @@ const Day2 = () => {
       <EventItem>
         <Subtitle>Wedding Ceremony</Subtitle>
         <DatePlace>4:30 pm | 3rd Fairway</DatePlace>
-        <Details>ATTIRE: Formal Luau. Long dresses preferred.</Details>
+        <Details>ATTIRE: Formal Luau</Details>
+        <Details>Long dresses & mens jackets preferred</Details>
       </EventItem>
       <EventItem>
         <Subtitle>Reception</Subtitle>
-        <Details>Cocktails, dinner & dancing to follow.</Details>
+        <DatePlace>5:00 pm | Luau Grounds</DatePlace>
+        <Details>Cocktails, dinner & dancing</Details>
       </EventItem>
     </EventDay>
   );

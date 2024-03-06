@@ -33,6 +33,7 @@ const FindInvite = () => {
 
   const inviteLookup = async () => {
     const personId = name.toLowerCase().replace(/ /g, '');
+    console.log(personId);
     const inviteList = await getInvites(personId);
     if (!inviteList) {
       setIsNotFound(true);

@@ -34,7 +34,7 @@ const TravelItemsBlock = styled.div`
   flex-direction: column;
   gap: 20px;
   margin-bottom: 50px;
-  max-width: 650px;
+  max-width: 560px;
 `;
 
 const TravelSubTitle = styled.div`
