@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { RSVPState } from '../../types';
 import { NoFillButton } from '../../uiComponents/NoFillButton';
 import Invite from './Invite/Invite';
 
@@ -12,11 +11,11 @@ const PendingInviteBlock = styled.div`
   gap: 20px;
 `;
 
-const PendingInvite = ({ setRsvpState }: { setRsvpState: (state: RSVPState) => void }) => {
+const PendingInvite = ({ goToNext }: { goToNext: () => void }) => {
   return (
     <PendingInviteBlock>
       <Invite />
-      <NoFillButton className="btn" onClick={() => setRsvpState('EDITING')}>
+      <NoFillButton className="btn" onClick={goToNext}>
         Next
       </NoFillButton>
     </PendingInviteBlock>

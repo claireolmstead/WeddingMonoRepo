@@ -32,6 +32,7 @@ const HomeTitleBlock = styled(Container)`
     font-size: 16px;
     letter-spacing: 4px;
     margin: 0;
+    text-shadow: 2px 2px 10px #95a1b7;
     text-transform: uppercase;
   }
 
@@ -93,8 +94,9 @@ const Home = () => {
       <HomeTitleBlock>
         <p>Please join us for the wedding of</p>
         <HomeName1>Claire Olmstead</HomeName1>
-        <p>to</p>
+        <p style={{ marginTop: '-20px' }}>to</p>
         <HomeName2>Brooks Clark</HomeName2>
+        <p style={{ marginTop: '-20px' }}>January 18, 2025</p>
       </HomeTitleBlock>
     </>
   );

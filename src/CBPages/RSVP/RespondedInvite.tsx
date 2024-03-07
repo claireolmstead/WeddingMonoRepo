@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { Person, RSVPState } from '../../types';
 import { NoFillButton } from '../../uiComponents/NoFillButton';
+import Toast from '../../uiComponents/Toast';
 import Invite from './Invite/Invite';
 
 const RespondedInviteBlock = styled.div`
@@ -16,9 +16,13 @@ const RespondedInviteBlock = styled.div`
 const RespondedInvite = ({
   invites,
   setRsvpState,
+  isOpen,
+  close,
 }: {
   invites: Person[];
   setRsvpState: (state: RSVPState) => void;
+  isOpen: boolean;
+  close: () => void;
 }) => {
   const [isViewingRsvp, setIsViewingRsvp] = useState<boolean>(false);
 
@@ -31,6 +35,12 @@ const RespondedInvite = ({
       <NoFillButton className="btn" onClick={() => setRsvpState('EDITING')}>
         Edit RSVP
       </NoFillButton>
+      <Toast
+        isOpen={isOpen}
+        close={close}
+        severity={'success'}
+        message={'Successfully updated RSVP!'}
+      />
     </RespondedInviteBlock>
   );
 };

@@ -5,6 +5,7 @@ import { ScreenSizes } from '../../consts/vars';
 import ToDoImg from '../../images/CBImages/ToDo.jpg';
 import Container from '../../uiComponents/Container';
 import { PageTitle } from '../../uiComponents/PageTitle';
+import { Underline } from '../../uiComponents/Underline';
 
 const ToDoBackground = styled.img`
   ${(props) => props.theme.mixins.backgroundImage};
@@ -22,19 +23,23 @@ const BlackOverlay = styled.div`
 `;
 
 const TodoBlock = styled(Container)`
+  align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-align: center;
   width: 100%;
 `;
 
 const TodoItemsBlock = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-bottom: 50px;
   a {
     letter-spacing: 4px;
+    text-decoration: none;
     text-transform: uppercase;
   }
 `;
@@ -56,6 +61,10 @@ const TodoSubTitle = styled.div`
   color: ${(props) => props.theme.colors.orange};
 `;
 
+const UnderlineLink = styled.a`
+  ${Underline};
+`;
+
 const Todo = () => {
   return (
     <>
@@ -65,44 +74,44 @@ const Todo = () => {
         <PageTitle>TO DO</PageTitle>
         <TodoItemsBlock>
           <TodoSubTitle>Activities</TodoSubTitle>
-          <a
+          <UnderlineLink
             href={'https://www.maunakearesort.com/golf/course-overview'}
             target={'_blank'}
             rel="noreferrer"
           >
             Golf
-          </a>
-          <a
+          </UnderlineLink>
+          <UnderlineLink
             href="https://www.maunakearesort.com/play/activities/tennis"
             target={'_blank'}
             rel="noreferrer"
           >
             Pickleball & Tennis
-          </a>
-          <a
+          </UnderlineLink>
+          <UnderlineLink
             href="https://www.maunakearesort.com/play/activities/kids-programs"
             target={'_blank'}
             rel="noreferrer"
           >
             Kids Programs
-          </a>
+          </UnderlineLink>
         </TodoItemsBlock>
         <TodoItemsBlock>
           <TodoSubTitle>Dining</TodoSubTitle>
-          <a
+          <UnderlineLink
             href={'https://www.maunakearesort.com/dine/signature/manta'}
             target={'_blank'}
             rel="noreferrer"
           >
             Manta
-          </a>
-          <a
+          </UnderlineLink>
+          <UnderlineLink
             href={'https://www.maunakearesort.com/dine/casual/copper-bar'}
             target={'_blank'}
             rel="noreferrer"
           >
             Copper Bar
-          </a>
+          </UnderlineLink>
         </TodoItemsBlock>
       </TodoBlock>
     </>

@@ -73,6 +73,7 @@ export type Person = {
   ceremonyTransportation: Ceremony;
   pickleball: Pickleball;
   beachDay: BeachDay;
+  email?: string;
 };
 
 export type NewPerson = {
@@ -82,4 +83,4 @@ export type NewPerson = {
   partyId: number;
 };
 
-export type RSVPState = 'UNDEFINED' | 'PENDING' | 'EDITING' | 'RESPONDED';
+export type RSVPState = 'UNDEFINED' | 'PENDING' | 'EMAIL' | 'EDITING' | 'RESPONDED';

@@ -1,15 +1,16 @@
 import styled from '@emotion/styled';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 import { ScreenSizes } from '../../consts/vars';
 import { CurInvitesContext } from '../../context/CurInvitesContext';
-import { hasAllResponded } from '../../hooks/hasAllResponded';
+import { hasAllRespondedCB } from '../../hooks/hasAllRespondedSN';
 import RSVPImg from '../../images/CBImages/RSVP.jpg';
 import { Person, RSVPState } from '../../types';
 import Container from '../../uiComponents/Container';
+import Footer from '../../uiComponents/Footer';
 import { PageTitle } from '../../uiComponents/PageTitle';
 import EditInvite from './EditInvite/EditInvite';
+import EnterEmails from './EnterEmails';
 import FindInvite from './FindInvite';
 import PendingInvite from './PendingInvite';
 import RespondedInvite from './RespondedInvite';
@@ -37,35 +38,48 @@ const RSVPContainer = styled(Container)`
 `;
 
 const RSVP = () => {
+  const [hasSuccess, setHasSuccess] = useState<boolean>(false);
   const [rsvpState, setRsvpState] = useState<RSVPState>('UNDEFINED');
   const { invites } = useContext(CurInvitesContext);
 
   useEffect(() => {
-    console.log(rsvpState);
-
-    if (invites && invites?.length > 0) {
-      if (hasAllResponded(invites) && rsvpState !== 'EDITING') {
-        setRsvpState('RESPONDED');
-        return;
-      }
-      // setRsvpState('PENDING');
+    if (invites && invites?.length > 0 && rsvpState !== 'EDITING') {
+      hasAllRespondedCB(invites) ? setRsvpState('RESPONDED') : setRsvpState('PENDING');
     }
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invites]);
 
   const getRSVPState = () => {
     switch (rsvpState) {
       case 'UNDEFINED': {
-        return <FindInvite />;
+        return <FindInvite goToNext={() => setRsvpState('PENDING')} />;
       }
       case 'PENDING': {
-        return <PendingInvite setRsvpState={setRsvpState} />;
+        return <PendingInvite goToNext={() => setRsvpState('EMAIL')} />;
+      }
+      case 'EMAIL': {
+        return (
+          <EnterEmails invites={invites as Person[]} goToNext={() => setRsvpState('EDITING')} />
+        );
       }
       case 'EDITING': {
-        return <EditInvite invites={invites as Person[]} setRsvpState={setRsvpState} />;
+        return (
+          <EditInvite
+            invites={invites as Person[]}
+            setRsvpState={setRsvpState}
+            setHasSuccess={() => setHasSuccess(true)}
+          />
+        );
       }
       case 'RESPONDED': {
-        return <RespondedInvite invites={invites as Person[]} setRsvpState={setRsvpState} />;
+        return (
+          <RespondedInvite
+            invites={invites as Person[]}
+            setRsvpState={setRsvpState}
+            isOpen={hasSuccess}
+            close={() => setHasSuccess(false)}
+          />
+        );
       }
     }
   };
@@ -77,6 +91,7 @@ const RSVP = () => {
       <RSVPContainer>
         <PageTitle>RSVP</PageTitle>
         {getRSVPState()}
+        {(rsvpState === 'PENDING' || rsvpState === 'RESPONDED') && <Footer />}
       </RSVPContainer>
     </>
   );

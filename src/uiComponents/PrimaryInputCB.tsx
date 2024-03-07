@@ -17,7 +17,7 @@ const StyledInput = styled.input`
   letter-spacing: 4px;
   outline: none;
   text-align: center;
-  width: 350px;
+  width: 400px;
 
   &::placeholder {
     color: ${(props) => props.theme.colors.grey};

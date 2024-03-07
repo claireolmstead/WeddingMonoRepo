@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-import { hasAllResponded } from '../hooks/hasAllResponded';
+import { hasAllRespondedSN } from '../hooks/hasAllRespondedSN';
 import { Person } from '../types';
 
 export type CurInvitesType = {
@@ -42,7 +42,7 @@ const CurInvitesContextProvider = ({ children }: Props): JSX.Element => {
     if (!invites || invites.length < 1) return;
     window.localStorage.setItem('curInvites', JSON.stringify(invites));
 
-    const hasRsvped = hasAllResponded(invites);
+    const hasRsvped = hasAllRespondedSN(invites);
     setHasAllRsvped(hasRsvped);
   }, [invites]);
 

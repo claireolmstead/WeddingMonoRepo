@@ -3,6 +3,7 @@ import { East, West } from '@mui/icons-material';
 import React from 'react';
 
 import { Person } from '../../../types';
+import { NoFillButton } from '../../../uiComponents/NoFillButton';
 import Row from '../../../uiComponents/Row';
 
 const Btns = styled.div`
@@ -10,19 +11,17 @@ const Btns = styled.div`
   justify-content: space-between;
 `;
 
-const NextBtn = styled.button<{ disabled: boolean }>`
-  background: none;
-  border: none;
-  color: ${(props) => (props.disabled ? 'rgba(255, 255, 255, 0.5)' : 'white')};
+const NextBtn = styled(NoFillButton)<{ disabled: boolean }>`
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
   letter-spacing: 4px;
-  outline: none;
 `;
 
 interface BtnsProps {
+  isEditing: boolean;
   handleSubmit: (event?: any) => Promise<any> | undefined;
   submitting: boolean;
   loading: boolean;
+  disabled: boolean;
   prevPerson?: Person;
   nextPerson?: Person;
   goToNext: () => void;
@@ -31,6 +30,8 @@ interface BtnsProps {
 }
 
 const NextPrevBtns = ({
+  isEditing,
+  disabled,
   loading,
   prevPerson,
   nextPerson,
@@ -66,10 +67,15 @@ const NextPrevBtns = ({
 
   return (
     <Btns>
+      {isEditing && (
+        <NextBtn className="btn" onClick={setIsFinished} disabled={false}>
+          Cancel
+        </NextBtn>
+      )}
       {prevPerson && !submitting ? (
         <NextBtn
           className="btn"
-          disabled={submitting || loading}
+          disabled={submitting || loading || disabled}
           onClick={async () => {
             await handleSubmit();
             prevPerson && goToPrev();
@@ -82,7 +88,7 @@ const NextPrevBtns = ({
       )}
       <NextBtn
         className="btn"
-        disabled={submitting || loading}
+        disabled={submitting || loading || disabled}
         onClick={async () => {
           await handleSubmit();
           nextPerson ? goToNext() : setIsFinished();

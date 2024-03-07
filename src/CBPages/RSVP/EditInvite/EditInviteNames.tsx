@@ -6,17 +6,16 @@ import { Person } from '../../../types';
 
 const NamesBlock = styled.div`
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   gap: 20px;
   margin-bottom: 40px;
   max-width: 100%;
-  overflow-x: scroll;
   text-align: center;
 
   @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
     max-width: 350px;
     padding-right: 20px;
-    flex-direction: column;
     text-align: right;
     border-right: 3px solid white;
     margin-bottom: 0;

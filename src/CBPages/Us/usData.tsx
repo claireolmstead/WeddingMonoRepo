@@ -27,68 +27,71 @@ import Us22 from '../../images/CBImages/us/us22.png';
 import Us23 from '../../images/CBImages/us/us23.png';
 import Us24 from '../../images/CBImages/us/us24.png';
 
-export const usData = [
+type UsDataType = {
+  img: string;
+  title: string;
+  description: string;
+};
+
+export const usData: UsDataType[] = [
   {
     img: Us1,
-    title: 'OpeningDay1',
+    title: 'May 2, 2021',
     description:
-      'May 2, 2021. Brooks put Claire through the classic test of bringing her to her first NHYC Opening Day.',
+      'Brooks put Claire through the classic test of bringing her to her first NHYC Opening Day.',
   },
   {
     img: Us2a,
-    title: 'July272021',
-    description:
-      'July 27, 2021. Transpac 2021 Grand Illusion Crew Dinner at the Outrigger Canoe Club.',
+    title: 'July 27, 2021',
+    description: 'Transpac 2021 Grand Illusion Crew Dinner at the Outrigger Canoe Club.',
   },
   {
     img: Us2,
-    title: 'July292021',
+    title: 'July 29, 2021',
     description:
-      "July 29, 2021. Claire met Brooks in Waikiki to celebrate Grand Illusion's Transpac finish. Pictured here is a day trip to the North Shore.",
+      "Claire met Brooks in Waikiki to celebrate Grand Illusion's Transpac finish. Pictured here is a day trip to the North Shore.",
   },
   {
     img: Us3,
-    title: 'Sep62021',
+    title: 'September 6, 2021',
     description:
-      "September 6, 2021. Taking in local summer on a friend's boat. Probably participating in Sunday Funday.",
+      "Taking in local summer on a friend's boat. Probably participating in Sunday Funday.",
   },
   {
     img: Us4,
-    title: 'Jan42022',
+    title: 'January 4, 2022',
     description:
-      'January 4, 2022. Off to Cabo for New Years! After this photo was taken Brooks tested positive for COVID',
+      'Off to Cabo for New Years! After this photo was taken Brooks tested positive for COVID :(',
   },
   {
     img: Us5,
-    title: 'Feb202022',
-    description:
-      "Febuary 20, 2022. Sunset chipping contests in the desert the weekend of Jeff's birthday.",
+    title: 'February 20, 2022',
+    description: "Jeff's birthday weekend - sunset chipping contests in the desert.",
   },
   {
     img: Us6,
-    title: 'Mar202022',
-    description: 'March 20, 2022. Waiting for Johnny to come say hi post-game at Dedeaux Field.',
+    title: 'March 20, 2022',
+    description: 'Waiting for Johnny to come say hi post-game at Dedeaux Field.',
   },
   {
     img: Us8,
-    title: 'May22022',
-    description: "May 2, 2022. Onboard of Oyster during NHYC's opening day ceremony.",
+    title: 'May 2, 2022',
+    description: "Onboard of Oyster during NHYC's opening day ceremony.",
   },
   {
     img: Us9,
-    title: 'July132022',
-    description: 'July 13, 2022. Another picturesque weekend onboard Rampage in Moonstone.',
+    title: 'July 13, 2022',
+    description: 'Another picturesque weekend onboard Rampage in Moonstone.',
   },
   {
     img: Us10,
     title: 'August 5, 2022',
-    description:
-      'August 5, 2022. Brooks had just moved to Balboa Island from Venice Beach. Time to enjoy sunsets on the bay front and a shared glass of wine!',
+    description: `Celebrating Brooks' recent move from Venice Beach to Balboa Island.`,
   },
   {
     img: Us11a,
-    title: 'Aug122022',
-    description: 'August 12, 2022. Late summer Lehman sailing sponsored by Coors Light.',
+    title: 'August 12, 2022',
+    description: 'Late summer Lehman sailing sponsored by Coors Light.',
   },
   // {
   //   img: Us11b,
@@ -98,70 +101,86 @@ export const usData = [
   {
     img: Us11c,
     title: 'August 18, 2022.',
-    description: 'August 18, 2022. More Lehman sailing with friends.',
+    description: 'More Lehman sailing with friends.',
   },
   {
     img: Us12a,
     title: 'October302022',
-    description: 'October 30, 2022. Chargers game.',
+    description: `Cheering on the Rams despite Brooks' Chargers affiliation. Rams lost to the 49ers 31-14.`,
   },
   {
     img: Us12,
     title: 'December 31, 2022',
-    description: 'December 31, 2022. Enjoying the sunset on New Years Eve in Cabo!',
+    description: 'Enjoying the sunset on New Years Eve in Cabo.',
   },
   {
     img: Us13,
     title: 'March 15, 2023',
     description:
-      'March 15, 2023. Grand Illusion gets to the dock after the Newport to Cabo race. They may have smelled bad but we were happy to see them.',
+      'Grand Illusion gets to the dock after the Newport to Cabo race. They may have smelled bad but we were happy to see them.',
   },
   {
     img: Us14,
-    title: 'wip',
+    title: 'April 29, 2023',
+    description: `Touring University of Washington before heading over to Johnny's weekend series vs. the Huskies`,
   },
   {
     img: Us15,
-    title: 'wip',
+    title: 'May 18, 2023',
+    description: `Andrew and Ryan's Rehearsal Dinner at Los Tamarindos the night before their wedding at Cabo Surf.`,
   },
   {
     img: Us16,
-    title: 'wip',
+    title: 'June 17, 2023',
+    description:
+      'Tired hugs after a long, but very happy, day of moving into our first place together.',
   },
   {
     img: Us17a,
-    title: 'wip',
+    title: 'July 1, 2023',
+    description: 'Another Transpac start in the books!',
   },
   {
     img: Us17b,
-    title: 'wip',
+    title: 'July 11, 2023',
+    description:
+      'After quite the battle, the Grand Illusion crew made it to Honolulu. No mai tai tastes as good as the one after a Transpac finish.',
   },
   {
     img: Us18,
-    title: 'wip',
+    title: 'July 20, 2023',
+    description:
+      'Brooks and Claire win their first Rum Race together in the summer Lehman 12 Twilights.',
   },
   {
     img: Us19,
-    title: 'wip',
+    title: 'July 26, 2023',
+    description: 'First picture after Claire said yes!',
   },
   {
     img: Us20,
-    title: 'wip',
+    title: 'July 26, 2023',
+    description: `More pics from our post-engagement celebration with our families. Couldn't be happier!`,
   },
   {
     img: Us21,
-    title: 'wip',
+    title: 'August 23, 2023',
+    description: `Engagement pics on the beach with Kara!`,
   },
   {
     img: Us22,
-    title: 'wip',
+    title: 'September 8, 2023',
+    description: 'Labor Day fun in Emerald Bay.',
   },
   {
     img: Us23,
-    title: 'wip',
+    title: 'December 16, 2023',
+    description: 'Engagement party on board the Rampage during the Boat Parade.',
   },
   {
     img: Us24,
-    title: 'wip',
+    title: 'January 21, 2023',
+    description:
+      'Trip out to the the Big Island. The moment we decided we were going to get married at the Mauna Kea!',
   },
 ];

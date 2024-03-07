@@ -9,6 +9,7 @@ import { Field, Form } from 'react-final-form';
 import { db } from '../../../App';
 import { CurInvitesContext } from '../../../context/CurInvitesContext';
 import { Ceremony, Person, Welcome } from '../../../types';
+import Toast from '../../../uiComponents/Toast';
 import NextPrevBtns from './NextPrevBtns';
 
 const RSVPForm = styled.form`
@@ -62,22 +63,20 @@ const Description = styled.div`
   ${(props) => props.theme.type.cb_sub_title};
 `;
 
-const RSVPAlert = styled.span`
-  align-self: center;
-  display: flex;
-  gap: 30px;
-`;
-
 interface EditInviteFormProps {
+  isEditing: boolean;
   person: Person;
   prevPerson?: Person;
   nextPerson?: Person;
   goToNext: () => void;
   goToPrev: () => void;
   setIsFinished: () => void;
+  setHasSuccess: () => void;
 }
 
 const EditInviteForm = ({
+  setHasSuccess,
+  isEditing,
   person,
   prevPerson,
   nextPerson,
@@ -87,7 +86,7 @@ const EditInviteForm = ({
 }: EditInviteFormProps) => {
   const { invites, setInvites } = useContext(CurInvitesContext);
 
-  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   const onSubmit = async (values: Person) => {
@@ -105,6 +104,7 @@ const EditInviteForm = ({
           return person;
         });
         setInvites(updatedInvites);
+        setHasSuccess();
         console.log('Document has been updated successfully');
       })
       .catch((error) => {
@@ -112,18 +112,12 @@ const EditInviteForm = ({
       });
   };
 
+  const isNotComplete = (values: Person) => !values.welcome || !values.ceremony || !values.beachDay;
+
   const validate = (values: Person) => {
-    const errors: Record<string, string> = {};
-    if (!values.welcome) {
-      errors.welcome = 'Field is required';
-    }
-    if (!values.ceremony) {
-      errors.ceremony = 'Field is required';
-    }
-    if (Object.keys(errors).length === 0) {
-      setIsSnackbarOpen(false);
-    } else setIsSnackbarOpen(true);
-    return Object.keys(errors).length === 0;
+    const notComplete = isNotComplete(values);
+    setHasError(notComplete);
+    return !notComplete;
   };
 
   return (
@@ -135,7 +129,7 @@ const EditInviteForm = ({
           hasNoErrors && onSubmit(values);
         }}
       >
-        {({ handleSubmit, submitting, values }) => (
+        {({ handleSubmit, submitting, values, pristine }) => (
           <RSVPForm style={{ width: '100%' }}>
             <div>
               <Date>01.17.25</Date>
@@ -214,6 +208,8 @@ const EditInviteForm = ({
               </RSVPFormOptions>
             </div>
             <NextPrevBtns
+              isEditing={isEditing}
+              disabled={isNotComplete(person) && pristine}
               loading={loading}
               prevPerson={prevPerson}
               goToPrev={goToPrev}
@@ -226,17 +222,12 @@ const EditInviteForm = ({
           </RSVPForm>
         )}
       </Form>
-      <Snackbar
-        open={isSnackbarOpen}
-        autoHideDuration={3000}
-        onClose={() => setIsSnackbarOpen(false)}
-      >
-        <Alert onClick={() => setIsSnackbarOpen(false)} severity="error">
-          <RSVPAlert>
-            Must complete each field <CloseIcon fontSize="small" style={{ cursor: 'pointer' }} />
-          </RSVPAlert>
-        </Alert>
-      </Snackbar>
+      <Toast
+        isOpen={hasError}
+        close={() => setHasError(false)}
+        severity={'error'}
+        message={'Must complete each field'}
+      />
     </div>
   );
 };

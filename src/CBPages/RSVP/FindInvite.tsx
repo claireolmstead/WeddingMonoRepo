@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { getInvites } from '../../hooks/getInvitesFromId';
+import { RSVPState } from '../../types';
 import { NoFillButton } from '../../uiComponents/NoFillButton';
 import PrimaryInputCB from '../../uiComponents/PrimaryInputCB';
-import { Subtitle } from '../../uiComponents/Subtitle';
+import Toast from '../../uiComponents/Toast';
 
 const FindInviteBlock = styled.div`
   align-items: center;
@@ -21,22 +22,26 @@ const FindInviteSubtitle = styled.div`
   text-transform: uppercase;
 `;
 
-const FindInvite = () => {
+const FindInvite = ({ goToNext }: { goToNext: () => void }) => {
   const [name, setName] = useState<string>('');
+  const [error, setError] = useState<string>('');
   const { invites, setInvites } = useContext(CurInvitesContext);
   const [isNotFound, setIsNotFound] = useState<boolean>(false);
 
   const handleOnNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
-    if (isNotFound) setIsNotFound(false);
+    if (isNotFound) {
+      setIsNotFound(false);
+      setError('');
+    }
   };
 
   const inviteLookup = async () => {
     const personId = name.toLowerCase().replace(/ /g, '');
-    console.log(personId);
     const inviteList = await getInvites(personId);
-    if (!inviteList) {
+    if (inviteList === undefined) {
       setIsNotFound(true);
+      setError('Name not found. Try spelling as seen on invite.');
       setInvites([]);
     } else {
       setInvites(inviteList);
@@ -45,9 +50,11 @@ const FindInvite = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
-    if (!invites || (invites && invites.length === 0)) {
-      await inviteLookup();
+    await inviteLookup();
+
+    if (invites && invites?.length > 0) {
       setName('');
+      goToNext();
     }
   };
 
@@ -55,9 +62,10 @@ const FindInvite = () => {
     <FindInviteBlock>
       <FindInviteSubtitle>Find your invite</FindInviteSubtitle>
       <PrimaryInputCB value={name} onChange={handleOnNameChange} placeholder="FIRST LAST" />
-      <NoFillButton className="btn" onClick={onSubmit}>
+      <NoFillButton className="btn" onClick={onSubmit} disabled={name.length < 5}>
         Search
       </NoFillButton>
+      <Toast isOpen={!!error} close={() => setError('')} severity={'error'} message={error} />
     </FindInviteBlock>
   );
 };
