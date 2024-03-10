@@ -25,7 +25,6 @@ const HomeTitleBlock = styled(Container)`
   gap: 16px;
   justify-content: center;
   padding-top: 20px;
-  position: absolute;
   text-align: center;
   width: 100%;
 
