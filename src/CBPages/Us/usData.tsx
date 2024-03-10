@@ -101,7 +101,7 @@ export const usData: UsDataType[] = [
   {
     img: Us11c,
     title: 'August 18, 2022.',
-    description: 'More Lehman sailing with friends.',
+    description: 'More Lehman sailing with Jeff & Maddie.',
   },
   {
     img: Us12a,
@@ -116,8 +116,7 @@ export const usData: UsDataType[] = [
   {
     img: Us13,
     title: 'March 15, 2023',
-    description:
-      'Grand Illusion gets to the dock after the Newport to Cabo race. They may have smelled bad but we were happy to see them.',
+    description: 'Grand Illusion gets to the dock after the Newport to Cabo race!',
   },
   {
     img: Us14,

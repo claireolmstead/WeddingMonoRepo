@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { ScreenSizes } from '../../consts/vars';
 import HomeImg from '../../images/CBImages/HomeImg.jpg';
@@ -87,6 +88,28 @@ const HomeName2 = styled(HomeName)`
   animation: slidein2 2s;
 `;
 
+const HomeLink = styled(Link)<{ bottomPosition: number }>`
+  align-items: center;
+  background-color: ${(props) => props.theme.colors.orange};
+  border-radius: 50px 0 0 50px;
+  bottom: ${(props) => props.bottomPosition}px;
+  display: flex;
+  filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.2));
+  font-weight: bold;
+  height: 50px;
+  justify-content: center;
+  letter-spacing: 4px;
+  position: fixed;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+  width: 160px;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.orangeHover};
+    text-decoration: none;
+  }
+`;
+
 const Home = () => {
   return (
     <>
@@ -94,9 +117,16 @@ const Home = () => {
       <HomeTitleBlock>
         <p>Please join us for the wedding of</p>
         <HomeName1>Claire Olmstead</HomeName1>
-        <p style={{ marginTop: '-20px' }}>to</p>
-        <HomeName2>Brooks Clark</HomeName2>
-        <p style={{ marginTop: '-20px' }}>January 18, 2025</p>
+        <p style={{ marginTop: '-30px' }}>to</p>
+        <HomeName2 style={{ marginTop: '-10px' }}>Brooks Clark</HomeName2>
+        <p style={{ marginTop: '-30px' }}>January 18, 2025</p>
+
+        <HomeLink bottomPosition={80} to={'/rsvp'}>
+          RSVP
+        </HomeLink>
+        <HomeLink bottomPosition={20} to={'/travel'}>
+          TRAVEL
+        </HomeLink>
       </HomeTitleBlock>
     </>
   );

@@ -27,10 +27,10 @@ const BlackOverlay = styled.div`
 `;
 
 const EventsContainer = styled(Container)`
+  //padding: 0 60px;
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 0 60px;
   position: relative;
 `;
 

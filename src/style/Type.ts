@@ -42,11 +42,16 @@ export const type = {
   `,
   cb_page_title: css`
     ${CBBodyFont};
-    font-size: 60px;
+    font-size: 40px;
     letter-spacing: 16px;
-    opacity: 25%;
+    margin-right: -16px;
+    opacity: 35%;
     padding-bottom: 12px;
     text-transform: uppercase;
+
+    @media only screen and (min-width: ${ScreenSizes.TABLET}px) {
+      font-size: 60px;
+    }
   `,
   cb_sub_title: css`
     ${CBTitleFont};

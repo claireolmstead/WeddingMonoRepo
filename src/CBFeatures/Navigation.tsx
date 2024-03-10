@@ -23,7 +23,7 @@ const MenuItems = styled.div<{ isOpen: boolean }>`
 const MenuOpenIcon = styled(Menu)`
   cursor: pointer;
   height: 40px;
-  position: fixed;
+  position: absolute;
   right: 20px;
   top: 20px;
   width: 40px;
@@ -32,7 +32,7 @@ const MenuOpenIcon = styled(Menu)`
 const MenuCloseIcon = styled(CloseIcon)`
   cursor: pointer;
   height: 40px;
-  position: fixed;
+  position: absolute;
   right: 20px;
   top: 20px;
   transition: 0.3s ease-in-out;

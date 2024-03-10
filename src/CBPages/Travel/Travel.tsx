@@ -33,7 +33,7 @@ const TravelItemsBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   max-width: 560px;
 `;
 
@@ -54,6 +54,12 @@ const TravelSubTitle = styled.div`
   color: ${(props) => props.theme.colors.orange};
 `;
 
+const ItalicDiv = styled.div`
+  ${(props) => props.theme.type.cb_body_italics};
+  font-weight: bold;
+  letter-spacing: 1px;
+`;
+
 const Travel = () => {
   return (
     <>
@@ -62,8 +68,30 @@ const Travel = () => {
       <TravelBlock>
         <PageTitle>Travel</PageTitle>
         <TravelItemsBlock>
-          All wedding weekend events will take place at the Mauna Kea Beach Hotel on the Big Island
-          of Hawaii.
+          <ItalicDiv>
+            All wedding weekend events will take place at the Mauna Kea Beach Hotel on the Big
+            Island of Hawaii.
+          </ItalicDiv>
+        </TravelItemsBlock>
+        <TravelItemsBlock>
+          <TravelSubTitle>Accommodations</TravelSubTitle>
+          <div>We hope that all guests are able to stay in our room block at the Mauna Kea.</div>
+          <a
+            href={'https://book.passkey.com/event/50794296/owner/49836322/home'}
+            target={'_blank'}
+            rel={'noreferrer'}
+          >
+            <BCPrimaryButton>Book Your Room</BCPrimaryButton>
+          </a>
+          <ItalicDiv>You can only book one room at a time.</ItalicDiv>
+          <ItalicDiv>The hotel policy is a maximum of 3 guests per room.</ItalicDiv>
+          <ItalicDiv>
+            If you do not see the room type that you want or if you have any further questions,
+            please text Claire at 949-500-8690.
+          </ItalicDiv>
+          <a href={'https://www.maunakearesort.com/'} target={'_blank'} rel={'noreferrer'}>
+            <BCPrimaryButton>Mauna Kea Website</BCPrimaryButton>
+          </a>
         </TravelItemsBlock>
         <TravelItemsBlock>
           <TravelSubTitle>Flight</TravelSubTitle>
@@ -72,17 +100,6 @@ const Travel = () => {
             drive to the hotel.
           </div>
           <div>Airport pickups are available through the hotel.</div>
-        </TravelItemsBlock>
-        <TravelItemsBlock>
-          <TravelSubTitle>Accommodations</TravelSubTitle>
-          <div>We hope that all guests are able to stay in our room block at the Mauna Kea.</div>
-          <div>
-            For more information and to book your room please call the front desk and mention the
-            &quot;Olmstead & Clark Wedding&quot;.
-          </div>
-          <a href={'https://www.maunakearesort.com/'} target={'_blank'} rel={'noreferrer'}>
-            <BCPrimaryButton>Mauna Kea Website</BCPrimaryButton>
-          </a>
         </TravelItemsBlock>
       </TravelBlock>
     </>

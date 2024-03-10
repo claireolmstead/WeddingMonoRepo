@@ -16,7 +16,7 @@ const BlackOverlay = styled.div`
 `;
 
 const UsContainer = styled(Container)`
-  padding: 0 60px;
+  //padding: 0 60px;
 `;
 
 const Overlay = styled.div`
@@ -73,13 +73,23 @@ const Us = () => {
     };
   }, []);
 
+  const getColCount = () => {
+    if (windowSize < ScreenSizes.MOBILE) {
+      return 1;
+    } else if (windowSize < ScreenSizes.TABLET) {
+      return 2;
+    } else {
+      return 3;
+    }
+  };
+
   return (
     <div>
       <PageBackground />
       <BlackOverlay />
       <UsContainer>
         <PageTitle>Us</PageTitle>
-        <ImageList cols={ScreenSizes.TABLET > windowSize ? 2 : 3}>
+        <ImageList cols={getColCount()}>
           {usData
             .slice(0)
             .reverse()

@@ -19,7 +19,7 @@ export const mixins = {
     width: 100vw;
   `,
   backgroundBlackOverlay: css`
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.55);
     height: 100vh;
     position: fixed;
     top: 0;

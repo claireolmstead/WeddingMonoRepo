@@ -11,7 +11,7 @@ const HeaderContainer = styled(Container)`
   align-items: center;
   box-sizing: border-box;
   display: flex;
-  height: 80px;
+  height: 110px;
   justify-content: space-between;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -20,13 +20,13 @@ const HeaderContainer = styled(Container)`
 `;
 
 const HeaderImg = styled.img`
-  height: 60px;
-  left: 20px;
-  position: fixed;
-  top: 20px;
+  height: 80px;
+  left: 0;
+  position: relative;
+  top: 10px;
 
   @media only screen and (min-width: ${ScreenSizes.DESKTOP}px) {
-    height: 75px;
+    height: 100px;
   }
 `;
 
