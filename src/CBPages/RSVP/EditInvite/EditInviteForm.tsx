@@ -112,7 +112,10 @@ const EditInviteForm = ({
       });
   };
 
-  const isNotComplete = (values: Person) => !values.welcome || !values.ceremony || !values.beachDay;
+  const isNotComplete = (values: Person) => {
+    const notComplete = !values.welcome || !values.ceremony || !values.beachDay;
+    return notComplete;
+  };
 
   const validate = (values: Person) => {
     const notComplete = isNotComplete(values);
@@ -209,7 +212,8 @@ const EditInviteForm = ({
             </div>
             <NextPrevBtns
               isEditing={isEditing}
-              disabled={isNotComplete(person) && pristine}
+              nextDisabled={isNotComplete(values)}
+              prevDisabled={!pristine && isNotComplete(values)}
               loading={loading}
               prevPerson={prevPerson}
               goToPrev={goToPrev}

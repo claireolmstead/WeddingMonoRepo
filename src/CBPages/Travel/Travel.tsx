@@ -87,7 +87,7 @@ const Travel = () => {
           <ItalicDiv>The hotel policy is a maximum of 3 guests per room.</ItalicDiv>
           <ItalicDiv>
             If you do not see the room type that you want or if you have any further questions,
-            please text Claire at 949-500-8690.
+            please reach out to Brooks & Claire!
           </ItalicDiv>
           <a href={'https://www.maunakearesort.com/'} target={'_blank'} rel={'noreferrer'}>
             <BCPrimaryButton>Mauna Kea Website</BCPrimaryButton>

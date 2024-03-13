@@ -21,7 +21,8 @@ interface BtnsProps {
   handleSubmit: (event?: any) => Promise<any> | undefined;
   submitting: boolean;
   loading: boolean;
-  disabled: boolean;
+  nextDisabled: boolean;
+  prevDisabled: boolean;
   prevPerson?: Person;
   nextPerson?: Person;
   goToNext: () => void;
@@ -31,7 +32,8 @@ interface BtnsProps {
 
 const NextPrevBtns = ({
   isEditing,
-  disabled,
+  nextDisabled,
+  prevDisabled,
   loading,
   prevPerson,
   nextPerson,
@@ -67,15 +69,10 @@ const NextPrevBtns = ({
 
   return (
     <Btns>
-      {isEditing && (
-        <NextBtn className="btn" onClick={setIsFinished} disabled={false}>
-          Cancel
-        </NextBtn>
-      )}
       {prevPerson && !submitting ? (
         <NextBtn
           className="btn"
-          disabled={submitting || loading || disabled}
+          disabled={submitting || loading || prevDisabled}
           onClick={async () => {
             await handleSubmit();
             prevPerson && goToPrev();
@@ -88,7 +85,7 @@ const NextPrevBtns = ({
       )}
       <NextBtn
         className="btn"
-        disabled={submitting || loading || disabled}
+        disabled={submitting || loading || nextDisabled}
         onClick={async () => {
           await handleSubmit();
           nextPerson ? goToNext() : setIsFinished();

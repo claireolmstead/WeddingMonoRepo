@@ -3,7 +3,6 @@ import React, { ChangeEvent, useContext, useState } from 'react';
 
 import { CurInvitesContext } from '../../context/CurInvitesContext';
 import { getInvites } from '../../hooks/getInvitesFromId';
-import { RSVPState } from '../../types';
 import { NoFillButton } from '../../uiComponents/NoFillButton';
 import PrimaryInputCB from '../../uiComponents/PrimaryInputCB';
 import Toast from '../../uiComponents/Toast';
@@ -58,10 +57,21 @@ const FindInvite = ({ goToNext }: { goToNext: () => void }) => {
     }
   };
 
+  const handleKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      await onSubmit(event);
+    }
+  };
+
   return (
     <FindInviteBlock>
       <FindInviteSubtitle>Find your invite</FindInviteSubtitle>
-      <PrimaryInputCB value={name} onChange={handleOnNameChange} placeholder="FIRST LAST" />
+      <PrimaryInputCB
+        value={name}
+        onChange={handleOnNameChange}
+        placeholder="FIRST LAST"
+        onKeyDown={handleKeyDown}
+      />
       <NoFillButton className="btn" onClick={onSubmit} disabled={name.length < 5}>
         Search
       </NoFillButton>
