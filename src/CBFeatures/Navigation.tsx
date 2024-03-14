@@ -1,16 +1,20 @@
 import styled from '@emotion/styled';
 import { Menu } from '@mui/icons-material';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import CloseIcon from '@mui/icons-material/Close';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import { ScreenSizes } from '../consts/vars';
 
 const MenuItems = styled.div<{ isOpen: boolean }>`
   backdrop-filter: brightness(90%) blur(30px);
   display: flex;
   flex-direction: column;
-  font-size: 7vh;
+  font-size: 45px;
   height: 100vh;
   left: 0;
+  overflow-y: scroll;
   padding-top: 70px;
   position: fixed;
   top: 0;
@@ -18,6 +22,10 @@ const MenuItems = styled.div<{ isOpen: boolean }>`
   transform-origin: top left;
   transition: 0.4s ease-in-out;
   width: 100vw;
+
+  @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
+    font-size: 7vh;
+  }
 `;
 
 const MenuOpenIcon = styled(Menu)`
@@ -45,7 +53,7 @@ const MenuCloseIcon = styled(CloseIcon)`
 
 const NavLink = styled(Link)`
   ${(props) => props.theme.mixins.underlineHover};
-  letter-spacing: 10px;
+  letter-spacing: 8px;
   opacity: 45%;
   padding-left: 20px;
   padding-top: 20px;
@@ -56,6 +64,20 @@ const NavLink = styled(Link)`
   &:hover {
     opacity: 100%;
     text-decoration: none;
+  }
+
+  @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
+    letter-spacing: 10px;
+  }
+`;
+
+const ExternalLinkIcon = styled(ArrowOutwardIcon)`
+  height: 30px;
+  width: 30px;
+
+  @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
+    height: 50px;
+    width: 50px;
   }
 `;
 
@@ -91,11 +113,11 @@ const Navigation = () => {
         <NavLink to={'/todo'} onClick={handleClose}>
           To Do
         </NavLink>
-        {/*<NavLink to={'/registry'} onClick={handleClose}>*/}
-        {/*  Registry*/}
-        {/*</NavLink>*/}
         <NavLink to={'/rsvp'} onClick={handleClose}>
           RSVP
+        </NavLink>
+        <NavLink to={'https://www.zola.com/registry/brooksandclaire2025'} target="_blank">
+          Registry <ExternalLinkIcon />
         </NavLink>
       </MenuItems>
     </>
