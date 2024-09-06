@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { ScreenSizes } from '../../consts/vars';
 import HomeImg from '../../images/CBImages/HomeImg.jpg';
+import Logo from '../../images/CBImages/Logo.svg';
 import Container from '../../uiComponents/Container';
 
 const HomeBackground = styled.img`
@@ -109,11 +110,17 @@ const HomeLink = styled(Link)<{ bottomPosition: number }>`
   }
 `;
 
+const CBLogo = styled.img`
+  height: 100px;
+  margin: 0 auto;
+`;
+
 const Home = () => {
   return (
     <>
       <HomeBackground />
       <HomeTitleBlock>
+        <CBLogo src={Logo} />
         <p>Please join us for the wedding of</p>
         <HomeName1>Claire Olmstead</HomeName1>
         <p style={{ marginTop: '-30px' }}>to</p>

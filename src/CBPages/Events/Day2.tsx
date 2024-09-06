@@ -21,15 +21,20 @@ const Day2 = () => {
       <EventDate color={colors.orange}>Saturday, January 18, 2025</EventDate>
       <EventItem>
         <Subtitle>Wedding Ceremony</Subtitle>
-        <DatePlace>4:30 pm | 3rd Fairway</DatePlace>
+        <DatePlace>4:00 pm | 3rd Fairway</DatePlace>
         <Details>ATTIRE: Formal Luau</Details>
         <Details>Long dresses & mens jackets preferred</Details>
-        <Details>The party is on grass, so choose appropriate shoes</Details>
+        <Details>The cocktail party is on grass, so choose appropriate shoes</Details>
       </EventItem>
       <EventItem>
         <Subtitle>Reception</Subtitle>
         <DatePlace>5:00 pm | Luau Grounds</DatePlace>
-        <Details>Cocktails, dinner & dancing</Details>
+        <Details>Drinks, dinner & dancing</Details>
+      </EventItem>
+      <EventItem>
+        <Subtitle>After Party</Subtitle>
+        <DatePlace>10:00 pm | Luau Grounds</DatePlace>
+        <Details>Beer, snacks & more dancing</Details>
       </EventItem>
     </EventDay>
   );

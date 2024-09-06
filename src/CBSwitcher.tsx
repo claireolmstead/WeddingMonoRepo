@@ -19,6 +19,7 @@ import RSVP from './CBPages/RSVP/RSVP';
 import Todo from './CBPages/Todo/Todo';
 import Travel from './CBPages/Travel/Travel';
 import Us from './CBPages/Us/Us';
+import Logo from './images/CBImages/Logo.svg';
 import Admin from './SNPages/Admin/Admin';
 
 const AppBody = styled.div`

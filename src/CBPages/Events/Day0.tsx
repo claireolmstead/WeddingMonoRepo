@@ -21,8 +21,8 @@ const Day0 = () => {
       <EventDate color={colors.orange}>Thursday, January 18, 2025</EventDate>
       <EventItem>
         <Subtitle>Arrival Night Cap</Subtitle>
-        <DatePlace>Copper Bar</DatePlace>
-        <Details>Aloha! Join us for a night cap at Copper Bar to kick off the weekend!</Details>
+        <DatePlace>9 pm (ish) | Copper Bar</DatePlace>
+        <Details>Aloha! Stop by Copper Bar for a night cap to kick off the weekend!</Details>
       </EventItem>
     </EventDay>
   );
