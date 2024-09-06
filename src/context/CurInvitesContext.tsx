@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 
+import { getInvites } from '../hooks/getInvitesFromId';
 import { hasAllRespondedSN } from '../hooks/hasAllRespondedSN';
 import { Person } from '../types';
 
@@ -31,11 +32,36 @@ const CurInvitesContextProvider = ({ children }: Props): JSX.Element => {
   const [isNotMe, setIsNotMe] = useState<boolean>(false);
   const [hasAllRsvped, setHasAllRsvped] = useState<boolean>(false);
 
-  useEffect(() => {
-    const curInvites = window.localStorage.getItem('curInvites');
-    if (curInvites) {
-      setInvites(JSON.parse(curInvites));
+  const getUpdatedInvite = async (person: Person): Promise<Person | null> => {
+    if (person?.isInvitedToRehearsal === undefined) {
+      const updatedPerson = (await getInvites(person.id))?.[0];
+
+      if (!updatedPerson) return null;
+
+      if (updatedPerson?.isInvitedToRehearsal === undefined)
+        updatedPerson.isInvitedToRehearsal = false;
+
+      return updatedPerson;
     }
+    return person;
+  };
+
+  useEffect(() => {
+    const updateAll = async () => {
+      const curInvites = window.localStorage.getItem('curInvites');
+      if (curInvites) {
+        const inviteGroup: Person[] = JSON.parse(curInvites);
+        // Use Promise.all to wait for all getUpdatedInvite promises to resolve
+        const updatedInvites = await Promise.all(
+          inviteGroup.map((p) => {
+            const person = getUpdatedInvite(p);
+            if (person !== null) return person;
+          })
+        );
+        setInvites(updatedInvites as Person[]);
+      }
+    };
+    updateAll();
   }, []);
 
   useEffect(() => {

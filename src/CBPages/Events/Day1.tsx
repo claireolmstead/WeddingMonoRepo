@@ -33,6 +33,7 @@ const Day1 = () => {
         <DatePlace>7 pm | South Point Lawn</DatePlace>
         <Details>Drinks & hors d&apos;oeuvres</Details>
         <Details>ATTIRE: Island Cocktail</Details>
+        <Details>The party is on grass, so choose appropriate shoes</Details>
       </EventItem>
     </EventDay>
   );

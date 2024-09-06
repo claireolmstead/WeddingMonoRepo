@@ -63,6 +63,7 @@ export enum Rehearsal {
 }
 
 export type Person = {
+  isInvitedToRehearsal?: boolean;
   id: string;
   first: string;
   last: string;

@@ -24,7 +24,7 @@ const Day3 = () => {
         <DatePlace>Hau Tree</DatePlace>
         <Details>
           Please join the newlyweds for an afternoon of lounging, swimming, and maybe a Fredrico or
-          two
+          two!
         </Details>
         <Details>ATTIRE: Board Shorts & Bikinis</Details>
       </EventItem>

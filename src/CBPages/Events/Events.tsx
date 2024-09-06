@@ -7,6 +7,7 @@ import MaunaKeaMap from '../../images/CBImages/MaunaKeaMap.jpg';
 import BCPrimaryButton from '../../uiComponents/BCPrimaryButton';
 import Container from '../../uiComponents/Container';
 import { PageTitle } from '../../uiComponents/PageTitle';
+import Day0 from './Day0';
 import Day1 from './Day1';
 import Day2 from './Day2';
 import Day3 from './Day3';
@@ -62,15 +63,18 @@ const EventsMap = styled.img`
   width: 100%;
 `;
 
-export type EventsDay = 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+export type EventsDay = 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
 
 const Events = () => {
   const mapRef = useRef<null | HTMLImageElement>(null);
-  const [curDay, setCurDay] = useState<EventsDay>('FRIDAY');
+  const [curDay, setCurDay] = useState<EventsDay>('THURSDAY');
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
 
   const visibleDay = () => {
     switch (curDay) {
+      case 'THURSDAY': {
+        return <Day0 />;
+      }
       case 'FRIDAY': {
         return <Day1 />;
       }
@@ -105,6 +109,7 @@ const Events = () => {
         <PageTitle>Events</PageTitle>
         {windowSize < ScreenSizes.TABLET ? (
           <EventsBlockMobile>
+            <Day0 />
             <Day1 />
             <Day2 />
             <Day3 />

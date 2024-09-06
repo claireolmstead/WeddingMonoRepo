@@ -8,7 +8,8 @@ import { Field, Form } from 'react-final-form';
 
 import { db } from '../../../App';
 import { CurInvitesContext } from '../../../context/CurInvitesContext';
-import { Ceremony, Person, Welcome } from '../../../types';
+import { getInvites } from '../../../hooks/getInvitesFromId';
+import { Ceremony, Person, Rehearsal, Welcome } from '../../../types';
 import Toast from '../../../uiComponents/Toast';
 import NextPrevBtns from './NextPrevBtns';
 
@@ -113,7 +114,8 @@ const EditInviteForm = ({
   };
 
   const isNotComplete = (values: Person) => {
-    const notComplete = !values.welcome || !values.ceremony || !values.beachDay;
+    const notComplete =
+      !values.rehearsal || !values.welcome || !values.ceremony || !values.beachDay;
     return notComplete;
   };
 
@@ -136,6 +138,33 @@ const EditInviteForm = ({
           <RSVPForm style={{ width: '100%' }}>
             <div>
               <Date>01.17.25</Date>
+              {person.isInvitedToRehearsal && (
+                <>
+                  <Description>Rehearsal Dinner</Description>
+                  <RSVPFormOptions>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        className="btn"
+                        name="rehearsal"
+                        component="input"
+                        type="radio"
+                        value={Rehearsal.ATTENDING}
+                      />
+                      Attending
+                    </RSVPFormLabel>
+                    <RSVPFormLabel>
+                      <RSVPFormField
+                        name="rehearsal"
+                        component="input"
+                        type="radio"
+                        value={Rehearsal.NOT_ATTENDING}
+                      />
+                      Not Attending
+                    </RSVPFormLabel>
+                  </RSVPFormOptions>
+                  <br />
+                </>
+              )}
               <Description>Welcome Party</Description>
               <RSVPFormOptions>
                 <RSVPFormLabel>

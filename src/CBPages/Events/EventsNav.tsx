@@ -46,6 +46,15 @@ const Line = styled.div`
 const EventsNav = ({ curDay, setCurDay }: EventsNavProps) => {
   return (
     <NavBlock>
+      <NavItem
+        className="btn"
+        onClick={() => setCurDay('THURSDAY')}
+        isActive={curDay === 'THURSDAY'}
+      >
+        Arrival
+        <Circle isActive={curDay === 'THURSDAY'} />
+      </NavItem>
+      <Line />
       <NavItem className="btn" onClick={() => setCurDay('FRIDAY')} isActive={curDay === 'FRIDAY'}>
         Welcome
         <Circle isActive={curDay === 'FRIDAY'} />
