@@ -23,17 +23,26 @@ const NamesBlock = styled.div`
 `;
 
 const Name = styled.div<{ active: boolean }>`
+  cursor: pointer;
   font-size: 18px;
   letter-spacing: 4px;
   text-decoration: ${(props) => props.active && 'underline'};
   text-transform: uppercase;
 `;
 
-const EditInviteNames = ({ invites, activeIndex }: { invites: Person[]; activeIndex: number }) => {
+const EditInviteNames = ({
+  invites,
+  activeIndex,
+  handleSwitchPerson,
+}: {
+  invites: Person[];
+  activeIndex: number;
+  handleSwitchPerson: (index: number) => void;
+}) => {
   return (
     <NamesBlock>
       {invites.map((invite, i) => (
-        <Name key={invite.id} active={i === activeIndex}>
+        <Name key={invite.id} active={i === activeIndex} onClick={() => handleSwitchPerson(i)}>
           {invite.first} {invite.last}
         </Name>
       ))}

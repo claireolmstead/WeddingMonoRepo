@@ -61,6 +61,7 @@ const NextPrevBtns = ({
     }
     return (
       <Row gap={8}>
+        {/*Save*/}
         {`To ${nextPerson?.first}`}
         <East />
       </Row>
@@ -69,20 +70,21 @@ const NextPrevBtns = ({
 
   return (
     <Btns>
-      {prevPerson && !submitting ? (
-        <NextBtn
-          className="btn"
-          disabled={submitting || loading || prevDisabled}
-          onClick={async () => {
-            await handleSubmit();
-            prevPerson && goToPrev();
-          }}
-        >
-          {prevBtnTxt()}
-        </NextBtn>
-      ) : (
-        <div></div>
-      )}
+      <div></div>
+      {/*{prevPerson && !submitting ? (*/}
+      {/*  <NextBtn*/}
+      {/*    className="btn"*/}
+      {/*    disabled={submitting || loading || prevDisabled}*/}
+      {/*    onClick={async () => {*/}
+      {/*      await handleSubmit();*/}
+      {/*      prevPerson && goToPrev();*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    {prevBtnTxt()}*/}
+      {/*  </NextBtn>*/}
+      {/*) : (*/}
+      {/*  <div></div>*/}
+      {/*)}*/}
       <NextBtn
         className="btn"
         disabled={submitting || loading || nextDisabled}

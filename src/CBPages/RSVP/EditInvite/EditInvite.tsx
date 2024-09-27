@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ScreenSizes } from '../../../consts/vars';
 import { hasAllRespondedCB } from '../../../hooks/hasAllRespondedSN';
 import { Person, RSVPState } from '../../../types';
+import Toast from '../../../uiComponents/Toast';
 import EditInviteForm from './EditInviteForm';
 import EditInviteNames from './EditInviteNames';
 
@@ -35,6 +36,7 @@ const EditInvite = ({
   setHasSuccess: () => void;
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [hasError, setHasError] = useState<boolean>(false);
 
   const goToNext = () => {
     const i = activeIndex + 1;
@@ -46,10 +48,34 @@ const EditInvite = ({
     setActiveIndex(i);
   };
 
+  const isNotComplete = (person: Person) => {
+    if (person.isInvitedToRehearsal) {
+      return !person.rehearsal || !person.welcome || !person.ceremony || !person.beachDay;
+    } else {
+      return !person.welcome || !person.ceremony || !person.beachDay;
+    }
+  };
+
+  const handleSwitchPerson = (index: number) => {
+    const curPerson = invites[activeIndex];
+    const isCurComplete = !isNotComplete(curPerson);
+
+    if (isCurComplete) {
+      setActiveIndex(index);
+      return;
+    } else {
+      setHasError(true);
+    }
+  };
+
   return (
     <>
       <EditInviteBlock>
-        <EditInviteNames invites={invites} activeIndex={activeIndex} />
+        <EditInviteNames
+          invites={invites}
+          activeIndex={activeIndex}
+          handleSwitchPerson={handleSwitchPerson}
+        />
         <EditInviteRight>
           <EditInviteForm
             setHasSuccess={setHasSuccess}
@@ -63,6 +89,12 @@ const EditInvite = ({
           />
         </EditInviteRight>
       </EditInviteBlock>
+      <Toast
+        isOpen={hasError}
+        close={() => setHasError(false)}
+        severity={'error'}
+        message={'Must complete each field and save'}
+      />
     </>
   );
 };

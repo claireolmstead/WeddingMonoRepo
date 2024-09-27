@@ -10,6 +10,7 @@ export const hasAllRespondedSN = (invites: Person[]): boolean => {
 
 export const hasAllRespondedCB = (invites: Person[]): boolean => {
   const hasResponded: boolean[] = invites.map((person) => {
+    console.log(invites);
     return !!person.welcome && !!person.ceremony && !!person.beachDay;
   });
 

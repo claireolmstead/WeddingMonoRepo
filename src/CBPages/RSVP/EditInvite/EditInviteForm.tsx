@@ -1,14 +1,10 @@
 import styled from '@emotion/styled';
 import { doc, setDoc } from '@firebase/firestore';
-import CloseIcon from '@mui/icons-material/Close';
-import { Alert } from '@mui/lab';
-import { Snackbar } from '@mui/material';
 import React, { useContext, useState } from 'react';
 import { Field, Form } from 'react-final-form';
 
 import { db } from '../../../App';
 import { CurInvitesContext } from '../../../context/CurInvitesContext';
-import { getInvites } from '../../../hooks/getInvitesFromId';
 import { Ceremony, Person, Rehearsal, Welcome } from '../../../types';
 import Toast from '../../../uiComponents/Toast';
 import NextPrevBtns from './NextPrevBtns';
@@ -114,9 +110,11 @@ const EditInviteForm = ({
   };
 
   const isNotComplete = (values: Person) => {
-    const notComplete =
-      !values.rehearsal || !values.welcome || !values.ceremony || !values.beachDay;
-    return notComplete;
+    if (person.isInvitedToRehearsal) {
+      return !values.rehearsal || !values.welcome || !values.ceremony || !values.beachDay;
+    } else {
+      return !values.welcome || !values.ceremony || !values.beachDay;
+    }
   };
 
   const validate = (values: Person) => {
