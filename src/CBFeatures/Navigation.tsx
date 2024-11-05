@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Menu } from '@mui/icons-material';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import CloseIcon from '@mui/icons-material/Close';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -73,16 +72,6 @@ const NavLink = styled(Link)`
   }
 `;
 
-const ExternalLinkIcon = styled(ArrowOutwardIcon)`
-  height: 30px;
-  width: 30px;
-
-  @media only screen and (min-width: ${ScreenSizes.MOBILE}px) {
-    height: 50px;
-    width: 50px;
-  }
-`;
-
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -118,8 +107,8 @@ const Navigation = () => {
         <NavLink to={'/rsvp'} onClick={handleClose}>
           RSVP
         </NavLink>
-        <NavLink to={'https://www.zola.com/registry/brooksandclaire2025'} target="_blank">
-          Registry <ExternalLinkIcon />
+        <NavLink to={'/registry'} onClick={handleClose}>
+          Registry
         </NavLink>
       </MenuItems>
     </>

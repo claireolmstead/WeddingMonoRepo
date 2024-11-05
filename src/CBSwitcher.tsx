@@ -64,7 +64,7 @@ const CBSwitcher = () => {
         <Route path="/rsvp" element={<RSVP />} />
         <Route path="/events" element={<Events />} />
         <Route path="/Travel" element={<Travel />} />
-        {/*<Route path="/registry" element={<Registry />} />*/}
+        <Route path="/registry" element={<Registry />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/us" element={<Us />} />
         <Route path="/admin" element={<Admin />} />
