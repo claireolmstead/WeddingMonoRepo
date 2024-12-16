@@ -18,7 +18,7 @@ const Details = styled.div`
 const Day0 = () => {
   return (
     <EventDay>
-      <EventDate color={colors.orange}>Thursday, January 18, 2025</EventDate>
+      <EventDate color={colors.orange}>Thursday, January 16, 2025</EventDate>
       <EventItem>
         <Subtitle>Arrival Night Cap</Subtitle>
         <DatePlace>9 pm (ish) | Copper Bar</DatePlace>

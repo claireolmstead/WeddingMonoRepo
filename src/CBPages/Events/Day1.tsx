@@ -19,20 +19,15 @@ const Day1 = () => {
   return (
     <EventDay>
       <EventDate color={colors.orange}>Friday, January 17, 2025</EventDate>
-      {/*<EventItem>*/}
-      {/*  <Subtitle>Rehearsal Walk Through</Subtitle>*/}
-      {/*  <DatePlace>4:30 pm | 3rd Fairway</DatePlace>*/}
-      {/*</EventItem>*/}
-      {/*<EventItem>*/}
-      {/*  <Subtitle>Rehearsal Dinner</Subtitle>*/}
-      {/*  <DatePlace>5 pm | Parker Cottage</DatePlace>*/}
-      {/*  <Details>Drinks, Dinner, & Toasts</Details>*/}
-      {/*</EventItem>*/}
       <EventItem>
         <Subtitle>Welcome Cocktails</Subtitle>
         <DatePlace>7 pm | South Point Lawn</DatePlace>
         <Details>Drinks & pūpūs</Details>
         <Details>ATTIRE: Island Cocktail</Details>
+        <Details>
+          Collared shirts, khakis or bermudas, loafers or nice sandals welcome for men
+        </Details>
+        <Details>Sundresses or sets welcome for women</Details>
         <Details>The party is on grass, so choose appropriate shoes</Details>
       </EventItem>
     </EventDay>

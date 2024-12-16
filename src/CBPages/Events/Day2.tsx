@@ -23,7 +23,7 @@ const Day2 = () => {
         <Subtitle>Wedding Ceremony</Subtitle>
         <DatePlace>4:00 pm | 3rd Fairway</DatePlace>
         <Details>ATTIRE: Formal Luau</Details>
-        <Details>Long dresses & mens jackets preferred</Details>
+        <Details>Long dresses for women, jackets and closed toed shoes for men preferred</Details>
         <Details>The cocktail party is on grass, so choose appropriate shoes</Details>
       </EventItem>
       <EventItem>
